@@ -1,9 +1,11 @@
 ﻿import os, json, base64, hashlib, urllib.request, urllib.parse, re, time, glob, subprocess
 
 PROXY = "http://127.0.0.1:20808"
+OPENER = urllib.request.build_opener(urllib.request.ProxyHandler({"http": PROXY, "https": PROXY}))
+
 CHANNELS = [
-    {"name": "yunfeifei", "handle": "@yunfeifei-k5h"},
-    {"name": "lingdujieshuo", "handle": "@lingdujieshuo"},
+    {"name": "yunfeifei", "handle": "https://www.youtube.com/@yunfeifei-k5h"},
+    {"name": "lingdujieshuo", "handle": "https://www.youtube.com/@lingdujieshuo"},
 ]
 BASE = r"H:/workspace/01_项目/P09_YoutubeAutoBlog"
 os.makedirs(BASE + "/articles", exist_ok=True)
@@ -28,14 +30,22 @@ def log(msg):
 
 def http_get(url, headers=None):
     req = urllib.request.Request(url, headers=headers or {})
-    with urllib.request.urlopen(req, timeout=30) as r:
-        return r.read().decode("utf-8", errors="replace")
+    try:
+        with OPENER.open(req, timeout=30) as r:
+            return r.read().decode("utf-8", errors="replace")
+    except Exception as e:
+        log(f"HTTP GET error: {e}")
+        return ""
 
 def http_post(url, data, headers=None):
     body = json.dumps(data).encode("utf-8")
     req = urllib.request.Request(url, data=body, headers=headers or {}, method="POST")
-    with urllib.request.urlopen(req, timeout=120) as r:
-        return json.loads(r.read().decode("utf-8"))
+    try:
+        with OPENER.open(req, timeout=120) as r:
+            return json.loads(r.read().decode("utf-8"))
+    except Exception as e:
+        log(f"HTTP POST error: {e}")
+        return {}
 
 def gh_put_file(path, content, msg):
     url = f"https://api.github.com/repos/zenghuafeng008-cmd/Fenggeblog/contents/{path}"
@@ -43,7 +53,7 @@ def gh_put_file(path, content, msg):
     existing = None
     try:
         req = urllib.request.Request(url, headers=headers)
-        with urllib.request.urlopen(req, timeout=30) as r:
+        with OPENER.open(req, timeout=30) as r:
             existing = json.loads(r.read().decode())
     except:
         pass
@@ -53,14 +63,18 @@ def gh_put_file(path, content, msg):
         payload["sha"] = existing["sha"]
     body = json.dumps(payload).encode("utf-8")
     req = urllib.request.Request(url, data=body, headers=headers, method="PUT")
-    with urllib.request.urlopen(req, timeout=30) as r:
-        return json.loads(r.read())
+    try:
+        with OPENER.open(req, timeout=30) as r:
+            return json.loads(r.read().decode())
+    except Exception as e:
+        log(f"GitHub PUT error: {e}")
+        return {}
 
 def get_latest_video(handle):
     log(f"Checking channel: {handle}")
     cmd = ["python", "-m", "yt_dlp", "--proxy", PROXY, "--flat-playlist", "--print", "title,url,upload_date", handle]
     try:
-        result = subprocess.run(cmd, capture_output=True, text=True, timeout=60)
+        result = subprocess.run(cmd, capture_output=True, text=True, timeout=90)
         output = result.stdout
         videos = []
         for line in output.split("\n"):
@@ -87,7 +101,7 @@ def get_subtitle(url):
     cmd = ["python", "-m", "yt_dlp", "--proxy", PROXY, "--skip-download", "--write-auto-sub",
            "--sub-lang", "zh-Hans,zh-Hant,en", "-o", tmp, url]
     try:
-        subprocess.run(cmd, capture_output=True, text=True, timeout=60)
+        subprocess.run(cmd, capture_output=True, text=True, timeout=90)
         vtt_files = glob.glob(os.path.join(os.environ.get("TEMP", "/tmp"), "*.vtt"))
         recent = [f for f in vtt_files if os.path.getmtime(f) > time.time() - 300]
         if recent:
@@ -110,10 +124,13 @@ def minimax_generate(prompt):
         headers = {"Authorization": f"Bearer {MINIMAX_KEY}", "Content-Type": "application/json"}
         data = {"model": "MiniMax/Abab6.5s", "messages": [{"role": "user", "content": prompt}], "max_tokens": 2048}
         resp = http_post(url, data, headers)
-        return resp["choices"][0]["message"]["content"]
+        if resp and "choices" in resp:
+            return resp["choices"][0]["message"]["content"]
+        else:
+            log(f"  MiniMax unexpected response: {resp}")
     except Exception as e:
         log(f"  MiniMax error: {e}")
-        return None
+    return None
 
 def build_article(vtitle, vurl, sub, ch):
     sub_short = sub[:2000] if len(sub) > 2000 else sub
@@ -158,8 +175,11 @@ def push_to_github(file_path, ch):
         repo_path = f"articles/{fname}"
         msg = f"Auto: add article from {time.strftime('%Y-%m-%d')} - {ch}"
         result = gh_put_file(repo_path, content, msg)
-        log(f"  Pushed: {repo_path}")
-        print(f"  GitHub: {result.get('content', {}).get('path', 'OK')}")
+        if result and "content" in result:
+            log(f"  Pushed: {repo_path}")
+            print(f"  GitHub: {result['content']['path']}")
+        else:
+            log(f"  Push failed: {result}")
     except Exception as e:
         log(f"  GitHub push error: {e}")
 
