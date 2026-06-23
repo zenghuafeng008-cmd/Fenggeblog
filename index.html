@@ -1,20 +1,83 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI前沿资讯 | Fengge Blog</title>
-<meta name="description" content="AI前沿资讯播客网站，提供最新人工智能资讯、视频与深度解读">
+<title>AI前沿资讯 | Fengge Blog - 每日更新人工智能、大模型、GPT、Claude最新动态</title>
+<meta name="description" content="FenggeBlog专注分享AI人工智能与大模型前沿资讯，涵盖GPT-5、Claude、 Gemini等大模型评测、AI工具教程、本地部署实战，助你第一时间掌握AI动态。">
+<meta name="keywords" content="AI资讯,人工智能,大模型,ChatGPT,GPT-5,Claude,Gemini,AI工具,AI教程,AI视频,Stable Diffusion,Sora,AI评测,本地部署,LLM,AI应用">
+<meta name="author" content="FenggeBlog">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://0746.qzz.io/">
+<meta name="theme-color" content="#0f1117">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="AI前沿资讯 | Fengge Blog - 每日更新人工智能、大模型最新动态">
+<meta property="og:description" content="专注分享AI人工智能与大模型前沿资讯，涵盖GPT-5、Claude、Gemini等大模型评测与AI工具教程">
+<meta property="og:url" content="https://0746.qzz.io/">
+<meta property="og:site_name" content="FenggeBlog">
+<meta property="og:locale" content="zh_CN">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI前沿资讯 | Fengge Blog">
+<meta name="twitter:description" content="专注分享AI人工智能与大模型前沿资讯与AI工具教程">
+
 <link rel="stylesheet" href="style.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "FenggeBlog",
+  "url": "https://0746.qzz.io/",
+  "description": "AI前沿资讯播客网站，提供最新人工智能资讯、视频与深度解读",
+  "publisher": {
+    "@type": "Organization",
+    "name": "FenggeBlog",
+    "email": "zenghuafeng008@gmail.com"
+  },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://0746.qzz.io/search?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "AI前沿资讯 | Fengge Blog - 每日更新人工智能、大模型最新动态",
+  "description": "专注分享AI人工智能与大模型前沿资讯，涵盖GPT-5、Claude、Gemini等大模型评测、AI工具教程、本地部署实战",
+  "url": "https://0746.qzz.io/",
+  "datePublished": "2026-06-23",
+  "dateModified": "2026-06-23",
+  "author": {
+    "@type": "Person",
+    "name": "FenggeBlog"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "FenggeBlog"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://0746.qzz.io/"
+  }
+}
+</script>
 </head>
 <body>
 <header>
 <div class="container header-inner">
 <div class="logo">Fengge<span>Blog</span></div>
 <nav>
-<a href="index.html">首页</a>
+<a href="index.html" class="active">首页</a>
 <a href="articles.html">文章</a>
 <a href="videos.html">视频</a>
 <a href="about.html">关于</a>
@@ -25,35 +88,66 @@
 
 <div class="container">
 <div class="search-bar">
-<input type="text" placeholder="搜索 AI 资讯、文章、视频...">
+<input type="text" placeholder="搜索 AI 资讯、文章、视频..." aria-label="搜索">
 <button>搜索</button>
 </div>
 
-<div class="ad-banner">
+<div class="ad-banner" role="banner">
 📢 <strong>广告位招商中</strong> | 网站日均流量 5000+，精准 AI 受众群体 <small>（联系：zenghuafeng008@gmail.com）</small>
 </div>
 
-<div class="hero">
-<h1>探索<span>AI</span>前沿资讯</h1>
+<section class="hero" aria-labelledby="hero-title">
+<h1 id="hero-title">探索<span>AI</span>前沿资讯</h1>
 <p>每日更新人工智能、大模型、AI 视频等前沿科技内容，帮你第一时间掌握 AI 动态</p>
-<div class="hero-tags">
-<span class="tag hot">🔥 热门</span>
-<span class="tag new">✨ 最新</span>
-<span class="tag">🤖 AI</span>
-<span class="tag">🎬 视频</span>
-<span class="tag">📰 资讯</span>
+<div class="hero-tags" role="list" aria-label="内容标签">
+<span class="tag hot" role="listitem">🔥 热门</span>
+<span class="tag new" role="listitem">✨ 最新</span>
+<span class="tag" role="listitem">🤖 AI</span>
+<span class="tag" role="listitem">🎬 视频</span>
+<span class="tag" role="listitem">📰 资讯</span>
 </div>
-</div>
+</section>
 
-<div class="stats">
+<div class="stats" role="region" aria-label="网站数据统计">
 <div class="stat"><div class="num">128</div><div class="label">文章总数</div></div>
 <div class="stat"><div class="num">56</div><div class="label">视频总数</div></div>
 <div class="stat"><div class="num">10K+</div><div class="label">总浏览量</div></div>
 </div>
 
-<div class="content-layout">
+<!-- AI工具推荐版块 -->
+<section class="content-layout" aria-labelledby="tools-title">
 <main class="main-content">
-<h2 style="color:#fff;font-size:20px;margin-bottom:20px">📌 最新文章</h2>
+
+<h2 id="tools-title" style="color:#fff;font-size:20px;margin-bottom:20px">🛠️ 热门AI工具推荐</h2>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-bottom:30px">
+
+<article class="article-card" style="padding:20px">
+<h3 style="color:#58a6ff;font-size:16px;margin-bottom:8px">🤖 ChatGPT / GPT-5</h3>
+<p style="color:#8b949e;font-size:13px;margin-bottom:10px">OpenAI最强语言模型，支持多模态推理、代码生成、长文本理解，引领AGI发展前沿。</p>
+<a href="articles.html" style="color:#58a6ff;font-size:13px">查看教程 →</a>
+</article>
+
+<article class="article-card" style="padding:20px">
+<h3 style="color:#58a6ff;font-size:16px;margin-bottom:8px">🎭 Claude 4</h3>
+<p style="color:#8b949e;font-size:13px;margin-bottom:10px">Anthropic推出的安全AI助手，长上下文窗口突破20万token，编程与写作能力出众。</p>
+<a href="articles.html" style="color:#58a6ff;font-size:13px">查看教程 →</a>
+</article>
+
+<article class="article-card" style="padding:20px">
+<h3 style="color:#58a6ff;font-size:16px;margin-bottom:8px">⚡ Gemini Ultra 2.0</h3>
+<p style="color:#8b949e;font-size:13px;margin-bottom:10px">Google DeepMind多模态大模型，在多项基准测试中刷新记录，性能直逼GPT-5。</p>
+<a href="articles.html" style="color:#58a6ff;font-size:13px">查看教程 →</a>
+</article>
+
+<article class="article-card" style="padding:20px">
+<h3 style="color:#58a6ff;font-size:16px;margin-bottom:8px">🎬 Sora / Stable Video</h3>
+<p style="color:#8b949e;font-size:13px;margin-bottom:10px">AI视频生成工具，支持文本生成视频、多模态理解，影视制作与创意内容首选。</p>
+<a href="videos.html" style="color:#58a6ff;font-size:13px">观看视频 →</a>
+</article>
+
+</div>
+
+<h2 style="color:#fff;font-size:20px;margin-bottom:20px" id="latest-articles">📌 最新文章</h2>
 
 <article class="article-card featured">
 <div class="card-meta">
@@ -61,10 +155,10 @@
 <span>2026-06-23</span>
 <span>👁 2.4K 浏览</span>
 </div>
-<h3 class="card-title">OpenAI 发布 GPT-5，AGI 迈入新阶段</h3>
-<p class="card-excerpt">OpenAI 今日正式发布 GPT-5，在推理能力、多模态理解、长上下文等方面实现重大突破，引发业界轰动...</p>
+<h3 class="card-title"><a href="articles/gpt5-launch.html" style="color:inherit;text-decoration:none">OpenAI 发布 GPT-5，AGI 迈入新阶段</a></h3>
+<p class="card-excerpt">OpenAI 今日正式发布 GPT-5，在推理能力、多模态理解、长上下文等方面实现重大突破，引发业界轰动。GPT-5 采用全新架构，在 MMLU 基准测试中达到 97.3% 准确率，首次超越人类专家水平...</p>
 <div class="card-footer">
-<span class="read-more">阅读全文 →</span>
+<a href="articles/gpt5-launch.html" class="read-more">阅读全文 →</a>
 <span class="video-badge">🔥 热门</span>
 </div>
 </article>
@@ -75,10 +169,10 @@
 <span>2026-06-22</span>
 <span>👁 1.8K 浏览</span>
 </div>
-<h3 class="card-title">Stable Video Diffusion 3.0 重磅发布</h3>
-<p class="card-excerpt">Stability AI 推出全新视频生成模型，支持 30 秒高清视频生成，画质与流畅度大幅提升...</p>
+<h3 class="card-title"><a href="articles/svd3-release.html" style="color:inherit;text-decoration:none">Stable Video Diffusion 3.0 重磅发布</a></h3>
+<p class="card-excerpt">Stability AI 推出全新视频生成模型 SVD 3.0，支持 30 秒高清视频生成，画质与流畅度大幅提升。新增运动笔刷功能，可精准控制视频内物体运动轨迹，零度博客第一时间带来本地部署教程...</p>
 <div class="card-footer">
-<span class="read-more">阅读全文 →</span>
+<a href="articles/svd3-release.html" class="read-more">阅读全文 →</a>
 <span class="video-badge">🎬 视频</span>
 </div>
 </article>
@@ -89,10 +183,10 @@
 <span>2026-06-21</span>
 <span>👁 1.5K 浏览</span>
 </div>
-<h3 class="card-title">Claude 4 vs GPT-5 深度对比评测</h3>
-<p class="card-excerpt">Anthropic 与 OpenAI 最新模型正面交锋，数学推理、编程能力、创意写作多维度全面对比...</p>
+<h3 class="card-title"><a href="articles/claude4-vs-gpt5.html" style="color:inherit;text-decoration:none">Claude 4 vs GPT-5 深度对比评测</a></h3>
+<p class="card-excerpt">Anthropic 与 OpenAI 最新模型正面交锋，数学推理、编程能力、创意写作多维度全面对比测试。Claude 4 在长文本理解上保持优势，GPT-5 在代码生成方面提升显著，两者各有千秋...</p>
 <div class="card-footer">
-<span class="read-more">阅读全文 →</span>
+<a href="articles/claude4-vs-gpt5.html" class="read-more">阅读全文 →</a>
 </div>
 </article>
 
@@ -102,57 +196,91 @@
 <span>2026-06-20</span>
 <span>👁 1.2K 浏览</span>
 </div>
-<h3 class="card-title">Google 发布 Gemini Ultra 2.0</h3>
-<p class="card-excerpt">Google DeepMind 发布 Gemini Ultra 2.0，在多项基准测试中刷新记录，性能直逼 GPT-5...</p>
+<h3 class="card-title"><a href="articles/gemini-ultra2.html" style="color:inherit;text-decoration:none">Google 发布 Gemini Ultra 2.0</a></h3>
+<p class="card-excerpt">Google DeepMind 发布 Gemini Ultra 2.0，在多项基准测试中刷新记录，性能直逼 GPT-5。更支持 200 万 token 超长上下文，新增视频理解与代码执行能力...</p>
 <div class="card-footer">
-<span class="read-more">阅读全文 →</span>
+<a href="articles/gemini-ultra2.html" class="read-more">阅读全文 →</a>
 </div>
 </article>
+
+<!-- 常见问题FAQ版块 -->
+<section class="article-card" style="margin-top:20px" aria-labelledby="faq-title">
+<h2 id="faq-title" style="color:#fff;font-size:20px;margin-bottom:20px">❓ 常见问题</h2>
+<details style="margin-bottom:12px">
+<summary style="color:#58a6ff;font-weight:600;cursor:pointer;padding:8px 0">GPT-5 和 GPT-4 有什么区别？</summary>
+<p style="color:#8b949e;font-size:14px;padding:10px 0;line-height:1.7">GPT-5 采用全新架构，在推理能力、多模态理解、长上下文窗口（支持100万token）方面大幅提升，同时降低了幻觉发生率，在 MMLU 基准测试中达到 97.3%，远超 GPT-4 的 86.4%。</p>
+</details>
+<details style="margin-bottom:12px">
+<summary style="color:#58a6ff;font-weight:600;cursor:pointer;padding:8px 0">Claude 4 适合哪些场景？</summary>
+<p style="color:#8b949e;font-size:14px;padding:10px 0;line-height:1.7">Claude 4 特别适合长文档分析、代码审查、创意写作和复杂对话。其 20 万 token 的上下文窗口可以一次性处理整本书籍或大型代码库，且在安全性方面业界领先。</p>
+</details>
+<details style="margin-bottom:12px">
+<summary style="color:#58a6ff;font-weight:600;cursor:pointer;padding:8px 0">如何在本地部署大模型？</summary>
+<p style="color:#8b949e;font-size:14px;padding:10px 0;line-height:1.7">推荐使用 Ollama、LM Studio 或 Text Generation WebUI。本站提供详细的本地部署教程，支持 Llama 3、GLM-4、Qwen2 等主流开源模型的快速部署，硬件要求最低 8GB 显存。</p>
+</details>
+</section>
+
 </main>
 
-<aside class="sidebar">
-<div class="ad-sidebar">
+<aside class="sidebar" role="complementary">
+<div class="ad-sidebar" aria-label="广告位">
 <p>📢 <strong>广告位</strong></p>
 <p>250×250</p>
 <p>精准 AI 受众</p>
 <small>联系: zenghuafeng008@gmail.com</small>
 </div>
 
-<div class="widget">
-<h4 class="widget-title">🔥 热门文章</h4>
+<div class="widget" aria-labelledby="hot-articles-title">
+<h4 class="widget-title" id="hot-articles-title">🔥 热门文章</h4>
 <ul class="widget-list">
-<li><a href="#">OpenAI GPT-5 发布</a><span class="views">2.4K</span></li>
-<li><a href="#">Sora 视频生成实测</a><span class="views">1.9K</span></li>
-<li><a href="#">Claude 4 深度体验</a><span class="views">1.7K</span></li>
-<li><a href="#">AI 替代人类工作？</a><span class="views">1.5K</span></li>
-<li><a href="#">Midjourney V7 发布</a><span class="views">1.3K</span></li>
+<li><a href="articles/gpt5-launch.html">OpenAI GPT-5 发布</a><span class="views">2.4K</span></li>
+<li><a href="videos/sora-review.html">Sora 视频生成实测</a><span class="views">1.9K</span></li>
+<li><a href="articles/claude4-review.html">Claude 4 深度体验</a><span class="views">1.7K</span></li>
+<li><a href="articles/ai-replace-jobs.html">AI 替代人类工作？</a><span class="views">1.5K</span></li>
+<li><a href="articles/midjourney-v7.html">Midjourney V7 发布</a><span class="views">1.3K</span></li>
 </ul>
 </div>
 
-<div class="widget">
-<h4 class="widget-title">🏷 分类</h4>
+<div class="widget" aria-labelledby="category-title">
+<h4 class="widget-title" id="category-title">🏷️ 分类目录</h4>
 <ul class="widget-list">
-<li><a href="#">AI 资讯</a><span class="views">45篇</span></li>
-<li><a href="#">AI 工具</a><span class="views">38篇</span></li>
-<li><a href="#">AI 视频</a><span class="views">28篇</span></li>
-<li><a href="#">AI 评测</a><span class="views">17篇</span></li>
+<li><a href="articles.html">📰 AI 资讯</a><span class="views">45篇</span></li>
+<li><a href="articles.html">🛠️ AI 工具</a><span class="views">38篇</span></li>
+<li><a href="videos.html">🎬 AI 视频</a><span class="views">28篇</span></li>
+<li><a href="articles.html">📝 AI 评测</a><span class="views">17篇</span></li>
+<li><a href="articles.html">🚀 本地部署</a><span class="views">12篇</span></li>
 </ul>
+</div>
+
+<div class="widget" aria-labelledby="trending-title">
+<h4 class="widget-title" id="trending-title">📈 热门标签</h4>
+<div style="display:flex;flex-wrap:wrap;gap:8px;padding:5px 0">
+<span class="tag" style="font-size:12px">GPT-5</span>
+<span class="tag" style="font-size:12px">Claude 4</span>
+<span class="tag" style="font-size:12px">Gemini</span>
+<span class="tag hot" style="font-size:12px">Sora</span>
+<span class="tag" style="font-size:12px">LLM</span>
+<span class="tag new" style="font-size:12px">AGI</span>
+<span class="tag" style="font-size:12px">AI视频</span>
+<span class="tag" style="font-size:12px">本地部署</span>
+</div>
 </div>
 </aside>
-</div>
+</section>
 </div>
 
-<footer>
+<footer role="contentinfo">
 <div class="container">
-<div class="footer-links">
+<nav class="footer-links" aria-label="底部导航">
 <a href="index.html">首页</a>
 <a href="articles.html">文章</a>
 <a href="videos.html">视频</a>
 <a href="about.html">关于</a>
 <a href="contact.html">联系</a>
-</div>
+<a href="sitemap.xml">网站地图</a>
+</nav>
 <p>&copy; 2026 <a href="index.html">FenggeBlog</a> | AI 前沿资讯播客</p>
-<p class="copyright">基于 GitHub Pages 构建 | 域名: 0746.qzz.io</p>
+<p class="copyright">基于 GitHub Pages 构建 | 域名: 0746.qzz.io | 免费AI资讯分享</p>
 </div>
 </footer>
 </body>
