@@ -1,0 +1,40 @@
+﻿name: Daily YouTube Auto Blog
+
+on:
+  schedule:
+    - cron: "30 9 * * *"
+  workflow_dispatch:
+
+jobs:
+  auto-blog:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          repository: zenghuafeng008-cmd/Fenggeblog
+          token: ${{ secrets.GH_TOKEN }}
+          push-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install yt-dlp requests
+
+      - name: Run auto blog script
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          MINIMAX_API_KEY: ${{ secrets.MINIMAX_API_KEY }}
+          MINIMAX_GROUP_ID: ${{ secrets.MINIMAX_GROUP_ID }}
+        run: python run.py
+
+      - name: Commit and push
+        run: |
+          git config user.name "FenggeBot"
+          git config user.email "bot@fengge.blog"
+          git add articles/
+          git diff --cached --quiet || git commit -m "Auto: daily article update $(date +%Y-%m-%d)"
+          git push
