@@ -1,9 +1,12 @@
-﻿User-agent: *
+User-agent: *
 Allow: /
 
 Sitemap: https://0746.qzz.io/sitemap.xml
 
-# 禁止爬取后台页面（如果有的话）
-Disallow: /admin/
-Disallow: /private/
-Disallow: /*.json$
+# Crawl-delay for polite bots
+Crawl-delay: 1
+
+# Disallow low-value pages
+Disallow: /raw_transcripts/
+Disallow: /logs/
+Disallow: /*.raw.txt
