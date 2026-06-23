@@ -1,4 +1,4 @@
-import os, json, base64, hashlib, urllib.request, re, time, glob, subprocess, random
+﻿import os, json, base64, hashlib, urllib.request, re, time, glob, subprocess, random
 PROXY = "http://127.0.0.1:20808"
 OPENER = urllib.request.build_opener(urllib.request.ProxyHandler({"http": PROXY, "https": PROXY}))
 CHANNELS = [
@@ -14,7 +14,7 @@ os.makedirs(ARTICLES_HTML_DIR, exist_ok=True)
 SECRET_FILE = BASE+"/.secrets.json"
 GH_TOKEN = MINIMAX_KEY = ""
 if os.path.exists(SECRET_FILE):
-    sec = json.load(open(SECRET_FILE))
+    sec = json.load(open(SECRET_FILE, encoding='utf-8-sig'))
     GH_TOKEN = sec.get("github_token","")
     MINIMAX_KEY = sec.get("minimax_key","")
 
