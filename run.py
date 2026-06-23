@@ -1,4 +1,4 @@
-import os, json, base64, hashlib, urllib.request, re, time, glob, subprocess
+﻿import os, json, base64, hashlib, urllib.request, re, time, glob, subprocess
 PROXY = "http://127.0.0.1:20808"
 OPENER = urllib.request.build_opener(urllib.request.ProxyHandler({"http": PROXY, "https": PROXY}))
 CHANNELS = [{"Name": "yunfeifei", "handle": "https://www.youtube.com/@yunfeifei-k5h"}, {"Name": "lingdujieshuo", "handle": "https://www.youtube.com/@lingdujieshuo"}]
@@ -76,7 +76,7 @@ def minimax_generate(prompt):
     try:
         url = f"{MINIMAX_ENDPOINT}/chat/completions"
         headers = {"Authorization": f"Bearer {MINIMAX_KEY}", "Content-Type": "application/json"}
-        data = {"model": "MiniMax-Abab6.5s", "messages": [{"role": "user", "content": prompt}], "max_tokens": 2048}
+        data = {"model": "abab6.5s-chat", "messages": [{"role": "user", "content": prompt}], "max_tokens": 2048}
         body = json.dumps(data).encode("utf-8")
         req = urllib.request.Request(url, data=body, headers=headers, method="POST")
         with OPENER.open(req, timeout=120) as r: resp = json.loads(r.read().decode("utf-8"))
