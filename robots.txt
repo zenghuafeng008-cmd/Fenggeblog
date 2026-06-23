@@ -1,0 +1,9 @@
+﻿User-agent: *
+Allow: /
+
+Sitemap: https://0746.qzz.io/sitemap.xml
+
+# 禁止爬取后台页面（如果有的话）
+Disallow: /admin/
+Disallow: /private/
+Disallow: /*.json$
