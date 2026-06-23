@@ -123,4 +123,11 @@
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <url>
+    <loc>https://0746.qzz.io/articles/20260623_WindowsCopilot%E8%A2%AB%E9%80%86%E5%90%91%E7%A0%B4%E8%A7%A3%E5%85%8D%E8%B4%B9%E7%99%BD%E5%AB%96GPT-5%E6%A8%A1%E5%9E%8B%E6%97%A0%E9%9C%80APIKey%E5%AF%B9%E6%8E%A5%E6%9C%AC%E5%9C%B0AIAgent%E5%8F%88.html</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
