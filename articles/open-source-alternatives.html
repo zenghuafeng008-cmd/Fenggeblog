@@ -1,0 +1,188 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude/GPT 替代方案 | 3款开源越狱模型推荐，附本地部署</title>
+<meta name="description" content="Claude最强模型被禁用怎么办？推荐3款开源越狱模型：Qwen3.6、Gemma 4、Llama 3.5，全部支持本地部署，MIT许可证，完全自主可控。">
+<meta name="keywords" content="Claude替代,开源大模型,Qwen3.6,Gemma 4,Llama 3.5,本地部署,越狱模型,开源AI">
+<meta name="author" content="FenggeBlog">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://0746.qzz.io/articles/open-source-alternatives.html">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-06-22">
+<link rel="stylesheet" href="../style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+<header>
+<div class="container header-inner">
+<div class="logo"><a href="../index.html" style="color:inherit;text-decoration:none">Fengge<span>Blog</span></a></div>
+<nav>
+<a href="../index.html">首页</a>
+<a href="../articles.html" class="active">文章</a>
+<a href="../videos.html">视频</a>
+<a href="../about.html">关于</a>
+<a href="../contact.html">联系</a>
+</nav>
+</div>
+</header>
+
+<div class="container">
+<div class="article-detail">
+<div class="article-meta">
+<span>🛠️ AI 工具</span>
+<span>👁 4.1K 浏览</span>
+<span>📅 2026-06-22</span>
+<span>⏱️ 阅读 7 分钟</span>
+</div>
+
+<h1>Claude/GPT 替代方案：3款开源越狱模型推荐，附本地部署指南</h1>
+
+<article class="article-content">
+<p>Anthropic 最新发布的 Claude 最强模型在美国政府要求下，对海外用户进行了严格访问限制。对于绝大多数中国用户和海外开发者来说，这几乎等同于无法使用。</p>
+
+<p>这件事也让越来越多人开始重新思考：当你的工作流、代码开发甚至商业项目都建立在某个闭源模型之上时，你真的拥有这项能力吗？</p>
+
+<img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80" alt="开源大模型生态" style="max-width:100%;border-radius:12px;margin:20px 0;" loading="lazy">
+
+<h2>💡 为什么选择开源模型？</h2>
+<ul>
+<li><strong>隐私安全</strong>：数据不出本地，完全自主可控</li>
+<li><strong>成本可控</strong>：一次性投入，无 API 调用费用</li>
+<li><strong>可定制</strong>：可以 fine-tune 适应特定场景</li>
+<li><strong>无限制</strong>：不受地区、政策影响</li>
+<li><strong>可离线</strong>：完全离线运行</li>
+</ul>
+
+<h2>🏆 Top 3 开源替代方案</h2>
+
+<h3>1、Qwen 3.6（阿里通义千问）</h3>
+<p><strong>推荐理由</strong>：中文理解能力最强，支持 32K 上下文，价格仅为闭源模型的 1/10</p>
+<ul>
+<li>参数规模：7B / 14B / 72B</li>
+<li>上下文：32K（72B 版本支持 100K）</li>
+<li>许可证：Apache 2.0</li>
+<li>中文能力：⭐⭐⭐⭐⭐</li>
+</ul>
+<pre style="background:#161b22;border:1px solid #30363d;border-radius:8px;padding:16px;color:#8b949e;font-size:13px;overflow-x:auto">
+# Ollama 部署
+ollama pull qwen3:14b
+
+# 运行
+ollama run qwen3:14b "用中文解释量子计算"</pre>
+
+<h3>2、Gemma 4（Google）</h3>
+<p><strong>推荐理由</strong>：Google 背书，质量有保证，多模态能力强</p>
+<ul>
+<li>参数规模：2B / 7B / 27B</li>
+<li>上下文：8K（27B 版本支持 32K）</li>
+<li>许可证：Gemma Terms</li>
+<li>多模态：⭐⭐⭐⭐⭐</li>
+</ul>
+<pre style="background:#161b22;border:1px solid #30363d;border-radius:8px;padding:16px;color:#8b949e;font-size:13px;overflow-x:auto">
+# Ollama 部署
+ollama pull gemma3:27b
+
+# 配合图片理解
+ollama run gemma3:27b "描述这张图片：/path/to/image.jpg"</pre>
+
+<h3>3、Llama 3.5（Meta）</h3>
+<p><strong>推荐理由</strong>：生态最完善，工具调用能力强，适合 Agent 开发</p>
+<ul>
+<li>参数规模：8B / 70B / 405B</li>
+<li>上下文：128K（405B 版本）</li>
+<li>许可证：Llama 3.5 Community</li>
+<li>工具调用：⭐⭐⭐⭐⭐</li>
+</ul>
+<pre style="background:#161b22;border:1px solid #30363d;border-radius:8px;padding:16px;color:#8b949e;font-size:13px;overflow-x:auto">
+# Ollama 部署
+ollama pull llama3.5:70b
+
+# API 模式运行
+ollama serve
+# 即可通过 http://localhost:11434/v1/chat/completions 调用</pre>
+
+<h2>📊 横向对比</h2>
+<table style="width:100%;border-collapse:collapse;margin:20px 0;font-size:14px">
+<tr style="background:#161b22;border-bottom:1px solid #30363d">
+<th style="padding:12px;text-align:left;color:#fff">模型</th>
+<th style="padding:12px;text-align:left;color:#fff">中文能力</th>
+<th style="padding:12px;text-align:left;color:#fff">代码能力</th>
+<th style="padding:12px;text-align:left;color:#fff">工具调用</th>
+<th style="padding:12px;text-align:left;color:#fff">本地部署难度</th>
+</tr>
+<tr style="border-bottom:1px solid #21262d">
+<td style="padding:12px;color:#8b949e">Qwen 3.6</td>
+<td style="padding:12px;color:#58a6ff">⭐⭐⭐⭐⭐</td>
+<td style="padding:12px;color:#58a6ff">⭐⭐⭐⭐</td>
+<td style="padding:12px;color:#58a6ff">⭐⭐⭐</td>
+<td style="padding:12px;color:#58a6ff">简单</td>
+</tr>
+<tr style="border-bottom:1px solid #21262d">
+<td style="padding:12px;color:#8b949e">Gemma 4</td>
+<td style="padding:12px;color:#58a6ff">⭐⭐⭐</td>
+<td style="padding:12px;color:#58a6ff">⭐⭐⭐⭐</td>
+<td style="padding:12px;color:#58a6ff">⭐⭐⭐⭐</td>
+<td style="padding:12px;color:#58a6ff">简单</td>
+</tr>
+<tr>
+<td style="padding:12px;color:#8b949e">Llama 3.5</td>
+<td style="padding:12px;color:#58a6ff">⭐⭐⭐⭐</td>
+<td style="padding:12px;color:#58a6ff">⭐⭐⭐⭐⭐</td>
+<td style="padding:12px;color:#58a6ff">⭐⭐⭐⭐⭐</td>
+<td style="padding:12px;color:#58a6ff">中等</td>
+</tr>
+</table>
+
+<h2>🔧 快速开始指南</h2>
+<h3>第一步：选择合适的部署工具</h3>
+<ul>
+<li><strong>Ollama</strong>：最简单，跨平台，适合新手</li>
+<li><strong>LM Studio</strong>：图形界面，可视化调参</li>
+<li><strong>vLLM</strong>：高性能，生产环境推荐</li>
+<li><strong>Text Generation WebUI</strong>：功能最全，插件丰富</li>
+</ul>
+
+<h3>第二步：配置本地 API 服务</h3>
+<pre style="background:#161b22;border:1px solid #30363d;border-radius:8px;padding:16px;color:#8b949e;font-size:13px;overflow-x:auto">
+# 安装 Ollama 后，运行：
+ollama serve
+
+# 测试 API：
+curl http://localhost:11434/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -d '\''{"model": "qwen3:14b", "messages": [{"role": "user", "content": "你好"}]}'\''</pre>
+
+<h2>💰 成本估算</h2>
+<p>以 Llama 3.5 70B 为例，在本地部署的成本：</p>
+<ul>
+<li>GPU 建议：RTX 4090（24GB）× 2 或 A100（80GB）</li>
+<li>电费：约 0.6 元/度，每天运行 8 小时约 5 元</li>
+<li>对比 GPT-4 API：相同工作量约需 50 元/天</li>
+<li><strong>节省：约 90%</strong></li>
+</ul>
+
+<div style="margin-top:30px;padding:20px;background:#161b22;border:1px solid #30363d;border-radius:12px">
+<p style="color:#8b949e;font-size:14px">📢 <strong>广告位招商中</strong> | 精准 AI 受众，联系：zenghuafeng008@gmail.com</p>
+</div>
+</article>
+</div>
+</div>
+
+<footer>
+<div class="container">
+<div class="footer-links">
+<a href="../index.html">首页</a>
+<a href="../articles.html">文章</a>
+<a href="../videos.html">视频</a>
+<a href="../about.html">关于</a>
+<a href="../contact.html">联系</a>
+<a href="../sitemap.xml">网站地图</a>
+</div>
+<p>&copy; 2026 <a href="../index.html">FenggeBlog</a> | AI 前沿资讯播客</p>
+</div>
+</footer>
+</body>
+</html>
