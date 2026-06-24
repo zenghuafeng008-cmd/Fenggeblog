@@ -1,0 +1,74 @@
+﻿<!-- Article Template - 可被Python模块调用 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{description}}">
+    <meta name="keywords" content="{{keywords}}">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="{{title}}">
+    <meta property="og:description" content="{{description}}">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="{{url}}">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{title}}">
+    <meta name="twitter:description" content="{{description}}">
+    
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="/style.css">
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "{{title}}",
+        "description": "{{description}}",
+        "author": {
+            "@type": "Person",
+            "name": "{{channel}}"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "凤鸽博客",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "/logo.png"
+            }
+        },
+        "datePublished": "{{date}}",
+        "dateModified": "{{date}}"
+    }
+    </script>
+</head>
+<body>
+    <article class="article-container">
+        <header class="article-header">
+            <h1 class="article-title">{{title}}</h1>
+            <div class="article-meta">
+                <span class="category-tag">{{category}}</span>
+                <span>📺 {{channel}}</span>
+                <span>📅 {{date_formatted}}</span>
+            </div>
+            <div class="article-source">来源：<a href="{{url}}" target="_blank">{{url}}</a></div>
+        </header>
+        
+        <div class="article-body">
+            {{content}}
+        </div>
+        
+        <footer class="article-footer">
+            <div class="article-tags">
+                {{#tags}}
+                <span class="article-tag">{{.}}</span>
+                {{/tags}}
+            </div>
+            <a href="/" class="back-link">← 返回首页</a>
+        </footer>
+    </article>
+</body>
+</html>
