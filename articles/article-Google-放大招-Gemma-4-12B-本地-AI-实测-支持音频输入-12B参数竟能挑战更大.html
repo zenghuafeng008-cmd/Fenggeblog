@@ -27,7 +27,190 @@
 </div>
 <h1 class="article-title">Google 放大招！Gemma 4 12B 本地 AI 实测：支持音频输入，12B参数竟能挑战更大模型？（安装+测试）</h1>
 <div class="article-content">
-
+<p># Google 放大招！Gemma 4 12B 本地 AI 实测：支持音频输入，12B参数竟能挑战更大模型？（安装+测试）</p>
+<p>Google 最近正式发布了 Gemma 4 12B，这是 Gemma 系列最新的开放权重模型之一。相比上一代产品，Gemma 4 不仅拥有更强的推理能力，还加入了多模态支持，能够处理文本、图片甚至音频内容。</p>
+<p>对于喜欢本地部署 AI 的用户来说，Gemma 4 12B 最大的吸引力在于：</p>
+<p>仅 120 亿参数<br>支持消费级显卡运行<br>支持多模态输入<br>支持超长上下文<br>可通过 llama.cpp 本地部署</p>
+<p>那么它的实际表现如何？本文将介绍本地部署方案以及 5 项完整测试方法。</p>
+<p>Gemma 4 12B 有哪些亮点？<br>Gemma 4 12B 是 Google DeepMind 推出的开放权重模型。</p>
+<p>主要升级包括：</p>
+<p>1. 多模态支持<br>Gemma 4 不仅支持文本输入，还支持：</p>
+<p>图片理解<br>音频理解<br>多模态推理</p>
+<p>例如：</p>
+<p>分析截图<br>理解照片内容<br>总结音频内容<br>视频语音理解</p>
+<p>2. 超长上下文<br>Gemma 4 官方支持最高：</p>
+<p>256K Context</p>
+<p>这意味着：</p>
+<p>超长 PDF<br>整本电子书<br>大型代码项目</p>
+<p>都能够一次性进行分析。</p>
+<p>3. 本地运行门槛较低<br>即使是 RTX 3060 12GB 这样的主流显卡，也能运行 Gemma 4 12B 的量化版本。</p>
+<p>推荐配置：</p>
+<p>显存<br>推荐模型</p>
+<p>8GB<br>IQ2_XS</p>
+<p>12GB<br>Q4_K_M</p>
+<p>16GB<br>Q6_K</p>
+<p>24GB<br>Q8_0</p>
+<p>对于 RTX 4090 用户来说，Q8_0 基本已完成接近 BF16 原版效果。</p>
+<p>部署步骤：</p>
+<p>1、下载 gemma-4 12B 开源模型</p>
+<p>【点击前往】或 【备用下载】、或 【整合包下载】</p>
+<p>进入以后不仅要下载主模型，还需下载对应的视觉模型</p>
+<p>当然如果你的显存比较小，想在4G、6G显存上跑这个开源模型，那么能够下载更小更细分的量化模型，你能够去下载由 Unsloth 提供的更多的量化模型</p>
+<p>量化模型下载：【点击获取】或 【网盘下载】</p>
+<p>2、安装最新版 llama.cpp<br>部署本地开源模型，推荐使用完全开源的llama.cpp，无论是推理速度、兼容性、还是可玩性，都能够实现高度自定义，尤其当然你需同时使用视觉模型，Agent 代理，对接Hermes、OpenClaw 小龙虾等，它都是十分可靠且稳定的选择！</p>
+<p>【点击前往】或 【打包下载】</p>
+<p>下载解压后，在根目录下创建models文件，接着将之前下载的模型全部放入进去，包含主模型和视觉模型</p>
+<p>3、创建启动脚本<br>新建一个文本文档，将下方的启动脚本贴入进去，接着另存为启动.bat 批处理脚本即可，保存的格式需 UTF-8 ，脚本里的模型文件你能够自己修改自定义，不过对应的模型都必须放在models文件下。</p>
+<p>启动脚本获取：【点击下载】</p>
+<p>或通过下方的代码手动创建</p>
+<p>@echo off</p>
+<p>chcp 65001 >nul</p>
+<p>title Gemma 4 启动器</p>
+<p>:menu</p>
+<p>cls</p>
+<p>echo.</p>
+<p>echo ==========================================</p>
+<p>echo           Gemma 4 智能启动菜单</p>
+<p>echo ==========================================</p>
+<p>echo.</p>
+<p>echo 【纯文本模式】</p>
+<p>echo.</p>
+<p>echo 1. 6GB显存   (Gemma 4 4B Q4)</p>
+<p>echo 2. 8GB显存   (Gemma 4 12B IQ2)</p>
+<p>echo 3. 12GB显存  (Gemma 4 12B Q4)</p>
+<p>echo 4. 16GB显存  (Gemma 4 12B Q6)</p>
+<p>echo 5. 24GB显存  (Gemma 4 12B Q8)</p>
+<p>echo.</p>
+<p>echo 【图片理解模式】</p>
+<p>echo.</p>
+<p>echo 6. 12GB显存 + 图片理解</p>
+<p>echo 7. 16GB显存 + 图片理解</p>
+<p>echo 8. 24GB显存 + 图片理解</p>
+<p>echo.</p>
+<p>echo 【极限模式】</p>
+<p>echo.</p>
+<p>echo 9. BF16视觉模式 (4090/5090推荐)</p>
+<p>echo.</p>
+<p>echo 0. 退出</p>
+<p>echo.</p>
+<p>set /p choice=请选择模式：</p>
+<p>if "%choice%"=="1" goto VRAM6</p>
+<p>if "%choice%"=="2" goto VRAM8</p>
+<p>if "%choice%"=="3" goto VRAM12</p>
+<p>if "%choice%"=="4" goto VRAM16</p>
+<p>if "%choice%"=="5" goto VRAM24</p>
+<p>if "%choice%"=="6" goto MM12</p>
+<p>if "%choice%"=="7" goto MM16</p>
+<p>if "%choice%"=="8" goto MM24</p>
+<p>if "%choice%"=="9" goto BF16</p>
+<p>if "%choice%"=="0" exit</p>
+<p>goto menu</p>
+<p>:VRAM6</p>
+<p>cls</p>
+<p>echo 启动 Gemma 4 4B Q4...</p>
+<p>llama-server ^</p>
+<p>-m models\gemma-4-4B-it-Q4_K_M.gguf ^</p>
+<p>-ngl 999 ^</p>
+<p>-c 8192 ^</p>
+<p>--host 127.0.0.1</p>
+<p>goto end</p>
+<p>:VRAM8</p>
+<p>cls</p>
+<p>echo 启动 Gemma 4 12B IQ2...</p>
+<p>llama-server ^</p>
+<p>-m models\gemma-4-12B-it-IQ2_XS.gguf ^</p>
+<p>-ngl 999 ^</p>
+<p>-c 8192 ^</p>
+<p>--host 127.0.0.1</p>
+<p>goto end</p>
+<p>:VRAM12</p>
+<p>cls</p>
+<p>echo 启动 Gemma 4 12B Q4...</p>
+<p>llama-server ^</p>
+<p>-m models\gemma-4-12B-it-Q8_0.gguf ^</p>
+<p>-ngl 999 ^</p>
+<p>-c 186753 ^</p>
+<p>--host 127.0.0.1</p>
+<p>goto end</p>
+<p>:VRAM16</p>
+<p>cls</p>
+<p>echo 启动 Gemma 4 12B Q6...</p>
+<p>llama-server ^</p>
+<p>-m models\gemma-4-12B-it-Q6_K.gguf ^</p>
+<p>-ngl 999 ^</p>
+<p>-c 32768 ^</p>
+<p>--host 127.0.0.1</p>
+<p>goto end</p>
+<p>:VRAM24</p>
+<p>cls</p>
+<p>echo 启动 Gemma 4 12B Q8...</p>
+<p>llama-server ^</p>
+<p>-m models\gemma-4-12B-it-Q8_0.gguf ^</p>
+<p>-ngl 999 ^</p>
+<p>-c 186753 ^</p>
+<p>--host 127.0.0.1</p>
+<p>goto end</p>
+<p>:MM12</p>
+<p>cls</p>
+<p>echo 启动 Gemma 4 12B Q4 多模态...</p>
+<p>llama-server ^</p>
+<p>-m models\gemma-4-12B-it-Q8_0.gguf ^</p>
+<p>--mmproj models\mmproj-gemma-4-12B-it-Q8_0.gguf ^</p>
+<p>-ngl 999 ^</p>
+<p>-c 186753 ^</p>
+<p>--host 127.0.0.1</p>
+<p>goto end</p>
+<p>:MM16</p>
+<p>cls</p>
+<p>echo 启动 Gemma 4 12B Q6 多模态...</p>
+<p>llama-server ^</p>
+<p>-m models\gemma-4-12B-it-Q6_K.gguf ^</p>
+<p>--mmproj models\mmproj-F16.gguf ^</p>
+<p>-ngl 999 ^</p>
+<p>-c 32768 ^</p>
+<p>--host 127.0.0.1</p>
+<p>goto end</p>
+<p>:MM24</p>
+<p>cls</p>
+<p>echo 启动 Gemma 4 12B Q8 多模态...</p>
+<p>llama-server ^</p>
+<p>-m models\gemma-4-12B-it-Q8_0.gguf ^</p>
+<p>--mmproj models\mmproj-gemma-4-12B-it-Q8_0.gguf ^</p>
+<p>-ngl 999 ^</p>
+<p>-c 186753 ^</p>
+<p>--host 127.0.0.1</p>
+<p>goto end</p>
+<p>:BF16</p>
+<p>cls</p>
+<p>echo 启动 Gemma 4 BF16 视觉模式...</p>
+<p>llama-server ^</p>
+<p>-m models\gemma-4-12B-it-BF16.gguf ^</p>
+<p>--mmproj models\mmproj-gemma-4-12B-it-bf16.gguf ^</p>
+<p>-ngl 999 ^</p>
+<p>-c 186753 ^</p>
+<p>--host 127.0.0.1</p>
+<p>goto end</p>
+<p>:end</p>
+<p>echo.</p>
+<p>echo ==========================================</p>
+<p>echo 服务启动完成</p>
+<p>echo.</p>
+<p>echo 浏览器打开：</p>
+<p>echo http://127.0.0.1:8080</p>
+<p>echo ==========================================</p>
+<p>echo.</p>
+<p>pause</p>
+<p>启动脚本后即可看到下方的选项，最后根据自己的需启动对应的模型</p>
+<p>llama.cpp 部署 Gemma 4 12B<br>如果使用 GGUF 版本部署，需下载：</p>
+<p>主模型：</p>
+<p>gemma-4-12B-it-Q4_K_M.gguf<br>gemma-4-12B-it-Q6_K.gguf<br>gemma-4-12B-it-Q8_0.gguf</p>
+<p>如果需图片理解功能，还需下载：</p>
+<p>mmproj-gemma-4-12B-it-Q8_0.gguf</p>
+<p>Gemma 4 12B 最大的价值并不是参数数量，而是在模型体积与能力之间取得了不错的平衡。</p>
+<p>它同时具备：</p>
+<p>文本推理<br>编程能力<br>图片理解<br>音频理解<br>超长上下文</p>
+<p>对于拥有 RTX 3060、4060Ti、4070、4090 等显卡的用户来说，Gemma 4 12B 都是一个十分值得体验的本地 AI 模型。</p>
+<p>如果你正在寻找一个能够兼顾性能、显存占用和多模态能力的开放模型，那么 Gemma 4 12B 值得加入你的测试清单。</p>
 </div>
 <div class="article-footer">
 <a href="./articles.html" class="back-btn">← 返回文章列表</a>
