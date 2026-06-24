@@ -1,74 +1,217 @@
-﻿<!-- Article Template - 可被Python模块调用 -->
+﻿<!-- Article Page Template - 对标freedidi.com -->
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" prefix="og: https://ogp.me/ns#">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large"/>
+    <link rel="canonical" href="{{canonical_url}}"/>
+    
+    <!-- SEO Meta -->
+    <title>{{title}} - 凤鸽博客</title>
     <meta name="description" content="{{description}}">
-    <meta name="keywords" content="{{keywords}}">
     
     <!-- Open Graph -->
-    <meta property="og:title" content="{{title}}">
-    <meta property="og:description" content="{{description}}">
-    <meta property="og:type" content="article">
-    <meta property="og:url" content="{{url}}">
+    <meta property="og:locale" content="zh_CN"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="{{title}}"/>
+    <meta property="og:description" content="{{description}}"/>
+    <meta property="og:url" content="{{url}}"/>
+    <meta property="og:site_name" content="凤鸽博客"/>
+    <meta property="og:updated_time" content="{{updated_time}}"/>
+    <meta property="og:image" content="{{og_image}}"/>
+    <meta property="og:image:secure_url" content="{{og_image}}"/>
+    <meta property="og:image:width" content="1200"/>
+    <meta property="og:image:height" content="630"/>
+    <meta property="og:image:alt" content="{{title}}"/>
+    <meta property="article:published_time" content="{{published_time}}"/>
+    <meta property="article:modified_time" content="{{modified_time}}"/>
+    <meta property="article:section" content="{{category}}"/>
+    <meta property="article:tag" content="{{category}}"/>
     
     <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="{{title}}">
-    <meta name="twitter:description" content="{{description}}">
-    
-    <title>{{title}}</title>
-    <link rel="stylesheet" href="/style.css">
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:title" content="{{title}}"/>
+    <meta name="twitter:description" content="{{description}}"/>
+    <meta name="twitter:image" content="{{og_image}}"/>
+    <meta name="twitter:label1" content="Written by"/>
+    <meta name="twitter:data1" content="{{author}}"/>
+    <meta name="twitter:label2" content="Time to read"/>
+    <meta name="twitter:data2" content="{{reading_time}}"/>
     
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "Article",
-        "headline": "{{title}}",
-        "description": "{{description}}",
-        "author": {
-            "@type": "Person",
-            "name": "{{channel}}"
-        },
-        "publisher": {
-            "@type": "Organization",
-            "name": "凤鸽博客",
-            "logo": {
-                "@type": "ImageObject",
-                "url": "/logo.png"
+        "@graph": [
+            {
+                "@type": "Person",
+                "@id": "https://0746.qzz.cn/#person",
+                "name": "凤鸽",
+                "image": {
+                    "@type": "ImageObject",
+                    "@id": "https://0746.qzz.cn/#logo",
+                    "url": "https://0746.qzz.cn/logo.png",
+                    "caption": "凤鸽博客",
+                    "inLanguage": "zh-Hans"
+                }
+            },
+            {
+                "@type": "WebSite",
+                "@id": "https://0746.qzz.cn/#website",
+                "url": "https://0746.qzz.cn",
+                "name": "凤鸽博客",
+                "publisher": {"@id": "https://0746.qzz.cn/#person"},
+                "inLanguage": "zh-Hans"
+            },
+            {
+                "@type": "BreadcrumbList",
+                "@id": "{{url}}#breadcrumb",
+                "itemListElement": [
+                    {"@type": "ListItem", "position": "1", "item": {"@id": "https://0746.qzz.cn", "name": "凤鸽博客"}},
+                    {"@type": "ListItem", "position": "2", "item": {"@id": "https://0746.qzz.cn/#{{category}}", "name": "{{category}}"}},
+                    {"@type": "ListItem", "position": "3", "item": {"@id": "{{url}}", "name": "{{title}}"}}
+                ]
+            },
+            {
+                "@type": "WebPage",
+                "@id": "{{url}}#webpage",
+                "url": "{{url}}",
+                "name": "{{title}} - 凤鸽博客",
+                "datePublished": "{{published_time}}",
+                "dateModified": "{{modified_time}}",
+                "isPartOf": {"@id": "https://0746.qzz.cn/#website"},
+                "primaryImageOfPage": {"@id": "{{og_image}}"},
+                "inLanguage": "zh-Hans",
+                "breadcrumb": {"@id": "{{url}}#breadcrumb"}
+            },
+            {
+                "@type": "BlogPosting",
+                "headline": "{{title}}",
+                "datePublished": "{{published_time}}",
+                "dateModified": "{{modified_time}}",
+                "articleSection": "{{category}}",
+                "author": {"@type": "Person", "name": "{{author}}"},
+                "publisher": {"@id": "https://0746.qzz.cn/#person"},
+                "description": "{{description}}",
+                "@id": "{{url}}#richSnippet",
+                "isPartOf": {"@id": "{{url}}#webpage"},
+                "image": {"@id": "{{og_image}}"},
+                "inLanguage": "zh-Hans",
+                "mainEntityOfPage": {"@id": "{{url}}#webpage"}
             }
-        },
-        "datePublished": "{{date}}",
-        "dateModified": "{{date}}"
+        ]
     }
     </script>
+    
+    <title>{{title}} - 凤鸽博客</title>
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="面包屑导航">
+        <div class="breadcrumb-inner">
+            <a href="/">首页</a>
+            <span class="separator">›</span>
+            <a href="/category/{{category}}">{{category}}</a>
+            <span class="separator">›</span>
+            <span class="current">{{title}}</span>
+        </div>
+    </nav>
+    
     <article class="article-container">
+        <!-- Article Header -->
         <header class="article-header">
             <h1 class="article-title">{{title}}</h1>
             <div class="article-meta">
                 <span class="category-tag">{{category}}</span>
-                <span>📺 {{channel}}</span>
-                <span>📅 {{date_formatted}}</span>
+                <span>👤 {{author}}</span>
+                <span>📅 {{publish_date}}</span>
+                <span>⏱️ {{reading_time}}</span>
             </div>
-            <div class="article-source">来源：<a href="{{url}}" target="_blank">{{url}}</a></div>
+            <div class="article-source">来源：<a href="{{url}}" target="_blank">{{source_name}}</a></div>
         </header>
         
+        <!-- Table of Contents -->
+        <nav class="toc" id="toc">
+            <div class="toc-title">📑 文章目录</div>
+            <ol>{{toc_items}}</ol>
+        </nav>
+        
+        <!-- Article Body -->
         <div class="article-body">
             {{content}}
         </div>
         
+        <!-- Article Footer -->
         <footer class="article-footer">
             <div class="article-tags">
-                {{#tags}}
-                <span class="article-tag">{{.}}</span>
-                {{/tags}}
+                <span class="tag-label">标签：</span>
+                <span class="article-tag">{{category}}</span>
             </div>
+            
+            <!-- Share Bar -->
+            <div class="share-bar">
+                <span>分享到：</span>
+                <button class="share-btn wx" onclick="shareToWeixin()">微信</button>
+                <button class="share-btn wb" onclick="shareToWeibo()">微博</button>
+                <button class="share-btn" onclick="copyLink()">复制链接</button>
+            </div>
+            
+            <!-- Navigation -->
+            <nav class="article-nav">
+                <a href="{{prev_url}}" class="nav-link prev {{#no_prev}}disabled{{/no_prev}}">
+                    <span>← 上一篇</span>
+                    <span class="nav-title">{{prev_title}}</span>
+                </a>
+                <a href="{{next_url}}" class="nav-link next {{#no_next}}disabled{{/no_next}}">
+                    <span>下一篇 →</span>
+                    <span class="nav-title">{{next_title}}</span>
+                </a>
+            </nav>
+            
+            <!-- Related Articles -->
+            <section class="related-articles">
+                <h3>📌 相关推荐</h3>
+                <ul>
+                    {{#related_articles}}
+                    <li>
+                        <a href="{{url}}">{{title}}</a>
+                        <span>{{date}}</span>
+                    </li>
+                    {{/related_articles}}
+                </ul>
+            </section>
+            
             <a href="/" class="back-link">← 返回首页</a>
         </footer>
     </article>
+    
+    <script>
+    // Share functions
+    function shareToWeixin() {
+        alert('请截图分享到微信');
+    }
+    function shareToWeibo() {
+        window.open('https://service.weibo.com/share/share.php?url=' + encodeURIComponent(location.href), '_blank');
+    }
+    function copyLink() {
+        navigator.clipboard.writeText(location.href).then(() => alert('链接已复制'));
+    }
+    
+    // Auto-generate TOC from h2 headings
+    document.addEventListener('DOMContentLoaded', function() {
+        const toc = document.getElementById('toc');
+        const h2s = document.querySelectorAll('.article-body h2');
+        if (h2s.length < 2) {
+            toc.style.display = 'none';
+            return;
+        }
+        // Add IDs to h2s
+        h2s.forEach((h2, i) => {
+            h2.id = 'heading-' + i;
+        });
+    });
+    </script>
 </body>
 </html>
