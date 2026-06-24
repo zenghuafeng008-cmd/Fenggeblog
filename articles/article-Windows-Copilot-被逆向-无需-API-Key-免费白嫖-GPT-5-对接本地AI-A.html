@@ -27,7 +27,89 @@
 </div>
 <h1 class="article-title">Windows Copilot 被逆向！无需 API Key 免费白嫖 GPT-5，对接本地AI Agent，部署教程来了！</h1>
 <div class="article-content">
-
+<p># Windows Copilot 被逆向！无需 API Key 免费白嫖 GPT-5，对接本地AI Agent，部署教程来了！</p>
+<p>微软的 Copilot 一直被认为是 Windows 未来最重要的 AI 产品之一。然而就在最近，GitHub 上出现了一个十分有意思的开源项目，它成功将 Windows Copilot 封装成了一个 OpenAI 兼容 API。能够直接免费使用GPT-4o、GPT-5.5 等模型！甚至能够直接对接本地的AI Agent 来执行自动化任务。用起来十分便捷~~~</p>
+<p>而且代码能力相当不错！下方是我让它一次性给我生成的3D场景，可分两层</p>
+<p>这一切更令人意外的是：</p>
+<p>无需 OpenAI API Key<br>无需购买 ChatGPT Plus<br>支持 OpenAI 标准接口<br>可直接接入 Cherry Studio、Open WebUI 等客户端</p>
+<p>这个项目名为 Windows-Copilot-API，目前已完成引起了大量 AI 开发者关注。那么它到底是什么？又是否真的能够免费调用 GPT 模型？今天我们来详细体验一下。</p>
+<p>部署教程</p>
+<p>环境要求</p>
+<p>Python 3.9+ <br>一个微软账户（你用来注册 Copilot 的免费账户就能够）。<br>可在 Windows、macOS 和 Linux 系统上运行</p>
+<p>部署开始<br>1、安装 Python<br>建议安装 Python 3.11 或以上版本。【点击前往】或 【备用下载】</p>
+<p>安装完成后验证：</p>
+<p>python -V</p>
+<p>2、下载开源项目 Windows-Copilot-API</p>
+<p>获取方式：【 Github 】或 【打包下载】、【备用下载】</p>
+<p>什么是Windows-Copilot-API？简单来说，这个项目通过逆向分析 Windows Copilot 的工作方式，将 Copilot 封装成了一个兼容 OpenAI API 的本地服务。</p>
+<p>3、部署命令</p>
+<p>1、开放PowerShell相应的权限</p>
+<p>Set-ExecutionPolicy -Scope CurrentUser RemoteSigned</p>
+<p>2、创建并激活虚拟环境</p>
+<p>Windows 系统（PowerShell）上：</p>
+<p>python -m venv venv<br>venv\Scripts\Activate.ps1</p>
+<p>macOS / Linux 系统上：</p>
+<p>python3 -m venv venv<br>source venv/bin/activate</p>
+<p>3、安装依赖环境</p>
+<p>pip install -r requirements.txt</p>
+<p>4、安装浏览器自动化框架</p>
+<p>playwright install chromium</p>
+<p>5、登入Copilot</p>
+<p>python -m copilot login</p>
+<p>执行命令以后，它会自动弹出Copilot登入页面，你能够自行注册一个小号或直接登入都能够，需注意的是：登入以后不要关闭当前的弹窗页面，否则后面终端下无法自动授权。</p>
+<p>登入Copilot以后，只需在终端下回车确认即可完成全部的登入授权，成功授权以后就能够免费调用GPT-4o/5模型了</p>
+<p>6、正式启动：</p>
+<p>python app.py</p>
+<p>启动后就能够通过 http://127.0.0.1:8000/v1 来对接本地的AI Agent</p>
+<p>3、对接本地AI Agent<br>传统情况下，如果你想调用 GPT 模型，通常需：</p>
+<p>OpenAI API<br>Azure OpenAI<br>第三方中转 API</p>
+<p>而 Windows-Copilot-API 直接利用你已完成登录的微软 Copilot 账户，将其转换成标准 OpenAI API。这意味着：任何支持 OpenAI API 的软件，都能够直接连接到 Copilot。</p>
+<p>例如：</p>
+<p>Cherry Studio<br>Open WebUI<br>OpenClaw<br>Hermes<br>Python OpenAI SDK<br>各类 Agent 框架</p>
+<p>几乎无需修改代码。这次我们就拿Cherry Studio来做测试，对新手来说十分友好，完全无代码部署，点点鼠标就能完成！</p>
+<p>Cherry Studio 下载： 【点击前往】或 【备用下载】</p>
+<p>对接的时候选择自定义其它服务提供商，对接的Base URL 地址填写：http://127.0.0.1:8000/v1， 模型名称能够自定义例如GPT5.5 , 密钥API 随便填写一个即可，例如：12345678 ，但不能留空，否则无法连接。</p>
+<p>对接成功以后就能够正常使用了，例如制定自动化任务，定时任务，编写代码，制作文案等扽，都能够，目前这个方式对接没有限额，不过大家务必正常使用，切勿滥用！</p>
+<p>工作原理<br>需说明的是：这个项目并不是破解 GPT-5。也不是破解 OpenAI。它本质上仍然是在调用微软官方 Copilot 服务。</p>
+<p>工作流程如下：</p>
+<p>用户程序</p>
+<p>↓</p>
+<p>Windows-Copilot-API</p>
+<p>↓</p>
+<p>Playwright</p>
+<p>↓</p>
+<p>Copilot Web</p>
+<p>↓</p>
+<p>微软服务器</p>
+<p>开发者利用 Playwright 自动控制浏览器，与 Copilot 网页端进行通信，接着将结果转换为 OpenAI API 格式返回。</p>
+<p>因此它本质上属于一种 API 封装方案。</p>
+<p>测试 Copilot 是否正常工作<br>执行：</p>
+<p>python -m copilot ask "你好"</p>
+<p>如果返回类似：</p>
+<p>你好，LING 🌟<br>看到你又来了，我挺开心的。</p>
+<p>说明已完成成功连接 Copilot。</p>
+<p>经过实测，Cherry Studio 能够正常使用。但不支持高并发</p>
+<p>作者也明确说明：</p>
+<p>Copilot 聊天连接无法同时处理多个会话。</p>
+<p>所有请求都会排队执行。</p>
+<p>因此：</p>
+<p>它更适合作为个人使用方案，而不是生产级 API 服务。</p>
+<p>微软正在把 Windows 变成 AI 操作系统？<br>就在这个项目受到广泛关注的同时，微软还确认：</p>
+<p>Edge Drop 文件分享功能即将下线<br>Collections 收藏功能被移除<br>Sidebar 侧边栏功能逐步淘汰</p>
+<p>而 Copilot 则被保留并持续强化。</p>
+<p>这释放出一个十分明显的信号：</p>
+<p>微软正在把 Copilot 作为未来 Windows 的核心入口。</p>
+<p>从 Windows 11 开始：</p>
+<p>Copilot 进入系统<br>记事本加入 AI<br>Paint 加入 AI<br>Office 加入 AI<br>Edge 全面整合 AI</p>
+<p>未来用户或许不再需寻找菜单和按钮。</p>
+<p>而是直接通过自然语言控制整个系统。</p>
+<p>微软真正想打造的，或许不是一个聊天机器人，而是一个 AI 操作系统。</p>
+<p>总之<br>Windows-Copilot-API 是一个十分有意思的开源项目。它成功将 Windows Copilot 封装成 OpenAI API，为开发者提供了一种免费接入 Copilot 的方式。</p>
+<p>优点：</p>
+<p>免费使用<br>无需 OpenAI API Key<br>支持 OpenAI 生态<br>可接入 Cherry Studio</p>
+<p>缺点：</p>
+<p>依赖 Copilot 网页端<br>不适合 Agent<br>不支持高并发<br>未来存在失效风险</p>
+<p>对于个人用户来说，它是一个十分值得尝试的项目。</p>
 </div>
 <div class="article-footer">
 <a href="./articles.html" class="back-btn">← 返回文章列表</a>
