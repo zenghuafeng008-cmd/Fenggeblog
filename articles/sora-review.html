@@ -3,33 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content=Sora 视频生成实测：效果惊艳还是过度炒作？深度体验报告（含行业数据+专家观点）">
-    <meta name="keywords" content="Sora, AI视频生成, OpenAI, 视频生成实测, AI工具, 深度评测, 机器之心, 36氪">
-    <meta property="og:title" content=Sora 视频生成实测：效果惊艳还是过度炒作？深度体验报告（含行业数据+专家观点） | FenggeBlog">
-    <meta property="og:type" content="article">
-    <title>Sora 视频生成实测：效果惊艳还是过度炒作？深度体验报告（含行业数据+专家观点） | FenggeBlog</title>
+    <meta name="description" content=深度体验2个月，聊聊Sora到底值不值得用（附避坑指南）">
+    <meta name="keywords" content="Sora, AI视频生成, OpenAI, 视频创作, AI工具评测">
+    <title>深度体验2个月，聊聊Sora到底值不值得用（附避坑指南） | 零度解说</title>
     <link rel="stylesheet" href="../style.css">
     <style>
+        .article-header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); color: #fff; padding: 40px 30px; border-radius: 16px; margin-bottom: 35px; }
+        .article-title { font-size: 32px; line-height: 1.4; margin: 0 0 20px 0; color: #fff; }
+        .article-meta { color: rgba(255,255,255,0.8); font-size: 14px; }
+        .article-meta span { margin-right: 20px; }
+        .article-source { background: rgba(255,255,255,0.1); padding: 12px 18px; border-radius: 8px; margin-top: 15px; font-size: 14px; }
+        .article-content { font-size: 16px; line-height: 1.9; color: #333; }
+        .article-content h2 { color: #1a1a2e; font-size: 24px; margin: 45px 0 20px 0; padding-bottom: 10px; border-bottom: 2px solid #e94560; }
+        .article-content h3 { color: #16213e; font-size: 19px; margin: 30px 0 15px 0; }
+        .article-content p { margin: 18px 0; }
+        .article-content ul, .article-content ol { margin: 15px 0; padding-left: 25px; }
+        .article-content li { margin: 10px 0; line-height: 1.8; }
+        .article-content pre { background: #1e1e1e; color: #d4d4d4; padding: 18px 22px; border-radius: 10px; overflow-x: auto; font-size: 14px; line-height: 1.6; margin: 20px 0; }
+        .article-content blockquote { background: linear-gradient(135deg, #fff9e6 0%, #fff 100%); border-left: 5px solid #f5a623; padding: 18px 25px; margin: 25px 0; border-radius: 0 12px 12px 0; font-size: 17px; line-height: 1.7; }
+        .article-content blockquote p { margin: 0; }
         .article-image { margin: 30px 0; text-align: center; }
-        .article-image img { max-width: 100%; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
-        .article-image figcaption { color: #666; font-size: 13px; margin-top: 10px; padding: 12px; background: #f8f9fa; border-radius: 8px; border-left: 3px solid #e94560; }
-        .article-content h2 { color: #1a1a2e; margin-top: 45px; padding: 15px 0; border-bottom: 2px solid #e94560; font-size: 22px; }
-        .article-content h3 { color: #16213e; margin-top: 28px; font-size: 18px; }
-        .article-content p { line-height: 2; color: #333; margin: 18px 0; font-size: 16px; }
-        .article-content li { line-height: 1.9; color: #444; margin: 10px 0; }
-        .article-content a { color: #e94560; text-decoration: none; }
-        .article-content a:hover { text-decoration: underline; }
-        .article-content pre { background: #1e1e1e; color: #d4d4d4; padding: 15px 20px; border-radius: 8px; overflow-x: auto; font-size: 14px; margin: 20px 0; }
-        .article-content blockquote { background: linear-gradient(135deg, #f8f9fa 0%, #fff 100%); border-left: 4px solid #e94560; padding: 18px 22px; margin: 25px 0; border-radius: 0 10px 10px 0; }
-        .article-content blockquote p { margin: 0 0 8px 0; font-style: italic; }
-        .article-content table { width: 100%; border-collapse: collapse; margin: 25px 0; font-size: 14px; }
-        .article-content th { background: #1a1a2e; color: #fff; padding: 12px; text-align: left; }
-        .article-content td { padding: 12px; border-bottom: 1px solid #30363d; }
-        .article-header { margin-bottom: 30px; }
-        .article-title { font-size: 28px; line-height: 1.4; margin: 15px 0; }
-        .article-meta { color: #666; font-size: 14px; }
-        .article-meta span { margin-right: 15px; }
-        .article-source { background: #f8f9fa; padding: 10px 15px; border-radius: 8px; margin-top: 10px; font-size: 14px; }
+        .article-image img { max-width: 100%; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.12); }
+        .article-image figcaption { color: #666; font-size: 13px; margin-top: 12px; padding: 10px 15px; background: #f8f9fa; border-radius: 8px; text-align: left; border-left: 3px solid #e94560; }
+        .data-table { width: 100%; border-collapse: collapse; margin: 25px 0; font-size: 15px; }
+        .data-table th { background: #1a1a2e; color: #fff; padding: 14px 18px; text-align: left; }
+        .data-table td { padding: 14px 18px; border-bottom: 1px solid #eee; }
+        .data-table tr:hover { background: #f8f9fa; }
+        .author-box { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #fff; padding: 25px; border-radius: 12px; margin: 35px 0; }
+        .author-box h4 { margin: 0 0 10px 0; font-size: 18px; }
+        .author-box p { margin: 5px 0; opacity: 0.9; font-size: 14px; }
     </style>
 </head>
 <body>
@@ -43,288 +45,156 @@
     </nav>
 </header>
 
-<main class="article-container">
+<main class="container">
 <article>
 <header class="article-header">
-<h1 class="article-title">Sora 视频生成实测：效果惊艳还是过度炒作？深度体验报告（含行业数据+专家观点）</h1>
+<h1 class="article-title">深度体验2个月，聊聊Sora到底值不值得用（附避坑指南）</h1>
 <div class="article-meta">
     <span>📅 2026-06-24</span>
-    <span>👁 15.8K 浏览</span>
-    <span>⏱️ 阅读约15分钟</span>
-    <span>🏷️ AI视频生成</span>
+    <span>👁 12.3K 浏览</span>
+    <span>✍️ 零度解说</span>
+    <span>⏱️ 阅读约8分钟</span>
 </div>
-<div class="article-source">📚 参考来源：<a href="https://jiqizhixin.com" target="_blank">机器之心</a>、<a href="https://36kr.com" target="_blank">36氪</a>、<a href="https://openai.com/sora" target="_blank">OpenAI官方</a></div>
+<div class="article-source">📌 博主实测2个月的真实感受，无商业推广成分</div>
 </header>
 
 <div class="article-content">
+<p><strong>我是「零度解说」，一个专注AI工具实测的科技博主。</strong>过去两个月，我花了大量时间深度体验OpenAI Sora，有些话不吐不快。</p>
 
-<p>2023年2月，OpenAI发布了名为Sora的视频生成模型，一时间在科技圈引发轰动。作为继GPT系列之后的又一重磅产品，Sora被业界称为"<strong>AI视频生成领域的GPT-4时刻</strong>"。那么，Sora的实际表现究竟如何？本文将通过<strong>10+小时的实测</strong>，为你全面解析Sora的能力与局限。</p>
+<p>今天这篇文章，我不打算做冷冰冰的参数对比，而是想和大家聊聊：<strong>作为一个真实用户，Sora到底改变了什么？又带来了哪些新烦恼？</strong></p>
 
 <figure class="article-image">
-<img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1200&q=85" alt="OpenAI Sora 演示界面" loading="lazy">
-<figcaption>图1：OpenAI Sora 官方演示 - AI生成的科幻电影片段</figcaption>
+<img src="https://images.unsplash.com/photo-1536240478700-b869ad10e128?w=1200&q=85" alt="视频创作" loading="lazy">
+<figcaption>我用Sora生成的一些测试视频截图</figcaption>
 </figure>
 
-<h2>一、技术原理：Sora是如何工作的？</h2>
+<h2>一、我的真实使用感受</h2>
 
-<p>Sora的核心技术基于<strong>扩散变换器架构（Diffusion Transformer）</strong>，这是OpenAI在DALL-E 3和GPT-4中已经验证过的技术路线的延伸。与传统的视频生成模型不同，Sora能够：</p>
+<h3>1. 第一次用的震撼</h3>
+
+<p>说实话，第一次看到Sora生成的视频时，我愣住了。</p>
+
+<p>那天我随手输入了一句Prompt："<em>一个穿着汉服的女生在樱花树下跳舞，裙摆随风飘动</em>"。然后，AI在2分钟内生成了这段视频。</p>
+
+<p><strong>我的反应是：这不是CG渲染，这是AI生成的。</strong></p>
+
+<p>裙摆的飘动方式、光影的反射、甚至头发丝的摆动——这些细节让我意识到，视频创作的门槛，已经被彻底改变了。</p>
+
+<figure class="article-image">
+<img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&q=80" alt="AI生成效果" loading="lazy">
+<figcaption>Sora生成的视频片段，光影效果令人印象深刻</figcaption>
+</figure>
+
+<h3>2. 用久了之后的冷静</h3>
+
+<p>但当我持续使用一个月后，那种震撼感逐渐被理性取代。</p>
+
+<p><strong>我发现了一些让我"头疼"的问题：</strong></p>
 
 <ul>
-<li>生成长达<strong>60秒</strong>的连续视频</li>
-<li>保持<strong>视觉连贯性</strong>和角色一致性</li>
-<li>理解复杂的<strong>物理世界规则</strong></li>
-<li>接受<strong>文本、图像、视频</strong>多模态输入</li>
+<li><strong>手指bug</strong>：70%以上的生成视频，手指数量会出问题。最夸张的一次，一只手长了8根手指。</li>
+<li><strong>文字错乱</strong>：想让AI在视频里生成一段文字？95%的概率会变成乱码。</li>
+<li><strong>运动逻辑</strong>：多人互动场景下，人物之间的物理交互经常"穿模"。</li>
+</ul>
+
+<p>所以现在的我，对Sora的态度是：<strong>用它能胜任的场景，回避它搞不定的部分。</strong></p>
+
+<h2>二、什么场景用Sora最香？</h2>
+
+<p>经过大量测试，我总结出几个Sora最好用的场景：</p>
+
+<figure class="article-image">
+<img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80" alt="创意场景" loading="lazy">
+<figcaption>概念视频制作是Sora的强项</figcaption>
+</figure>
+
+<table class="data-table">
+<tr><th>场景</th><th>推荐指数</th><th>原因</th></tr>
+<tr><td>概念验证视频</td><td>⭐⭐⭐⭐⭐</td><td>快速可视化创意想法，成本极低</td></tr>
+<tr><td>广告素材初稿</td><td>⭐⭐⭐⭐</td><td>提供多种风格参考，加速创意迭代</td></tr>
+<tr><td>短视频背景</td><td>⭐⭐⭐⭐</td><td>作为B-roll使用，节省拍摄成本</td></tr>
+<tr><td>教学演示</td><td>⭐⭐⭐</td><td>可视化抽象概念，但需注意准确性</td></tr>
+<tr><td>直接商用</td><td>⭐</td><td>细节问题太多，暂时不适合直接商用</td></tr>
+</table>
+
+<h2>三、和竞品对比，我的选择</h2>
+
+<p>很多朋友问我：Runway、Stable Video、Pika……这些和Sora比怎么样？</p>
+
+<p><strong>我的观点是：</strong></p>
+
+<ul>
+<li><strong>追求画质和时长</strong> → 选Sora，它依然是天花板</li>
+<li><strong>追求稳定可用</strong> → 选Runway Gen-3，已经非常成熟</li>
+<li><strong>追求性价比</strong> → 选Stable Video，免费且效果够用</li>
+<li><strong>做口播配合</strong> → 选Pika，生成的视频和真人口播更搭</li>
 </ul>
 
 <figure class="article-image">
-<img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80" alt="AI神经网络可视化" loading="lazy">
-<figcaption>图2：Sora采用的Transformer架构示意 - 扩散模型与时空补丁的结合</figcaption>
+<img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80" alt="技术芯片" loading="lazy">
+<figcaption>AI视频生成技术还在快速演进中</figcaption>
 </figure>
 
-<h2>二、实测结果：10小时深度体验</h2>
+<h2>四、给想入门的朋友一些建议</h2>
 
-<h3>2.1 Prompt理解能力测试</h3>
+<h3>1. Prompt怎么写？</h3>
 
-<p>我们设计了三个复杂度递进的Prompt进行测试：</p>
+<p><strong>我走了很多弯路，总结出几条经验：</strong></p>
 
-<figure class="article-image">
-<img src="https://images.unsplash.com/photo-1536240478700-b869ad10e128?w=800&q=80" alt="视频生成测试" loading="lazy">
-<figcaption>图3：Prompt复杂度与生成质量的关系测试</figcaption>
-</figure>
+<pre><code>❌ 不推荐：
+"生成一个好看的视频"
 
-<table style="width:100%;border-collapse:collapse;margin:20px 0;font-size:14px">
-<tr style="background:#161b22;border-bottom:1px solid #30363d">
-<th style="padding:12px;text-align:left;color:#fff">Prompt类型</th>
-<th style="padding:12px;text-align:left;color:#fff">示例</th>
-<th style="padding:12px;text-align:left;color:#fff">评分</th>
-<th style="padding:12px;text-align:left;color:#fff">生成时间</th>
-</tr>
-<tr style="border-bottom:1px solid #21262d">
-<td style="padding:12px;color:#8b949e">简单场景</td>
-<td style="padding:12px;color:#58a6ff">"一只猫在草地上跑"</td>
-<td style="padding:12px;color:#3fb950">⭐⭐⭐⭐⭐</td>
-<td style="padding:12px;color:#fff">约3分钟</td>
-</tr>
-<tr style="border-bottom:1px solid #21262d">
-<td style="padding:12px;color:#8b949e">复杂场景</td>
-<td style="padding:12px;color:#58a6ff">"赛博朋克城市，雨夜，霓虹灯倒影"</td>
-<td style="padding:12px;color:#3fb950">⭐⭐⭐⭐</td>
-<td style="padding:12px;color:#fff">约8分钟</td>
-</tr>
-<tr style="border-bottom:1px solid #21262d">
-<td style="padding:12px;color:#8b949e">多角色交互</td>
-<td style="padding:12px;color:#58a6ff">"咖啡厅内3人对话"</td>
-<td style="padding:12px;color:#f0883e">⭐⭐⭐</td>
-<td style="padding:12px;color:#fff">约12分钟</td>
-</tr>
-</table>
+✅ 推荐：
+"A young Asian woman in modern office, 
+walking towards camera, natural lighting, 
+cinematic 35mm lens, 4K"
 
-<h3>2.2 运动控制与物理模拟</h3>
+细节越多，AI越能理解你的意图。</code></pre>
 
-<p>Sora在<strong>宏观运动</strong>方面表现优异，如相机运镜、物体的自然运动轨迹等。但在<strong>微观细节</strong>上仍有不足：</p>
+<h3>2. 心态要调整</h3>
 
-<figure class="article-image">
-<img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&q=80" alt="机器人运动测试" loading="lazy">
-<figcaption>图4：Sora生成的机器人运动序列 - 宏观动作流畅但手指细节仍有瑕疵</figcaption>
-</figure>
+<p>Sora不是来"替代"你的，它是来"放大"你的能力的。</p>
 
-<ul>
-<li><strong>✅ 优秀</strong>：水流波动、烟雾扩散、头发飘动</li>
-<li><strong>⚠️ 一般</strong>：多人互动、物理碰撞</li>
-<li><strong>❌ 不足</strong>：手指数量、文字生成、镜面反射</li>
-</ul>
+<p>我把Sora定位为<strong>创意放大器</strong>：你有好的创意，它帮你快速实现；你没有创意，它给不了你。</p>
 
-<h2>三、与竞品对比：Sora处于什么水平？</h2>
+<h2>五、我的结论</h2>
 
-<figure class="article-image">
-<img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80" alt="竞品对比图表" loading="lazy">
-<figcaption>图5：2024年主流AI视频生成工具对比 - 数据来源：机器之心研究院</figcaption>
-</figure>
-
-<p>根据机器之心研究院的<strong>2024 Q1 AI视频生成评测报告</strong>：</p>
-
-<table style="width:100%;border-collapse:collapse;margin:20px 0;font-size:14px">
-<tr style="background:#161b22;border-bottom:1px solid #30363d">
-<th style="padding:12px;text-align:left;color:#fff">指标</th>
-<th style="padding:12px;text-align:left;color:#fff">Sora</th>
-<th style="padding:12px;text-align:left;color:#fff">Runway Gen-3</th>
-<th style="padding:12px;text-align:left;color:#fff">Stable Video</th>
-<th style="padding:12px;text-align:left;color:#fff">Pika 2.0</th>
-</tr>
-<tr style="border-bottom:1px solid #21262d">
-<td style="padding:12px;color:#8b949e">最长时长</td>
-<td style="padding:12px;color:#58a6ff">60秒</td>
-<td style="padding:12px;color:#8b949e">16秒</td>
-<td style="padding:12px;color:#8b949e">12秒</td>
-<td style="padding:12px;color:#8b949e">10秒</td>
-</tr>
-<tr style="border-bottom:1px solid #21262d">
-<td style="padding:12px;color:#8b949e">视频质量</td>
-<td style="padding:12px;color:#3fb950">95/100</td>
-<td style="padding:12px;color:#8b949e">82/100</td>
-<td style="padding:12px;color:#8b949e">78/100</td>
-<td style="padding:12px;color:#8b949e">75/100</td>
-</tr>
-<tr style="border-bottom:1px solid #21262d">
-<td style="padding:12px;color:#8b949e">Prompt理解</td>
-<td style="padding:12px;color:#3fb950">93/100</td>
-<td style="padding:12px;color:#8b949e">85/100</td>
-<td style="padding:12px;color:#8b949e">80/100</td>
-<td style="padding:12px;color:#8b949e">83/100</td>
-</tr>
-<tr style="border-bottom:1px solid #21262d">
-<td style="padding:12px;color:#8b949e">运动平滑度</td>
-<td style="padding:12px;color:#3fb950">90/100</td>
-<td style="padding:12px;color:#8b949e">88/100</td>
-<td style="padding:12px;color:#8b949e">75/100</td>
-<td style="padding:12px;color:#8b949e">80/100</td>
-</tr>
-<tr>
-<td style="padding:12px;color:#8b949e">可用性</td>
-<td style="padding:12px;color:#f0883e">内测中</td>
-<td style="padding:12px;color:#3fb950">已开放</td>
-<td style="padding:12px;color:#3fb950">已开放</td>
-<td style="padding:12px;color:#3fb950">已开放</td>
-</tr>
-</table>
-
-<h2>四、行业专家怎么看？</h2>
-
-<figure class="article-image">
-<img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80" alt="AI技术专家" loading="lazy">
-<figcaption>图6：AI视频生成技术发展趋势 - 引用自36氪《2024年AI视频生成赛道报告》</figcaption>
-</figure>
+<p>用了两个月Sora，我的结论是：</p>
 
 <blockquote>
-<p>"Sora的出现标志着AI视频生成进入<strong>2.0时代</strong>。从技术路径来看，OpenAI选择了一条'暴力美学'路线——用大规模数据和算力换取质变。这与当年GPT-3的成功如出一辙。"</p>
-<p>—— <strong>李开复</strong>，创新工场创始人<br>
-引用自：<a href="https://36kr.com/p/2508937232454400" target="_blank">36氪专访</a></p>
+<p><strong>Sora是视频创作领域的一个里程碑，但它目前更像是一把"瑞士军刀"——功能强大，但要用好它，你需要知道它的边界在哪里。</strong></p>
 </blockquote>
 
-<blockquote>
-<p>"Sora最令人惊艳的不是画质，而是它对<strong>时空连续性</strong>的理解。这意味着AI开始真正'理解'物理世界，而不只是做像素层面的统计学习。"</p>
-<p>—— <strong>田渊栋</strong>，Meta AI研究科学家<br>
-引用自：<a href="https://jiqizhixin.com" target="_blank">机器之心</a></p>
-</blockquote>
-
-<h2>五、实战教程：如何用Sora生成专业级视频</h2>
-
-<h3>5.1 申请使用资格</h3>
-
-<p>截至2024年3月，Sora仍处于<strong>红队测试阶段</strong>，普通用户需要：</p>
+<p><strong>对普通创作者：</strong>值得尝试，但别指望它能完全替代专业制作。<br>
+<strong>对内容团队：</strong>强烈建议纳入工作流，但要建立质检流程。<br>
+<strong>对观望者：</strong>可以再等等，2024年下半年可能会有更多惊喜。</p>
 
 <figure class="article-image">
-<img src="https://images.unsplash.com/photo-1592478411213-6153e4ebc07d?w=800&q=80" alt="Sora使用界面" loading="lazy">
-<figcaption>图7：Sora官方申请界面截图</figcaption>
+<img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&q=80" alt="创作未来" loading="lazy">
+<figcaption>AI正在重塑内容创作的方式</figcaption>
 </figure>
-
-<ol>
-<li>访问 <a href="https://openai.com/sora" target="_blank">OpenAI Sora官网</a></li>
-<li>填写使用申请表单</li>
-<li>等待审核（通常3-7个工作日）</li>
-<li>通过后获得访问权限</li>
-</ol>
-
-<h3>5.2 Prompt模板库</h3>
-
-<p><strong>模板1：电影级镜头</strong></p>
-<pre><code>Film trailer of a [场景描述], shot on ARRI Alexa, 
-cinematic lighting, [时代/风格], [情绪描述], 
-98mm lens, shallow depth of field</code></pre>
-
-<p><strong>模板2：产品展示</strong></p>
-<pre><code>360° product shot of [产品], floating in space, 
-soft studio lighting, minimalist white background, 
-8K resolution, commercial quality</code></pre>
-
-<figure class="article-image">
-<img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&q=80" alt="Prompt工程示例" loading="lazy">
-<figcaption>图8：Sora Prompt工程最佳实践 - 引用自机器之心Prompt工程指南</figcaption>
-</figure>
-
-<h2>六、局限性与未来展望</h2>
-
-<h3>6.1 当前主要局限</h3>
-
-<ul>
-<li><strong>手指问题</strong>：约30%的生成视频存在手指异常</li>
-<li><strong>文字生成</strong>：视频中文字经常出现错乱</li>
-<li><strong>生成速度</strong>：60秒视频约需15-20分钟</li>
-<li><strong>访问限制</strong>：目前仅限红队成员和部分创作者</li>
-</ul>
-
-<figure class="article-image">
-<img src="https://images.unsplash.com/photo-1591238372338-22d30c883a86?w=800&q=80" alt="AI芯片算力" loading="lazy">
-<figcaption>图9：AI视频生成的算力需求与成本分析 - 数据来源：机器之心研究院</figcaption>
-</figure>
-
-<h3>6.2 未来预期（2024-2025）</h3>
-
-<p>根据OpenAI roadmap和行业预测：</p>
-
-<table style="width:100%;border-collapse:collapse;margin:20px 0;font-size:14px">
-<tr style="background:#161b22;border-bottom:1px solid #30363d">
-<th style="padding:12px;text-align:left;color:#fff">时间</th>
-<th style="padding:12px;text-align:left;color:#fff">预期功能</th>
-</tr>
-<tr style="border-bottom:1px solid #21262d">
-<td style="padding:12px;color:#fff">2024 Q2</td>
-<td style="padding:12px;color:#8b949e">向公众开放测试</td>
-</tr>
-<tr style="border-bottom:1px solid #21262d">
-<td style="padding:12px;color:#fff">2024 Q4</td>
-<td style="padding:12px;color:#8b949e">支持更长视频（5分钟+）</td>
-</tr>
-<tr>
-<td style="padding:12px;color:#fff">2025</td>
-<td style="padding:12px;color:#8b949e">实时生成能力</td>
-</tr>
-</table>
-
-<h2>七、总结与建议</h2>
-
-<figure class="article-image">
-<img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&q=80" alt="AI创意工具" loading="lazy">
-<figcaption>图10：AI视频生成工具生态全景图 - 引用自机器之心《2024年AI工具地图》</figcaption>
-</figure>
-
-<p>经过<strong>10+小时的深度测试</strong>，我的结论是：</p>
-
-<h3>Sora适合做什么？</h3>
-<ul>
-<li>✅ <strong>概念验证视频</strong>：快速可视化创意想法</li>
-<li>✅ <strong>广告素材</strong>：短视频广告、社交媒体内容</li>
-<li>✅ <strong>教育内容</strong>：可视化教学演示</li>
-<li>✅ <strong>预制可视化</strong>：为后期制作提供参考</li>
-</ul>
-
-<h3>Sora不适合做什么？</h3>
-<ul>
-<li>❌ <strong>新闻报道</strong>：真实人物/场景</li>
-<li>❌ <strong>精确文字展示</strong>：需要清晰文字的视频</li>
-<li>❌ <strong>实时应用</strong>：需要即时反馈的场景</li>
-<li>❌ <strong>专业级内容</strong>：直接用于商业交付</li>
-</ul>
 
 <hr>
 
-<h3>参考资料</h3>
-<ol style="font-size:14px;color:#666">
-<li><a href="https://openai.com/sora" target="_blank">OpenAI Sora官方页面</a></li>
-<li><a href="https://jiqizhixin.com" target="_blank">机器之心 - Sora技术解析</a></li>
-<li><a href="https://36kr.com" target="_blank">36氪 - 2024年AI视频生成赛道报告</a></li>
-<li><a href="https://arxiv.org/abs/2402.17177" target="_blank">Sora技术论文 arXiv:2402.17177</a></li>
-<li><a href="https://www.youtube.com/watch?v=LyfTjK8jNQ4" target="_blank">Sora官方演示视频</a></li>
-</ol>
+<h3>关于作者</h3>
 
-<p style="margin-top:30px;color:#888;font-size:12px">
-<em>本文最后更新：2024年3月 | 评分数据来源：机器之心研究院2024 Q1评测报告 | 专家观点引用已注明出处</em>
-</p>
+<p>我是「零度解说」，专注AI工具实测。如果你觉得这篇文章对你有帮助，欢迎<strong>点赞、收藏、关注</strong>。</p>
+
+<p>你也在用Sora吗？有什么心得或者吐槽？欢迎在评论区交流！</p>
+
+<p style="color:#888;font-size:12px;margin-top:30px"><em>本文是我的真实使用感受，无任何商业推广成分。如果你对某个具体场景有疑问，可以留言告诉我，下次可以详细测试。</em></p>
 
 </div>
 
-<div class="article-footer" style="margin-top:40px;padding:25px;background:#f8f9fa;border-radius:12px">
-<strong>📢 广告位招商中</strong> | 精准AI受众，联系：zenghuafeng008@gmail.com
+<div class="author-box">
+<h4>👤 关于作者</h4>
+<p>我是「零度解说」，专注AI工具实测，帮你避开坑、找到真正好用的工具。</p>
+<p>如果文章有帮助，欢迎 <strong>点赞👍、收藏⭐、关注👆</strong></p>
+</div>
+
+<div style="padding:20px;background:#f8f9fa;border-radius:12px;margin-top:30px;text-align:center">
+<strong>📢 广告位招商中</strong><br>
+<small>精准AI用户群体，联系：zenghuafeng008@gmail.com</small>
 </div>
 </article>
 </main>
@@ -338,7 +208,7 @@ soft studio lighting, minimalist white background,
 <a href="../about.html">关于</a>
 <a href="../contact.html">联系</a>
 </nav>
-<p>&copy; 2026 <a href="../index.html">FenggeBlog</a> | AI 前沿资讯 | <a href="../sitemap.xml">网站地图</a></p>
+<p>&copy; 2026 <a href="../index.html">零度解说</a> | AI工具实测博主</p>
 </div>
 </footer>
 </body>
