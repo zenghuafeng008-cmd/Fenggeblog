@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Holo 3.1 模型本地 Agent 部署实测：免费无限 Token，接入 OpenClaw ，速度确实很快！！">
+    <meta name="keywords" content="AI, 教程, 工具, 科技">
+    <title>Holo 3.1 模型本地 Agent 部署实测：免费无限 Token，接入 OpenClaw ，速度确实很快！！ | FenggeBlog</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .article-header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); color: #fff; padding: 40px 30px; border-radius: 16px; margin-bottom: 35px; }
+        .article-title { font-size: 28px; line-height: 1.4; margin: 0 0 15px 0; color: #fff; }
+        .article-meta { color: rgba(255,255,255,0.8); font-size: 14px; }
+        .article-content { font-size: 16px; line-height: 1.9; color: #333; }
+        .article-content h2 { color: #1a1a2e; font-size: 22px; margin: 35px 0 15px 0; padding-bottom: 8px; border-bottom: 2px solid #e94560; }
+        .article-content h3 { color: #16213e; font-size: 18px; margin: 25px 0 12px 0; }
+        .article-content p { margin: 15px 0; line-height: 1.8; }
+        .article-content img { max-width: 100%; border-radius: 10px; margin: 20px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .article-content ul, .article-content ol { margin: 15px 0; padding-left: 25px; }
+        .article-content li { margin: 8px 0; line-height: 1.7; }
+        .article-content pre { background: #1e1e1e; color: #d4d4d4; padding: 15px 20px; border-radius: 8px; overflow-x: auto; font-size: 14px; }
+        .article-content a { color: #e94560; }
+        blockquote { background: #f8f9fa; border-left: 4px solid #e94560; padding: 15px 20px; margin: 20px 0; border-radius: 0 8px 8px 0; }
+    </style>
+</head>
+<body>
+<header class="site-header">
+    <nav>
+        <a href="../index.html">首页</a>
+        <a href="../articles.html">文章</a>
+        <a href="../videos.html">视频</a>
+        <a href="../about.html">关于</a>
+        <a href="../contact.html">联系</a>
+    </nav>
+</header>
+
+<main class="container">
+<article>
+<header class="article-header">
+<h1 class="article-title">Holo 3.1 模型本地 Agent 部署实测：免费无限 Token，接入 OpenClaw ，速度确实很快！！</h1>
+<div class="article-meta">
+    <span>📅 2026-06-24</span>
+    <span>✍️ FenggeBlog</span>
+    <span>📚 教程</span>
+</div>
+<div class="article-source">来源：https://www.freedidi.com/24451.html</div>
+</header>
+
+<div class="article-content">
+	
+			
+			<div class="post-wrapper group">
+				
+				
+				<div class="entry-content">
+					<div class="entry themeform">	
+
+						<p>这两年，AI Agent 无疑是人工智能领域最热门的方向之一。从 OpenAI 推出的 Codex，到 Anthropic 持续升级的 Claude Code，越来越多的 AI 开始具备“自主完成任务”的能力。它们不仅能够理解用户的指令，还可以调用工具、搜索资料、编写代码，甚至直接操作电脑完成复杂工作流程。对于很多用户来说，这也意味着 AI 正在从传统的聊天助手，逐步进化为真正能够帮助人们工作的数字助理。</p>
+<p><img fetchpriority="high" decoding="async" class="wp-image-24452 aligncenter" src="https://www.freedidi.com/wp-content/uploads/2026/06/20260612092616_419670-scaled.webp" alt="20260612092616 419670 scaled" width="860" height="484" title="Holo 3.1 模型本地 Agent 部署实测：免费无限 Token，接入 OpenClaw ，速度确实很快！！ 1" srcset="https://www.freedidi.com/wp-content/uploads/2026/06/20260612092616_419670-scaled.webp 2560w, https://www.freedidi.com/wp-content/uploads/2026/06/20260612092616_419670-748x421.webp 748w, https://www.freedidi.com/wp-content/uploads/2026/06/20260612092616_419670-768x432.webp 768w, https://www.freedidi.com/wp-content/uploads/2026/06/20260612092616_419670-1536x864.webp 1536w, https://www.freedidi.com/wp-content/uploads/2026/06/20260612092616_419670-2048x1152.webp 2048w, https://www.freedidi.com/wp-content/uploads/2026/06/20260612092616_419670-520x292.webp 520w, https://www.freedidi.com/wp-content/uploads/2026/06/20260612092616_419670-940x529.webp 940w" sizes="(max-width: 860px) 100vw, 860px" /></p>
+<p>不过，现阶段大多数先进的 AI Agent 方案都依赖云端服务。无论是 API 调用还是订阅会员，长期使用都会产生不小的成本。尤其是对于需要频繁执行任务、进行网页搜索、资料整理或自动化操作的重度用户来说，Token 消耗和订阅费用往往是一笔不容忽视的开支。</p>
+<p><img decoding="async" class="wp-image-24453 aligncenter" src="https://www.freedidi.com/wp-content/uploads/2026/06/20260612092754_916069-scaled.webp" alt="20260612092754 916069 scaled" width="799" height="400" title="Holo 3.1 模型本地 Agent 部署实测：免费无限 Token，接入 OpenClaw ，速度确实很快！！ 2" srcset="https://www.freedidi.com/wp-content/uploads/2026/06/20260612092754_916069-scaled.webp 2560w, https://www.freedidi.com/wp-content/uploads/2026/06/20260612092754_916069-750x375.webp 750w, https://www.freedidi.com/wp-content/uploads/2026/06/20260612092754_916069-768x384.webp 768w, https://www.freedidi.com/wp-content/uploads/2026/06/20260612092754_916069-1536x769.webp 1536w, https://www.freedidi.com/wp-content/uploads/2026/06/20260612092754_916069-2048x1025.webp 2048w, https://www.freedidi.com/wp-content/uploads/2026/06/20260612092754_916069-520x260.webp 520w, https://www.freedidi.com/wp-content/uploads/2026/06/20260612092754_916069-940x470.webp 940w" sizes="(max-width: 799px) 100vw, 799px" /></p>
+<p>而就在最近，来自法国的 AI 公司 H Company 正式发布了全新的 Holo 3.1 Agent 模型。它最大的亮点在于支持本地部署，并且能够与 OpenClaw 等 Agent 框架进行对接，从而让 AI 获得真正的电脑操作能力。对于拥有 中高端显卡的用户而言，这意味着可以在自己的电脑上搭建一套完全本地化的 AI Agent 系统，无需支付额外订阅费用，也不用担心 Token 限制，实现真正意义上的“无限使用”。</p><div class='code-block code-block-center code-block-1 ai-track' data-ai='WzEsMCwiQmxvY2sgMSIsIiIsMV0='>
+<div class='no-visibility-check ai-check-1-87892937' data-insertion-position='after' data-selector='.ai-check-1-87892937' data-code='PGRpdiBjbGFzcz0iYWktYXR0cmlidXRlcyI+CjxzcGFuIGNsYXNzPSdhaS1jaGVjay1ibG9jayBhaS1jZnAnIGRhdGEtYWktYmxvY2s9JzEnIGRhdGEtYWktbGltaXQtY2xpY2tzLXBlci10aW1lPSczJyBkYXRhLWFpLWxpbWl0LWNsaWNrcy10aW1lPScxJyBkYXRhLWFpLWdsb2JhbC1saW1pdC1jbGlja3MtcGVyLXRpbWU9JzMnIGRhdGEtYWktZ2xvYmFsLWxpbWl0LWNsaWNrcy10aW1lPScxJyBkYXRhLWFpLWNmcC10aW1lPSczMCc+PC9zcGFuPgo8L2Rpdj4KPHN0eWxlPgogIC8qIOS4k+S4uuato+aWh+aOkueJiOS8mOWMlueahOi9u+mHj+e6p+malOemu+WuueWZqCAqLwogIC5hZC1pbi1hcnRpY2xlLXNhZmUgewogICAgYm9yZGVyLXRvcDogMXB4IHNvbGlkICNlYWVhZWE7CiAgICBib3JkZXItYm90dG9tOiAxcHggc29saWQgI2VhZWFlYTsKICAgIHBhZGRpbmc6IDE1cHggMDsKICAgIG1hcmdpbjogMzVweCAwOyAvKiDkv53or4Hlub/lkYrkuI7kuIrkuIvmrrXokL3mnInotrPlpJ/nmoTlronlhajmu5Hliqjot53nprsgKi8KICAgIHRleHQtYWxpZ246IGNlbnRlcjsKICB9CiAgLmFkLWxhYmVsLWNlbnRlciB7CiAgICBmb250LXNpemU6IDEycHg7CiAgICBjb2xvcjogIzk5OTsKICAgIG1hcmdpbi1ib3R0b206IDEycHg7CiAgICBsZXR0ZXItc3BhY2luZzogMXB4OwogIH0KICAvKiDoh6rliqjpgILphY3mt7HoibIv5aSc6Ze05qih5byPICovCiAgQG1lZGlhIChwcmVmZXJzLWNvbG9yLXNjaGVtZTogZGFyaykgewogICAgLmFkLWluLWFydGljbGUtc2FmZSB7CiAgICAgIGJvcmRlci1jb2xvcjogIzMzMzMzMzsKICAgIH0KICAgIC5hZC1sYWJlbC1jZW50ZXIgewogICAgICBjb2xvcjogIzY2NjY2NjsKICAgIH0KICB9Cjwvc3R5bGU+Cgo8ZGl2IGNsYXNzPSJhZC1pbi1hcnRpY2xlLXNhZmUiPgogICAgCiAgICA8ZGl2IGNsYXNzPSJhZC1sYWJlbC1jZW50ZXIiPgogICAgICAgIC0g6LWe5Yqp5ZWG5YaF5a65IC0KICAgIDwvZGl2PgoKICAgIDxzY3JpcHQgYXN5bmMgc3JjPSJodHRwczovL3BhZ2VhZDIuZ29vZ2xlc3luZGljYXRpb24uY29tL3BhZ2VhZC9qcy9hZHNieWdvb2dsZS5qcz9jbGllbnQ9Y2EtcHViLTM5MDcyNjA2MjgxNTI4MTgiIGNyb3Nzb3JpZ2luPSJhbm9ueW1vdXMiPjwvc2NyaXB0PgogICAgPGlucyBjbGFzcz0iYWRzYnlnb29nbGUiCiAgICAgICAgIHN0eWxlPSJkaXNwbGF5OmJsb2NrOyB0ZXh0LWFsaWduOmNlbnRlcjsiCiAgICAgICAgIGRhdGEtYWQtbGF5b3V0PSJpbi1hcnRpY2xlIgogICAgICAgICBkYXRhLWFkLWZvcm1hdD0iZmx1aWQiCiAgICAgICAgIGRhdGEtYWQtY2xpZW50PSJjYS1wdWItMzkwNzI2MDYyODE1MjgxOCIKICAgICAgICAgZGF0YS1hZC1zbG90PSI1NzY3MTEwODAzIj48L2lucz4KICAgIDxzY3JpcHQ+CiAgICAgICAgIChhZHNieWdvb2dsZSA9IHdpbmRvdy5hZHNieWdvb2dsZSB8fCBbXSkucHVzaCh7fSk7CiAgICA8L3NjcmlwdD4KCjwvZGl2Pg==' data-fallback-code='PGRpdiBjbGFzcz0nYWktYWRiLXNob3cnIHN0eWxlPSd2aXNpYmlsaXR5OiBoaWRkZW47IGRpc3BsYXk6IG5vbmU7JyBkYXRhLWFpLXRyYWNraW5nPSdXekUyTERBc0lrSnNiMk5ySURFMklpd2lJaXd3WFE9PScgZGF0YS1haS1kZWJ1Zz0nMTYnPgo8YSBocmVmPSJodHRwczovL3d3dy5hbGl5dW4uY29tL3Byb2R1Y3QvZWNzP3VzZXJDb2RlPWp1Zm9jb2k2IiB0YXJnZXQ9Il9ibGFuayIgcmVsPSJub29wZW5lciI+PGltZyBjbGFzcz0iYWxpZ25ub25lIHNpemUtZnVsbCB3cC1pbWFnZS0yNDU2OCIgc3JjPSJodHRwczovL3d3dy5mcmVlZGlkaS5jb20vd3AtY29udGVudC91cGxvYWRzLzIwMjYvMDYvMjAyNjA2MjExNTA4MDRfOTYxODc0LndlYnAiIGFsdD0iIiB3aWR0aD0iMTUzNiIgaGVpZ2h0PSIxMDI0IiAvPjwvYT48L2Rpdj4K' limits-fallback='16' fallback_level='1' fallback-tracking='WzAsMCwiQmxvY2sgMTYiLCIiXQ==' data-block='1'><span class='ai-check-block ai-cfp' data-ai-block='1' data-ai-limit-clicks-per-time='3' data-ai-limit-clicks-time='1' data-ai-global-limit-clicks-per-time='3' data-ai-global-limit-clicks-time='1' data-ai-cfp-time='30'></span></div>
+
+</div>
+
+<p><img decoding="async" class="wp-image-24455 aligncenter" src="https://www.freedidi.com/wp-content/uploads/2026/06/20260612093112_813085-scaled.webp" alt="20260612093112 813085 scaled" width="750" height="579" title="Holo 3.1 模型本地 Agent 部署实测：免费无限 Token，接入 OpenClaw ，速度确实很快！！ 3" srcset="https://www.freedidi.com/wp-content/uploads/2026/06/20260612093112_813085-scaled.webp 2560w, https://www.freedidi.com/wp-content/uploads/2026/06/20260612093112_813085-545x421.webp 545w, https://www.freedidi.com/wp-content/uploads/2026/06/20260612093112_813085-768x593.webp 768w, https://www.freedidi.com/wp-content/uploads/2026/06/20260612093112_813085-1536x1186.webp 1536w, https://www.freedidi.com/wp-content/uploads/2026/06/20260612093112_813085-2048x1581.webp 2048w, https://www.freedidi.com/wp-content/uploads/2026/06/20260612093112_813085-520x401.webp 520w, https://www.freedidi.com/wp-content/uploads/2026/06/20260612093112_813085-940x726.webp 940w" sizes="(max-width: 750px) 100vw, 750px" /></p>
+<p>&nbsp;</p>
+<p>最关键的是 Holo 3.1 作为本地 Agent 专用模型，在各项性能指标都超于了Qwen 3.5 35B A3B模型，在本地部署AI代理绝对是当下的最佳首先开源模型！</p>
+<p><img loading="lazy" decoding="async" class="wp-image-24454 aligncenter" src="https://www.freedidi.com/wp-content/uploads/2026/06/20260612092942_256633.webp" alt="20260612092942 256633" width="728" height="529" title="Holo 3.1 模型本地 Agent 部署实测：免费无限 Token，接入 OpenClaw ，速度确实很快！！ 4" srcset="https://www.freedidi.com/wp-content/uploads/2026/06/20260612092942_256633.webp 2168w, https://www.freedidi.com/wp-content/uploads/2026/06/20260612092942_256633-580x421.webp 580w, https://www.freedidi.com/wp-content/uploads/2026/06/20260612092942_256633-768x558.webp 768w, https://www.freedidi.com/wp-content/uploads/2026/06/20260612092942_256633-1536x1115.webp 1536w, https://www.freedidi.com/wp-content/uploads/2026/06/20260612092942_256633-2048x1487.webp 2048w, https://www.freedidi.com/wp-content/uploads/2026/06/20260612092942_256633-520x378.webp 520w, https://www.freedidi.com/wp-content/uploads/2026/06/20260612092942_256633-940x682.webp 940w" sizes="auto, (max-width: 728px) 100vw, 728px" /></p>
+<p>&nbsp;</p>
+<p>那么 Holo 3.1 的实际效果究竟如何？在接入 OpenClaw 之后，它能否像真人一样打开浏览器、搜索资料、整理信息并完成复杂任务？接下来我们就从部署安装、模型配置以及实际案例测试三个方面，带大家全面体验这款备受关注的本地 Agent 模型。</p>
+<div class="video-container"><iframe loading="lazy" title="Holo 3.1 杀疯了！真免费无限 Token，对接 OpenClaw 实现 AI 操控电脑，最强开源 Agent 模型来了！附本地部署教程 | " width="740" height="416" src="https://www.youtube.com/embed/p6ScdPXdaX4?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+<h1>部署教程</h1>
+<p>&nbsp;</p>
+<h2><strong>1、安装 Llama.cpp</strong></h2>
+<p>这次我们同样选择llama.cp来进行部署，因为无论是速度还是性能，llama.cp都优于Ollama 和 LMStudio</p>
+<p>&nbsp;</p>
+<table>
+<thead>
+<tr>
+<th>方案</th>
+<th>速度</th>
+<th>易用性</th>
+<th>适合</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>llama.cpp</td>
+<td>⭐⭐⭐⭐⭐</td>
+<td>⭐⭐⭐⭐</td>
+<td>最适合Agent</td>
+</tr>
+<tr>
+<td>LM Studio</td>
+<td>⭐⭐⭐⭐</td>
+<td>⭐⭐⭐⭐⭐</td>
+<td>日常使用</td>
+</tr>
+<tr>
+<td>Ollama</td>
+<td>⭐⭐⭐⭐</td>
+<td>⭐⭐⭐⭐</td>
+<td>API调用</td>
+</tr>
+<tr>
+<td>SGLang</td>
+<td>⭐⭐⭐⭐⭐⭐</td>
+<td>⭐</td>
+<td>极限性能</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p><div class='code-block code-block-center code-block-1 ai-track' data-ai='WzEsMCwiQmxvY2sgMSIsIiIsMl0='>
+<div class='no-visibility-check ai-check-1-43067761' data-insertion-position='after' data-selector='.ai-check-1-43067761' data-code='PGRpdiBjbGFzcz0iYWktYXR0cmlidXRlcyI+CjxzcGFuIGNsYXNzPSdhaS1jaGVjay1ibG9jayBhaS1jZnAnIGRhdGEtYWktYmxvY2s9JzEnIGRhdGEtYWktbGltaXQtY2xpY2tzLXBlci10aW1lPSczJyBkYXRhLWFpLWxpbWl0LWNsaWNrcy10aW1lPScxJyBkYXRhLWFpLWdsb2JhbC1saW1pdC1jbGlja3MtcGVyLXRpbWU9JzMnIGRhdGEtYWktZ2xvYmFsLWxpbWl0LWNsaWNrcy10aW1lPScxJyBkYXRhLWFpLWNmcC10aW1lPSczMCc+PC9zcGFuPgo8L2Rpdj4KPHN0eWxlPgogIC8qIOS4k+S4uuato+aWh+aOkueJiOS8mOWMlueahOi9u+mHj+e6p+malOemu+WuueWZqCAqLwogIC5hZC1pbi1hcnRpY2xlLXNhZmUgewogICAgYm9yZGVyLXRvcDogMXB4IHNvbGlkICNlYWVhZWE7CiAgICBib3JkZXItYm90dG9tOiAxcHggc29saWQgI2VhZWFlYTsKICAgIHBhZGRpbmc6IDE1cHggMDsKICAgIG1hcmdpbjogMzVweCAwOyAvKiDkv53or4Hlub/lkYrkuI7kuIrkuIvmrrXokL3mnInotrPlpJ/nmoTlronlhajmu5Hliqjot53nprsgKi8KICAgIHRleHQtYWxpZ246IGNlbnRlcjsKICB9CiAgLmFkLWxhYmVsLWNlbnRlciB7CiAgICBmb250LXNpemU6IDEycHg7CiAgICBjb2xvcjogIzk5OTsKICAgIG1hcmdpbi1ib3R0b206IDEycHg7CiAgICBsZXR0ZXItc3BhY2luZzogMXB4OwogIH0KICAvKiDoh6rliqjpgILphY3mt7HoibIv5aSc6Ze05qih5byPICovCiAgQG1lZGlhIChwcmVmZXJzLWNvbG9yLXNjaGVtZTogZGFyaykgewogICAgLmFkLWluLWFydGljbGUtc2FmZSB7CiAgICAgIGJvcmRlci1jb2xvcjogIzMzMzMzMzsKICAgIH0KICAgIC5hZC1sYWJlbC1jZW50ZXIgewogICAgICBjb2xvcjogIzY2NjY2NjsKICAgIH0KICB9Cjwvc3R5bGU+Cgo8ZGl2IGNsYXNzPSJhZC1pbi1hcnRpY2xlLXNhZmUiPgogICAgCiAgICA8ZGl2IGNsYXNzPSJhZC1sYWJlbC1jZW50ZXIiPgogICAgICAgIC0g6LWe5Yqp5ZWG5YaF5a65IC0KICAgIDwvZGl2PgoKICAgIDxzY3JpcHQgYXN5bmMgc3JjPSJodHRwczovL3BhZ2VhZDIuZ29vZ2xlc3luZGljYXRpb24uY29tL3BhZ2VhZC9qcy9hZHNieWdvb2dsZS5qcz9jbGllbnQ9Y2EtcHViLTM5MDcyNjA2MjgxNTI4MTgiIGNyb3Nzb3JpZ2luPSJhbm9ueW1vdXMiPjwvc2NyaXB0PgogICAgPGlucyBjbGFzcz0iYWRzYnlnb29nbGUiCiAgICAgICAgIHN0eWxlPSJkaXNwbGF5OmJsb2NrOyB0ZXh0LWFsaWduOmNlbnRlcjsiCiAgICAgICAgIGRhdGEtYWQtbGF5b3V0PSJpbi1hcnRpY2xlIgogICAgICAgICBkYXRhLWFkLWZvcm1hdD0iZmx1aWQiCiAgICAgICAgIGRhdGEtYWQtY2xpZW50PSJjYS1wdWItMzkwNzI2MDYyODE1MjgxOCIKICAgICAgICAgZGF0YS1hZC1zbG90PSI1NzY3MTEwODAzIj48L2lucz4KICAgIDxzY3JpcHQ+CiAgICAgICAgIChhZHNieWdvb2dsZSA9IHdpbmRvdy5hZHNieWdvb2dsZSB8fCBbXSkucHVzaCh7fSk7CiAgICA8L3NjcmlwdD4KCjwvZGl2Pg==' data-fallback-code='PGRpdiBjbGFzcz0nYWktYWRiLXNob3cnIHN0eWxlPSd2aXNpYmlsaXR5OiBoaWRkZW47IGRpc3BsYXk6IG5vbmU7JyBkYXRhLWFpLXRyYWNraW5nPSdXekUyTERBc0lrSnNiMk5ySURFMklpd2lJaXd3WFE9PScgZGF0YS1haS1kZWJ1Zz0nMTYnPgo8YSBocmVmPSJodHRwczovL3d3dy5hbGl5dW4uY29tL3Byb2R1Y3QvZWNzP3VzZXJDb2RlPWp1Zm9jb2k2IiB0YXJnZXQ9Il9ibGFuayIgcmVsPSJub29wZW5lciI+PGltZyBjbGFzcz0iYWxpZ25ub25lIHNpemUtZnVsbCB3cC1pbWFnZS0yNDU2OCIgc3JjPSJodHRwczovL3d3dy5mcmVlZGlkaS5jb20vd3AtY29udGVudC91cGxvYWRzLzIwMjYvMDYvMjAyNjA2MjExNTA4MDRfOTYxODc0LndlYnAiIGFsdD0iIiB3aWR0aD0iMTUzNiIgaGVpZ2h0PSIxMDI0IiAvPjwvYT48L2Rpdj4K' limits-fallback='16' fallback_level='1' fallback-tracking='WzAsMCwiQmxvY2sgMTYiLCIiXQ==' data-block='1'><span class='ai-check-block ai-cfp' data-ai-block='1' data-ai-limit-clicks-per-time='3' data-ai-limit-clicks-time='1' data-ai-global-limit-clicks-per-time='3' data-ai-global-limit-clicks-time='1' data-ai-cfp-time='30'></span></div>
+
+</div>
+
+<h3><strong>下载方式：</strong></h3>
+<p><strong>1、GitHub 下载【<span style="color: #0000ff;"><a style="color: #0000ff;" href="https://github.com/ggml-org/llama.cpp" target="_blank" rel="noopener">点击前往</a></span>】、或</strong><strong>【<span style="color: #0000ff;"><a style="color: #0000ff;" href="https://pan.quark.cn/s/206cde2b2f7a" target="_blank" rel="noopener">备用下载</a></span>】、【<span style="color: #0000ff;"><a style="color: #0000ff;" href="https://pan.cloudeop.com/s/5631D3E868F2D017" target="_blank" rel="noopener">网盘下载</a></span>】 内含启动脚本</strong></p>
+<p>&nbsp;</p>
+<p>下载后将其进行解压，然后在根目录下创建一个新的文件夹，将其命名为 models，作为接下来存放模型的地方。</p>
+<p>&nbsp;</p>
+<h2>2、模型下载</h2>
+<p>模型该如何选择？根据下方的推荐选择适合自己的对应尺寸的模型即可</p>
+<table>
+<thead>
+<tr>
+<th>配置</th>
+<th>推荐</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RTX 4090 24GB</td>
+<td>✅ 35B-A3B Q4_K_M</td>
+</tr>
+<tr>
+<td>RTX 3090 24GB</td>
+<td>✅ 35B-A3B Q4_K_M</td>
+</tr>
+<tr>
+<td>RTX 5070Ti 16GB</td>
+<td>✅ 9B</td>
+</tr>
+<tr>
+<td>RTX 4060Ti 16GB</td>
+<td>✅ 9B</td>
+</tr>
+<tr>
+<td>Apple Silicon</td>
+<td>✅ 9B GGUF</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<p>模型合集下载：【<span style="color: #0000ff;"><a style="color: #0000ff;" href="https://huggingface.co/collections/Hcompany/holo31" target="_blank" rel="noopener">链接直达</a></span>】或 【<strong><span style="color: #0000ff;"><a style="color: #0000ff;" href="https://pan.quark.cn/s/79ee2b97141a" target="_blank" rel="noopener">打包下载</a></span></strong>】或 【<span style="color: #0000ff;"><strong><a style="color: #0000ff;" href="https://pan.cloudeop.com/s/28FA35F5AD238903" target="_blank" rel="noopener">备用下载</a></strong></span>】</p>
+<p>不同分类尺寸</p>
+<p>35B：【<span style="color: #0000ff;"><a style="color: #0000ff;" href="https://huggingface.co/Hcompany/Holo-3.1-35B-A3B-GGUF" target="_blank" rel="noopener">点击前往</a></span>】或 【<strong><span style="color: #0000ff;"><a style="color: #0000ff;" href="https://pan.quark.cn/s/e9dced993ed8" target="_blank" rel="noopener">打包下载</a></span></strong>】、【<span style="color: #0000ff;"><strong><a style="color: #0000ff;" href="https://pan.cloudeop.com/s/9159B1B1B56C0BB6" target="_blank" rel="noopener">备用下载</a></strong></span>】</p>
+<p>9B  ：【<span style="color: #0000ff;"><a style="color: #0000ff;" href="https://huggingface.co/prithivMLmods/Holo-3.1-9B-GGUF/tree/main" target="_blank" rel="noopener">点击前往</a></span>】或 【<span style="color: #0000ff;"><strong><a style="color: #0000ff;" href="https://pan.quark.cn/s/d4eb7d0b1ab7" target="_blank" rel="noopener">打包下载</a></strong></span>】、【<span style="color: #0000ff;"><strong><a style="color: #0000ff;" href="https://pan.cloudeop.com/s/099B0927C9DEFB41" target="_blank" rel="noopener">备用下载</a></strong></span>】</p>
+<p>4B  ：【<span style="color: #0000ff;"><a style="color: #0000ff;" href="https://huggingface.co/mradermacher/Holo-3.1-4B-GGUF/tree/main" target="_blank" rel="noopener">点击前往</a></span>】或 【<strong><span style="color: #0000ff;"><a style="color: #0000ff;" href="https://pan.quark.cn/s/fde9aa395ef4" target="_blank" rel="noopener">打包下载</a></span></strong>】、【<span style="color: #0000ff;"><strong><a style="color: #0000ff;" href="https://pan.cloudeop.com/s/0C0C8F38169F31A9" target="_blank" rel="noopener">备用下载</a></strong></span>】</p>
+<p>0.8 ：【<span style="color: #0000ff;"><a style="color: #0000ff;" href="https://huggingface.co/mradermacher/Holo-3.1-0.8B-i1-GGUF/tree/main" target="_blank" rel="noopener">点击前往</a></span>】或 【<strong><span style="color: #0000ff;"><a style="color: #0000ff;" href="https://pan.quark.cn/s/19f510d81bc1" target="_blank" rel="noopener">打包下载</a></span></strong>】、【<span style="color: #0000ff;"><strong><a style="color: #0000ff;" href="https://pan.cloudeop.com/s/90B03A668C585929" target="_blank" rel="noopener">备用下载</a></strong></span>】</p>
+<p>因为我们使用Llama.cpp来加载本地模型，所有必须选择GGUF格式的模型文件，模型文件含主模型和视觉模型，都需要下载下来</p><div class='code-block code-block-center code-block-1 ai-track' data-ai='WzEsMCwiQmxvY2sgMSIsIiIsM10='>
+<div class='no-visibility-check ai-check-1-73367662' data-insertion-position='after' data-selector='.ai-check-1-73367662' data-code='PGRpdiBjbGFzcz0iYWktYXR0cmlidXRlcyI+CjxzcGFuIGNsYXNzPSdhaS1jaGVjay1ibG9jayBhaS1jZnAnIGRhdGEtYWktYmxvY2s9JzEnIGRhdGEtYWktbGltaXQtY2xpY2tzLXBlci10aW1lPSczJyBkYXRhLWFpLWxpbWl0LWNsaWNrcy10aW1lPScxJyBkYXRhLWFpLWdsb2JhbC1saW1pdC1jbGlja3MtcGVyLXRpbWU9JzMnIGRhdGEtYWktZ2xvYmFsLWxpbWl0LWNsaWNrcy10aW1lPScxJyBkYXRhLWFpLWNmcC10aW1lPSczMCc+PC9zcGFuPgo8L2Rpdj4KPHN0eWxlPgogIC8qIOS4k+S4uuato+aWh+aOkueJiOS8mOWMlueahOi9u+mHj+e6p+malOemu+WuueWZqCAqLwogIC5hZC1pbi1hcnRpY2xlLXNhZmUgewogICAgYm9yZGVyLXRvcDogMXB4IHNvbGlkICNlYWVhZWE7CiAgICBib3JkZXItYm90dG9tOiAxcHggc29saWQgI2VhZWFlYTsKICAgIHBhZGRpbmc6IDE1cHggMDsKICAgIG1hcmdpbjogMzVweCAwOyAvKiDkv53or4Hlub/lkYrkuI7kuIrkuIvmrrXokL3mnInotrPlpJ/nmoTlronlhajmu5Hliqjot53nprsgKi8KICAgIHRleHQtYWxpZ246IGNlbnRlcjsKICB9CiAgLmFkLWxhYmVsLWNlbnRlciB7CiAgICBmb250LXNpemU6IDEycHg7CiAgICBjb2xvcjogIzk5OTsKICAgIG1hcmdpbi1ib3R0b206IDEycHg7CiAgICBsZXR0ZXItc3BhY2luZzogMXB4OwogIH0KICAvKiDoh6rliqjpgILphY3mt7HoibIv5aSc6Ze05qih5byPICovCiAgQG1lZGlhIChwcmVmZXJzLWNvbG9yLXNjaGVtZTogZGFyaykgewogICAgLmFkLWluLWFydGljbGUtc2FmZSB7CiAgICAgIGJvcmRlci1jb2xvcjogIzMzMzMzMzsKICAgIH0KICAgIC5hZC1sYWJlbC1jZW50ZXIgewogICAgICBjb2xvcjogIzY2NjY2NjsKICAgIH0KICB9Cjwvc3R5bGU+Cgo8ZGl2IGNsYXNzPSJhZC1pbi1hcnRpY2xlLXNhZmUiPgogICAgCiAgICA8ZGl2IGNsYXNzPSJhZC1sYWJlbC1jZW50ZXIiPgogICAgICAgIC0g6LWe5Yqp5ZWG5YaF5a65IC0KICAgIDwvZGl2PgoKICAgIDxzY3JpcHQgYXN5bmMgc3JjPSJodHRwczovL3BhZ2VhZDIuZ29vZ2xlc3luZGljYXRpb24uY29tL3BhZ2VhZC9qcy9hZHNieWdvb2dsZS5qcz9jbGllbnQ9Y2EtcHViLTM5MDcyNjA2MjgxNTI4MTgiIGNyb3Nzb3JpZ2luPSJhbm9ueW1vdXMiPjwvc2NyaXB0PgogICAgPGlucyBjbGFzcz0iYWRzYnlnb29nbGUiCiAgICAgICAgIHN0eWxlPSJkaXNwbGF5OmJsb2NrOyB0ZXh0LWFsaWduOmNlbnRlcjsiCiAgICAgICAgIGRhdGEtYWQtbGF5b3V0PSJpbi1hcnRpY2xlIgogICAgICAgICBkYXRhLWFkLWZvcm1hdD0iZmx1aWQiCiAgICAgICAgIGRhdGEtYWQtY2xpZW50PSJjYS1wdWItMzkwNzI2MDYyODE1MjgxOCIKICAgICAgICAgZGF0YS1hZC1zbG90PSI1NzY3MTEwODAzIj48L2lucz4KICAgIDxzY3JpcHQ+CiAgICAgICAgIChhZHNieWdvb2dsZSA9IHdpbmRvdy5hZHNieWdvb2dsZSB8fCBbXSkucHVzaCh7fSk7CiAgICA8L3NjcmlwdD4KCjwvZGl2Pg==' data-fallback-code='PGRpdiBjbGFzcz0nYWktYWRiLXNob3cnIHN0eWxlPSd2aXNpYmlsaXR5OiBoaWRkZW47IGRpc3BsYXk6IG5vbmU7JyBkYXRhLWFpLXRyYWNraW5nPSdXekUyTERBc0lrSnNiMk5ySURFMklpd2lJaXd3WFE9PScgZGF0YS1haS1kZWJ1Zz0nMTYnPgo8YSBocmVmPSJodHRwczovL3d3dy5hbGl5dW4uY29tL3Byb2R1Y3QvZWNzP3VzZXJDb2RlPWp1Zm9jb2k2IiB0YXJnZXQ9Il9ibGFuayIgcmVsPSJub29wZW5lciI+PGltZyBjbGFzcz0iYWxpZ25ub25lIHNpemUtZnVsbCB3cC1pbWFnZS0yNDU2OCIgc3JjPSJodHRwczovL3d3dy5mcmVlZGlkaS5jb20vd3AtY29udGVudC91cGxvYWRzLzIwMjYvMDYvMjAyNjA2MjExNTA4MDRfOTYxODc0LndlYnAiIGFsdD0iIiB3aWR0aD0iMTUzNiIgaGVpZ2h0PSIxMDI0IiAvPjwvYT48L2Rpdj4K' limits-fallback='16' fallback_level='1' fallback-tracking='WzAsMCwiQmxvY2sgMTYiLCIiXQ==' data-block='1'><span class='ai-check-block ai-cfp' data-ai-block='1' data-ai-limit-clicks-per-time='3' data-ai-limit-clicks-time='1' data-ai-global-limit-clicks-per-time='3' data-ai-global-limit-clicks-time='1' data-ai-cfp-time='30'></span></div>
+
+</div>
+
+<h2><img loading="lazy" decoding="async" class="alignnone size-full wp-image-24456" src="https://www.freedidi.com/wp-content/uploads/2026/06/20260612094844_463366-scaled.webp" alt="20260612094844 463366 scaled" width="2560" height="1230" title="Holo 3.1 模型本地 Agent 部署实测：免费无限 Token，接入 OpenClaw ，速度确实很快！！ 5" srcset="https://www.freedidi.com/wp-content/uploads/2026/06/20260612094844_463366-scaled.webp 2560w, https://www.freedidi.com/wp-content/uploads/2026/06/20260612094844_463366-750x360.webp 750w, https://www.freedidi.com/wp-content/uploads/2026/06/20260612094844_463366-768x369.webp 768w, https://www.freedidi.com/wp-content/uploads/2026/06/20260612094844_463366-1536x738.webp 1536w, https://www.freedidi.com/wp-content/uploads/2026/06/20260612094844_463366-2048x984.webp 2048w, https://www.freedidi.com/wp-content/uploads/2026/06/20260612094844_463366-520x250.webp 520w, https://www.freedidi.com/wp-content/uploads/2026/06/20260612094844_463366-940x452.webp 940w" sizes="auto, (max-width: 2560px) 100vw, 2560px" /></h2>
+<h2></h2>
+<h2>3、启动脚本</h2>
+<p>将下方的启动脚本另存为一个bat批处理文件，或者【<strong><span style="color: #0000ff;"><a style="color: #0000ff;" href="https://pan.quark.cn/s/08c4a16fa98b" target="_blank" rel="noopener">直接下载</a></span></strong>】【<strong><span style="color: #0000ff;"><a style="color: #0000ff;" href="https://pan.cloudeop.com/s/D3791A1134DFAADA" target="_blank" rel="noopener">备用下载</a></span></strong>】脚本文件</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="generic">@echo off
+chcp 65001 &gt;nul
+title Holo 3.1 VLM 一键启动器
+
+set LLAMA=llama-server.exe
+
+:MENU
+cls
+
+echo ==========================================
+echo         Holo 3.1 VLM 启动器
+echo ==========================================
+echo.
+echo 1. 8GB显卡推荐（0.8B）
+echo 2. 12GB显卡推荐（4B）
+echo 3. 16GB显卡推荐（9B）
+echo 4. 24GB显卡推荐（35B-A3B）
+echo.
+echo 5. CPU模式（4B）
+echo.
+echo 0. 退出
+echo.
+
+set /p CHOICE=请选择：
+
+if "%CHOICE%"=="1" goto GPU8
+if "%CHOICE%"=="2" goto GPU12
+if "%CHOICE%"=="3" goto GPU16
+if "%CHOICE%"=="4" goto GPU24
+if "%CHOICE%"=="5" goto CPU
+if "%CHOICE%"=="0" exit
+
+goto MENU
+
+:: ==========================================
+:: RTX 8GB
+:: ==========================================
+
+:GPU8
+
+"%LLAMA%" ^
+-m models\Holo-3.1-0.8B.i1-Q6_K.gguf ^
+-ngl 999 ^
+-c 8192 ^
+-fa ^
+--cache-type-k q4_0 ^
+--cache-type-v q4_0 ^
+--temp 0.2 ^
+--top-p 0.9 ^
+--host 127.0.0.1 ^
+--port 1234
+
+pause
+goto MENU
+
+:: ==========================================
+:: RTX 12GB
+:: ==========================================
+
+:GPU12
+
+"%LLAMA%" ^
+-m models\Holo-3.1-4B.Q8_0.gguf ^
+--mmproj models\Holo-3.1-4B.mmproj-Q8_0.gguf ^
+-ngl 999 ^
+-c 16384 ^
+-fa ^
+--cache-type-k q4_0 ^
+--cache-type-v q4_0 ^
+--temp 0.2 ^
+--top-p 0.9 ^
+--host 127.0.0.1 ^
+--port 1234
+
+pause
+goto MENU
+
+:: ==========================================
+:: RTX 16GB
+:: ==========================================
+
+:GPU16
+
+"%LLAMA%" ^
+-m models\Holo-3.1-9B.Q8_0.gguf ^
+--mmproj models\Holo-3.1-9B.mmproj-q8_0.gguf ^
+-ngl 999 ^
+-c 24576 ^
+-fa ^
+--cache-type-k q8_0 ^
+--cache-type-v q8_0 ^
+--temp 0.2 ^
+--top-p 0.9 ^
+--host 127.0.0.1 ^
+--port 1234
+
+pause
+goto MENU
+
+:: ==========================================
+:: RTX 24GB
+:: ==========================================
+
+:GPU24
+
+
+"%LLAMA%" ^
+-m models\q4_k_m.gguf ^
+--mmproj models\mmproj.f16.gguf ^
+-ngl 999 ^
+-c 65536 ^
+--flash-attn on ^
+--cache-type-k q8_0 ^
+--cache-type-v q8_0 ^
+--temp 0.2 ^
+--top-p 0.9 ^
+--repeat-penalty 1.05 ^
+--host 127.0.0.1 ^
+--port 1234
+
+pause
+goto MENU
+
+:: ==========================================
+:: CPU模式
+:: ==========================================
+
+:CPU
+
+"%LLAMA%" ^
+-m models\Holo-3.1-0.8B.i1-Q6_K.gguf ^
+-ngl 0 ^
+-c 4096 ^
+--threads 16 ^
+--temp 0.2 ^
+--host 127.0.0.1 ^
+--port 1234
+
+pause
+goto MENU
+</pre>
+<p>&nbsp;</p>
+<p>注意：脚本的模型文件名称还有路径，你可以自定义修改，相关的启动参数优化已经帮你设置好，当然也可以根据需要进行修改。启动以后会安装Node.js环境等，启动后会看到如下界面，最后选择适合自己的模型大小启动即可</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="generic"></pre>
+<p>&nbsp;</p>
+<p><img loading="lazy" decoding="async" class="wp-image-24457 aligncenter" src="https://www.freedidi.com/wp-content/uploads/2026/06/20260612095428_449459.webp" alt="20260612095428 449459" width="874" height="475" title="Holo 3.1 模型本地 Agent 部署实测：免费无限 Token，接入 OpenClaw ，速度确实很快！！ 6" srcset="https://www.freedidi.com/wp-content/uploads/2026/06/20260612095428_449459.webp 1250w, https://www.freedidi.com/wp-content/uploads/2026/06/20260612095428_449459-750x408.webp 750w, https://www.freedidi.com/wp-content/uploads/2026/06/20260612095428_449459-768x418.webp 768w, https://www.freedidi.com/wp-content/uploads/2026/06/20260612095428_449459-520x283.webp 520w, https://www.freedidi.com/wp-content/uploads/2026/06/20260612095428_449459-940x511.webp 940w" sizes="auto, (max-width: 874px) 100vw, 874px" /></p>
+<p>&nbsp;</p>
+<h2>4、安装 Openclaw</h2>
+<p>当我们部署好本地模型Holo3.1以后，接下来就是将其对接到AI Agent，比如我们可以选择OpenClaw 或者 Hemes 都可以，这次我们先拿小龙虾 OpenClaw 来做测试，只需在电脑上以管理员身份打开 Powershell，然后执行下方的一键安装命令：</p>
+<p>Windows</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="generic">powershell -c "irm https://openclaw.ai/install.ps1 | iex"</pre>
+<p>macOS/Linux</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="generic">curl -fsSL https://openclaw.ai/install.sh | bash</pre>
+<p>&nbsp;</p>
+<p>小龙虾的部署过程看<span style="color: #0000ff;"><strong><a style="color: #0000ff;" href="https://youtu.be/p6ScdPXdaX4" target="_blank" rel="noopener">视频演示</a></strong></span>，只需重点注意在模型提供商这里要跟入下截图来进行设置，API Base URL地址填写：http://127.0.0.1:1234/v1</p>
+<p>密钥留空不用填写。</p>
+<p>&nbsp;</p>
+<p><img loading="lazy" decoding="async" class="wp-image-24458 aligncenter" src="https://www.freedidi.com/wp-content/uploads/2026/06/20260612095922_584623.webp" alt="20260612095922 584623" width="798" height="396" title="Holo 3.1 模型本地 Agent 部署实测：免费无限 Token，接入 OpenClaw ，速度确实很快！！ 7" srcset="https://www.freedidi.com/wp-content/uploads/2026/06/20260612095922_584623.webp 2087w, https://www.freedidi.com/wp-content/uploads/2026/06/20260612095922_584623-750x372.webp 750w, https://www.freedidi.com/wp-content/uploads/2026/06/20260612095922_584623-768x381.webp 768w, https://www.freedidi.com/wp-content/uploads/2026/06/20260612095922_584623-1536x762.webp 1536w, https://www.freedidi.com/wp-content/uploads/2026/06/20260612095922_584623-2048x1016.webp 2048w, https://www.freedidi.com/wp-content/uploads/2026/06/20260612095922_584623-520x258.webp 520w, https://www.freedidi.com/wp-content/uploads/2026/06/20260612095922_584623-940x466.webp 940w" sizes="auto, (max-width: 798px) 100vw, 798px" /></p><div class='code-block code-block-center code-block-1 ai-track' data-ai='WzEsMCwiQmxvY2sgMSIsIiIsNF0='>
+<div class='no-visibility-check ai-check-1-45643312' data-insertion-position='after' data-selector='.ai-check-1-45643312' data-code='PGRpdiBjbGFzcz0iYWktYXR0cmlidXRlcyI+CjxzcGFuIGNsYXNzPSdhaS1jaGVjay1ibG9jayBhaS1jZnAnIGRhdGEtYWktYmxvY2s9JzEnIGRhdGEtYWktbGltaXQtY2xpY2tzLXBlci10aW1lPSczJyBkYXRhLWFpLWxpbWl0LWNsaWNrcy10aW1lPScxJyBkYXRhLWFpLWdsb2JhbC1saW1pdC1jbGlja3MtcGVyLXRpbWU9JzMnIGRhdGEtYWktZ2xvYmFsLWxpbWl0LWNsaWNrcy10aW1lPScxJyBkYXRhLWFpLWNmcC10aW1lPSczMCc+PC9zcGFuPgo8L2Rpdj4KPHN0eWxlPgogIC8qIOS4k+S4uuato+aWh+aOkueJiOS8mOWMlueahOi9u+mHj+e6p+malOemu+WuueWZqCAqLwogIC5hZC1pbi1hcnRpY2xlLXNhZmUgewogICAgYm9yZGVyLXRvcDogMXB4IHNvbGlkICNlYWVhZWE7CiAgICBib3JkZXItYm90dG9tOiAxcHggc29saWQgI2VhZWFlYTsKICAgIHBhZGRpbmc6IDE1cHggMDsKICAgIG1hcmdpbjogMzVweCAwOyAvKiDkv53or4Hlub/lkYrkuI7kuIrkuIvmrrXokL3mnInotrPlpJ/nmoTlronlhajmu5Hliqjot53nprsgKi8KICAgIHRleHQtYWxpZ246IGNlbnRlcjsKICB9CiAgLmFkLWxhYmVsLWNlbnRlciB7CiAgICBmb250LXNpemU6IDEycHg7CiAgICBjb2xvcjogIzk5OTsKICAgIG1hcmdpbi1ib3R0b206IDEycHg7CiAgICBsZXR0ZXItc3BhY2luZzogMXB4OwogIH0KICAvKiDoh6rliqjpgILphY3mt7HoibIv5aSc6Ze05qih5byPICovCiAgQG1lZGlhIChwcmVmZXJzLWNvbG9yLXNjaGVtZTogZGFyaykgewogICAgLmFkLWluLWFydGljbGUtc2FmZSB7CiAgICAgIGJvcmRlci1jb2xvcjogIzMzMzMzMzsKICAgIH0KICAgIC5hZC1sYWJlbC1jZW50ZXIgewogICAgICBjb2xvcjogIzY2NjY2NjsKICAgIH0KICB9Cjwvc3R5bGU+Cgo8ZGl2IGNsYXNzPSJhZC1pbi1hcnRpY2xlLXNhZmUiPgogICAgCiAgICA8ZGl2IGNsYXNzPSJhZC1sYWJlbC1jZW50ZXIiPgogICAgICAgIC0g6LWe5Yqp5ZWG5YaF5a65IC0KICAgIDwvZGl2PgoKICAgIDxzY3JpcHQgYXN5bmMgc3JjPSJodHRwczovL3BhZ2VhZDIuZ29vZ2xlc3luZGljYXRpb24uY29tL3BhZ2VhZC9qcy9hZHNieWdvb2dsZS5qcz9jbGllbnQ9Y2EtcHViLTM5MDcyNjA2MjgxNTI4MTgiIGNyb3Nzb3JpZ2luPSJhbm9ueW1vdXMiPjwvc2NyaXB0PgogICAgPGlucyBjbGFzcz0iYWRzYnlnb29nbGUiCiAgICAgICAgIHN0eWxlPSJkaXNwbGF5OmJsb2NrOyB0ZXh0LWFsaWduOmNlbnRlcjsiCiAgICAgICAgIGRhdGEtYWQtbGF5b3V0PSJpbi1hcnRpY2xlIgogICAgICAgICBkYXRhLWFkLWZvcm1hdD0iZmx1aWQiCiAgICAgICAgIGRhdGEtYWQtY2xpZW50PSJjYS1wdWItMzkwNzI2MDYyODE1MjgxOCIKICAgICAgICAgZGF0YS1hZC1zbG90PSI1NzY3MTEwODAzIj48L2lucz4KICAgIDxzY3JpcHQ+CiAgICAgICAgIChhZHNieWdvb2dsZSA9IHdpbmRvdy5hZHNieWdvb2dsZSB8fCBbXSkucHVzaCh7fSk7CiAgICA8L3NjcmlwdD4KCjwvZGl2Pg==' data-fallback-code='PGRpdiBjbGFzcz0nYWktYWRiLXNob3cnIHN0eWxlPSd2aXNpYmlsaXR5OiBoaWRkZW47IGRpc3BsYXk6IG5vbmU7JyBkYXRhLWFpLXRyYWNraW5nPSdXekUyTERBc0lrSnNiMk5ySURFMklpd2lJaXd3WFE9PScgZGF0YS1haS1kZWJ1Zz0nMTYnPgo8YSBocmVmPSJodHRwczovL3d3dy5hbGl5dW4uY29tL3Byb2R1Y3QvZWNzP3VzZXJDb2RlPWp1Zm9jb2k2IiB0YXJnZXQ9Il9ibGFuayIgcmVsPSJub29wZW5lciI+PGltZyBjbGFzcz0iYWxpZ25ub25lIHNpemUtZnVsbCB3cC1pbWFnZS0yNDU2OCIgc3JjPSJodHRwczovL3d3dy5mcmVlZGlkaS5jb20vd3AtY29udGVudC91cGxvYWRzLzIwMjYvMDYvMjAyNjA2MjExNTA4MDRfOTYxODc0LndlYnAiIGFsdD0iIiB3aWR0aD0iMTUzNiIgaGVpZ2h0PSIxMDI0IiAvPjwvYT48L2Rpdj4K' limits-fallback='16' fallback_level='1' fallback-tracking='WzAsMCwiQmxvY2sgMTYiLCIiXQ==' data-block='1'><span class='ai-check-block ai-cfp' data-ai-block='1' data-ai-limit-clicks-per-time='3' data-ai-limit-clicks-time='1' data-ai-global-limit-clicks-per-time='3' data-ai-global-limit-clicks-time='1' data-ai-cfp-time='30'></span></div>
+
+</div>
+
+<p>&nbsp;</p>
+<p>启动模式选择浏览器启动</p>
+<p><img loading="lazy" decoding="async" class="wp-image-24459 aligncenter" src="https://www.freedidi.com/wp-content/uploads/2026/06/20260612100059_024677.webp" alt="20260612100059 024677" width="758" height="346" title="Holo 3.1 模型本地 Agent 部署实测：免费无限 Token，接入 OpenClaw ，速度确实很快！！ 8" srcset="https://www.freedidi.com/wp-content/uploads/2026/06/20260612100059_024677.webp 1790w, https://www.freedidi.com/wp-content/uploads/2026/06/20260612100059_024677-750x342.webp 750w, https://www.freedidi.com/wp-content/uploads/2026/06/20260612100059_024677-768x350.webp 768w, https://www.freedidi.com/wp-content/uploads/2026/06/20260612100059_024677-1536x700.webp 1536w, https://www.freedidi.com/wp-content/uploads/2026/06/20260612100059_024677-520x237.webp 520w, https://www.freedidi.com/wp-content/uploads/2026/06/20260612100059_024677-940x429.webp 940w" sizes="auto, (max-width: 758px) 100vw, 758px" /></p>
+<p>&nbsp;</p>
+<p>就可以自动进入到OpenClaw的可视化的操作界面，在底部就可以看到正常加载到本地的 Holo3.1 开源模型，Off 意思是自动关闭思考模式，因为作为Agent模型，不需要思考过程，否则启动会非常耗时间。</p>
+<p>&nbsp;</p>
+<p><img loading="lazy" decoding="async" class="wp-image-24460 aligncenter" src="https://www.freedidi.com/wp-content/uploads/2026/06/20260612100204_041048-scaled.webp" alt="20260612100204 041048 scaled" width="873" height="491" title="Holo 3.1 模型本地 Agent 部署实测：免费无限 Token，接入 OpenClaw ，速度确实很快！！ 9" srcset="https://www.freedidi.com/wp-content/uploads/2026/06/20260612100204_041048-scaled.webp 2560w, https://www.freedidi.com/wp-content/uploads/2026/06/20260612100204_041048-748x421.webp 748w, https://www.freedidi.com/wp-content/uploads/2026/06/20260612100204_041048-768x432.webp 768w, https://www.freedidi.com/wp-content/uploads/2026/06/20260612100204_041048-1536x864.webp 1536w, https://www.freedidi.com/wp-content/uploads/2026/06/20260612100204_041048-2048x1152.webp 2048w, https://www.freedidi.com/wp-content/uploads/2026/06/20260612100204_041048-520x293.webp 520w, https://www.freedidi.com/wp-content/uploads/2026/06/20260612100204_041048-940x529.webp 940w" sizes="auto, (max-width: 873px) 100vw, 873px" /></p>
+<p>&nbsp;</p>
+<p>成功启动小龙虾以后，建议安装几个必备的浏览器自动化的 skills</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="generic">openclaw skills install agent-browser-cli
+openclaw skills install use-my-browser</pre>
+<p>&nbsp;</p>
+<p>安装后再通过命令：openclaw gateway 重启下 OpenClaw 即可！或直接在对话框输入/new 也可以，最后实测，浏览器自动化操作，非常的丝滑流程，最让我意想不到的是，速度确实很快很快！！！ 比之前的Qwen 3.5 模型不知快了多少倍，本地模型执行AI Agent 任务，几乎不需要等待的，直接秒执行！</p>
+<p>&nbsp;</p>
+<p><img loading="lazy" decoding="async" class="alignnone size-full wp-image-24469" src="https://www.freedidi.com/wp-content/uploads/2026/06/20260612101554_184640-scaled.webp" alt="20260612101554 184640 scaled" width="2560" height="1440" title="Holo 3.1 模型本地 Agent 部署实测：免费无限 Token，接入 OpenClaw ，速度确实很快！！ 10" srcset="https://www.freedidi.com/wp-content/uploads/2026/06/20260612101554_184640-scaled.webp 2560w, https://www.freedidi.com/wp-content/uploads/2026/06/20260612101554_184640-748x421.webp 748w, https://www.freedidi.com/wp-content/uploads/2026/06/20260612101554_184640-768x432.webp 768w, https://www.freedidi.com/wp-content/uploads/2026/06/20260612101554_184640-1536x864.webp 1536w, https://www.freedidi.com/wp-content/uploads/2026/06/20260612101554_184640-2048x1152.webp 2048w, https://www.freedidi.com/wp-content/uploads/2026/06/20260612101554_184640-520x293.webp 520w, https://www.freedidi.com/wp-content/uploads/2026/06/20260612101554_184640-940x529.webp 940w" sizes="auto, (max-width: 2560px) 100vw, 2560px" /></p>
+<p>&nbsp;</p>
+<p>通过开源的Holo3.1模型，你只需一张性能不错的独立显卡，几乎可以代理那些付费的API，如果你的任务不是特别复杂且难度极高的推理。那么这个最新的开源模型就是最佳的本地部署方案！真正完全免费、无需Token、无需绑定任何付费套餐！真正让你实现本地 AI 自由&#8230;&#8230;</p>
+    <div class="donation-container">
+        <button class="donation-main-btn" id="donationMainBtn">
+            <span class="dashicons dashicons-heart"></span> 打赏支持        </button>
+        
+        <div class="donation-modal" id="donationModal">
+            <div class="donation-modal-content">
+                <span class="donation-close">&times;</span>
+                <h3>感谢您的支持</h3>
+                
+                <div class="donation-options">
+                    <div class="donation-option" data-type="alipay">
+                        <div class="payment-icon-wrapper"><img decoding="async" src="https://www.freedidi.com/wp-content/plugins/donation-button/images/alipay.png" class="payment-icon" alt="alipay" title="Holo 3.1 模型本地 Agent 部署实测：免费无限 Token，接入 OpenClaw ，速度确实很快！！ 11"></div>
+                        <span>支付宝</span>
+                    </div>
+                    <div class="donation-option" data-type="wechat">
+                        <div class="payment-icon-wrapper"><img decoding="async" src="https://www.freedidi.com/wp-content/plugins/donation-button/images/wechat.png" class="payment-icon" alt="wechat" title="Holo 3.1 模型本地 Agent 部署实测：免费无限 Token，接入 OpenClaw ，速度确实很快！！ 12"></div>
+                        <span>微信支付</span>
+                    </div>
+                    <div class="donation-option" data-type="bitcoin">
+                        <div class="payment-icon-wrapper"><img decoding="async" src="https://www.freedidi.com/wp-content/plugins/donation-button/images/bitcoin.png" class="payment-icon" alt="bitcoin" title="Holo 3.1 模型本地 Agent 部署实测：免费无限 Token，接入 OpenClaw ，速度确实很快！！ 13"></div>
+                        <span>Bitcoin</span>
+                    </div>
+                    <div class="donation-option" data-type="usdt">
+                        <div class="payment-icon-wrapper"><img decoding="async" src="https://www.freedidi.com/wp-content/plugins/donation-button/images/usdt.png" class="payment-icon" alt="usdt" title="Holo 3.1 模型本地 Agent 部署实测：免费无限 Token，接入 OpenClaw ，速度确实很快！！ 14"></div>
+                        <span>USDT</span>
+                    </div>
+                </div>
+
+                <div class="qrcode-display" id="qrcodeDisplay">
+                    <div class="qr-container">
+                        <img decoding="async" id="qrcodeImage" src="" alt="QR Code" title="Holo 3.1 模型本地 Agent 部署实测：免费无限 Token，接入 OpenClaw ，速度确实很快！！ 15">
+                    </div>
+                    
+                    
+                    <div id="donationAddressArea" style="display:none;">
+                        <div class="address-box">
+                            <input type="text" id="walletAddress" readonly>
+                            <button type="button" id="copyBtn">复制</button>
+                        </div>
+                        <span id="copyMsg" style="font-size:12px; color:#26A17B; display:none;">已复制!</span>
+                    </div>
+                    
+                    <button class="back-btn" id="backBtn">返回选择</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class='code-block code-block-default code-block-bc-rgb-238-238-238 code-block-2 ai-track' data-ai='WzIsMCwiQmxvY2sgMiIsIiIsMV0='>
+<div class='no-visibility-check ai-check-2-33853579' data-insertion-position='after' data-selector='.ai-check-2-33853579' data-code='PGRpdiBjbGFzcz0iYWktYXR0cmlidXRlcyI+CjxzcGFuIGNsYXNzPSdhaS1jaGVjay1ibG9jayBhaS1jZnAnIGRhdGEtYWktYmxvY2s9JzInIGRhdGEtYWktbGltaXQtY2xpY2tzLXBlci10aW1lPSczJyBkYXRhLWFpLWxpbWl0LWNsaWNrcy10aW1lPScxJyBkYXRhLWFpLWdsb2JhbC1saW1pdC1jbGlja3MtcGVyLXRpbWU9JzMnIGRhdGEtYWktZ2xvYmFsLWxpbWl0LWNsaWNrcy10aW1lPScxJyBkYXRhLWFpLWNmcC10aW1lPSczMCc+PC9zcGFuPgo8L2Rpdj4KPHN0eWxlPgogIC5hZC13cmFwcGVyLXNhZmUgewogICAgYm9yZGVyOiAxcHggc29saWQgI2UwZTBlMDsKICAgIGJvcmRlci1yYWRpdXM6IDZweDsKICAgIHBhZGRpbmc6IDE1cHg7CiAgICBtYXJnaW4tdG9wOiAzMHB4OwogICAgbWFyZ2luLWJvdHRvbTogMjBweDsKICAgIGJhY2tncm91bmQ6IHRyYW5zcGFyZW50OwogIH0KICAuYWQtbGFiZWwtc2FmZSB7CiAgICBmb250LXNpemU6IDEycHg7CiAgICBjb2xvcjogIzk5OTsKICAgIHRleHQtYWxpZ246IGxlZnQ7CiAgICBtYXJnaW4tYm90dG9tOiAxMHB4OwogICAgbGV0dGVyLXNwYWNpbmc6IDFweDsKICB9CiAgLyog6Ieq5Yqo6YCC6YWN5rex6ImyL+WknOmXtOaooeW8j++8jOS/neaMgeenkeaKgOaEn+S4juaegeeugOinhuiniSAqLwogIEBtZWRpYSAocHJlZmVycy1jb2xvci1zY2hlbWU6IGRhcmspIHsKICAgIC5hZC13cmFwcGVyLXNhZmUgewogICAgICBib3JkZXItY29sb3I6ICMzMzMzMzM7CiAgICB9CiAgICAuYWQtbGFiZWwtc2FmZSB7CiAgICAgIGNvbG9yOiAjNjY2NjY2OwogICAgfQogIH0KPC9zdHlsZT4KCjxkaXYgY2xhc3M9ImFkLXdyYXBwZXItc2FmZSI+CiAgICAKICAgIDxkaXYgY2xhc3M9ImFkLWxhYmVsLXNhZmUiPgogICAgICAgIC0g6LWe5Yqp5ZWG5YaF5a65IC0KICAgIDwvZGl2PgoKICAgIDxzY3JpcHQgYXN5bmMgc3JjPSJodHRwczovL3BhZ2VhZDIuZ29vZ2xlc3luZGljYXRpb24uY29tL3BhZ2VhZC9qcy9hZHNieWdvb2dsZS5qcz9jbGllbnQ9Y2EtcHViLTM5MDcyNjA2MjgxNTI4MTgiIGNyb3Nzb3JpZ2luPSJhbm9ueW1vdXMiPjwvc2NyaXB0PgogICAgPGlucyBjbGFzcz0iYWRzYnlnb29nbGUiCiAgICAgICAgIHN0eWxlPSJkaXNwbGF5OmJsb2NrIgogICAgICAgICBkYXRhLWFkLWZvcm1hdD0iYXV0b3JlbGF4ZWQiCiAgICAgICAgIGRhdGEtYWQtY2xpZW50PSJjYS1wdWItMzkwNzI2MDYyODE1MjgxOCIKICAgICAgICAgZGF0YS1hZC1zbG90PSI4Njk0NzAyNjQxIj48L2lucz4KICAgIDxzY3JpcHQ+CiAgICAgICAgIChhZHNieWdvb2dsZSA9IHdpbmRvdy5hZHNieWdvb2dsZSB8fCBbXSkucHVzaCh7fSk7CiAgICA8L3NjcmlwdD4KCjwvZGl2Pg==' data-fallback-code='PGRpdiBjbGFzcz0nYWktYWRiLXNob3cnIHN0eWxlPSd2aXNpYmlsaXR5OiBoaWRkZW47IGRpc3BsYXk6IG5vbmU7JyBkYXRhLWFpLXRyYWNraW5nPSdXekUyTERBc0lrSnNiMk5ySURFMklpd2lJaXd3WFE9PScgZGF0YS1haS1kZWJ1Zz0nMTYnPgo8YSBocmVmPSJodHRwczovL3d3dy5hbGl5dW4uY29tL3Byb2R1Y3QvZWNzP3VzZXJDb2RlPWp1Zm9jb2k2IiB0YXJnZXQ9Il9ibGFuayIgcmVsPSJub29wZW5lciI+PGltZyBjbGFzcz0iYWxpZ25ub25lIHNpemUtZnVsbCB3cC1pbWFnZS0yNDU2OCIgc3JjPSJodHRwczovL3d3dy5mcmVlZGlkaS5jb20vd3AtY29udGVudC91cGxvYWRzLzIwMjYvMDYvMjAyNjA2MjExNTA4MDRfOTYxODc0LndlYnAiIGFsdD0iIiB3aWR0aD0iMTUzNiIgaGVpZ2h0PSIxMDI0IiAvPjwvYT48L2Rpdj4K' limits-fallback='16' fallback_level='1' fallback-tracking='WzAsMCwiQmxvY2sgMTYiLCIiXQ==' data-block='2'><span class='ai-check-block ai-cfp' data-ai-block='2' data-ai-limit-clicks-per-time='3' data-ai-limit-clicks-time='1' data-ai-global-limit-clicks-per-time='3' data-ai-global-limit-clicks-time='1' data-ai-cfp-time='30'></span></div>
+
+</div>
+<!-- AI CONTENT END 1 -->
+
+				
+
+
+																
+					</div><!--/.entry-->
+				</div>
+				<div class="entry-footer group">
+					
+										
+					
+					
+										
+					
+	<div class="sharrre-container sharrre-header group">
+		<span>Share</span>
+		<div id="twitter" class="sharrre">
+			<a class="box group" href="https://twitter.com/intent/tweet?url=https://www.freedidi.com/24451.html&text=Holo 3.1 模型本地 Agent 部署实测：免费无限 Token，接入 OpenClaw ，速度确实很快！！" title="Share on X">
+				<div class="count"><i class="fas fa-plus"></i></div>
+			</a>
+		</div>
+		<div id="facebook" class="sharrre">
+			<a class="box group" href="https://www.facebook.com/sharer/sharer.php?u=https://www.freedidi.com/24451.html" title="Share on Facebook">
+				<div class="count"><i class="fas fa-plus"></i></div>
+			</a>
+		</div>
+		<div id="pinterest" class="sharrre">
+			<a class="box group" href="https://pinterest.com/pin/create/button/?url=https://www.freedidi.com/24451.html&media=&description=Holo 3.1 模型本地 Agent 部署实测：免费无限 Token，接入 OpenClaw ，速度确实很快！！" title="Share on Pinterest">
+				<div class="count"><i class="fas fa-plus"></i></div>
+			</a>
+		</div>
+		<div id="linkedin" class="sharrre">
+			<a class="box group" href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.freedidi.com/24451.html" title="Share on LinkedIn">
+				<div class="count"><i class="fas fa-plus"></i></div>
+			</a>
+		</div>
+	</div><!--/.sharrre-container-->
+	
+						
+						<ul class="post-nav group">
+		<li class="next"><a href="https://www.freedidi.com/24478.html" rel="next"><i class="fas fa-chevron-right"></i><strong>Next</strong> <span>必更！Windows 11 迎来2026年最强更新，CPU秒开鸡血模式，老电脑都变流畅了！</span></a></li>
+		<li class="previous"><a href="https://www.freedidi.com/24419.html" rel="prev"><i class="fas fa-chevron-left"></i><strong>Previous</strong> <span>Hermes Agent 桌面版正式发布！Windows / macOS / Linux 全平台支持，小白也能轻松上手！</span></a></li>
+	</ul>
+
+										
+				</div>
+			</div>
+
+		
+</div>
+
+<div style="padding:20px;background:#f8f9fa;border-radius:12px;margin-top:30px;text-align:center">
+<strong>📢 广告位招商中</strong><br>
+<small>联系：zenghuafeng008@gmail.com</small>
+</div>
+</article>
+</main>
+
+<footer>
+<div class="container">
+<nav class="footer-links">
+<a href="../index.html">首页</a>
+<a href="../articles.html">文章</a>
+<a href="../videos.html">视频</a>
+<a href="../about.html">关于</a>
+<a href="../contact.html">联系</a>
+</nav>
+<p>&copy; 2026 <a href="../index.html">FenggeBlog</a> | AI 前沿资讯</p>
+</div>
+</footer>
+</body>
+</html>
