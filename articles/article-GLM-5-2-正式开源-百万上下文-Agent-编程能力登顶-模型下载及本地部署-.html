@@ -5,6 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GLM 5.2 正式开源！百万上下文、Agent 编程能力登顶，模型下载及本地部署！ | Fengge Blog</title>
 <link rel="stylesheet" href="../style.css">
+<style>
+.article-content { line-height: 1.8; font-size: 16px; color: #333; }
+.article-content p { margin: 1.2em 0; }
+.article-content img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 12px rgba(0,0,0,0.15); margin: 2em auto; display: block; }
+.article-content ul, .article-content ol { margin: 1em 0; padding-left: 2em; }
+.article-content li { margin: 0.6em 0; }
+.article-header { margin-bottom: 2em; padding-bottom: 1em; border-bottom: 1px solid #eee; }
+.article-category { background: #007bff; color: white; padding: 4px 12px; border-radius: 4px; font-size: 0.85em; }
+.article-date { color: #888; margin-left: 1em; }
+.article-title { font-size: 2em; color: #333; margin: 0.5em 0; }
+.back-btn { display: inline-block; margin-top: 2em; padding: 12px 24px; background: #007bff; color: white; text-decoration: none; border-radius: 6px; }
+.back-btn:hover { background: #0056b3; }
+</style>
 </head>
 <body>
 <header>
@@ -27,88 +40,311 @@
 </div>
 <h1 class="article-title">GLM 5.2 正式开源！百万上下文、Agent 编程能力登顶，模型下载及本地部署！</h1>
 <div class="article-content">
-<p>最近， AI 圈迎来了一颗重磅炸弹。智谱 AI 正式发布并开源了全新的旗舰模型——GLM 5.2。如果你最近关注开源大模型领域，相信已完成看到不少关于 GLM 5.2 的讨论。与以往单纯提升聊天能力不同，这次 GLM 5.2 的重点放在了一个更加重要的方向——Agent（智能体）与长周期任务处理能力。</p>
-<p>更重要的是，GLM 5.2 采用 MIT 开源许可证，允许个人和企业自由使用、修改和商业部署，没有地域限制。那么，GLM 5.2 到底有哪些亮点？它是否真的有机会挑战目前最强的闭源模型？本文带你快速了解。</p>
-<p>GLM 5.2 有哪些重大升级？<br>1、首次实现稳定的百万 Token 上下文<br>目前不少大模型都宣传支持超长上下文。但真正能够在超长文本环境下保持稳定性能的模型并不多。GLM 5.2 最大的升级之一，就是实现了稳定的 100 万 Token 上下文窗口。</p>
-<p>这意味着：</p>
-<p>能够同时分析超大型代码库<br>能够处理多个文档知识库<br>能够连续执行复杂任务<br>能够更好地支持 Agent 长时间工作</p>
-<p>对于未来的 AI Agent 来说，这项能力至关重要。因为真正的 Agent 并不是简单回答一个问题，而是能够持续工作数小时甚至数天。</p>
-<p>2、Agent 能力迎来重大突破<br>如果说过去 AI 的竞争核心是聊天能力，那么未来 AI 的竞争核心一定是执行能力。</p>
-<p>根据社区公布的数据：</p>
-<p>GLM 5.2 成为了首个在 Terminal-Bench 测试中突破 80% 成绩的开放权重模型。</p>
-<p>这是一个十分重要的里程碑。</p>
-<p>Terminal-Bench 主要考察模型在真实终端环境下完成复杂任务的能力，包括：</p>
-<p>编程<br>调试<br>文件处理<br>命令执行<br>多步骤任务规划</p>
-<p>此前这一领域长期被闭源模型占据优势。</p>
-<p>而如今，开源模型终于开始追上来了。</p>
-<p>3、LiveBench 排名进入全球第一梯队<br>在 LiveBench 最新 Agent Coding 排行榜中：</p>
-<p>GLM 5.2 与 Kimi K2.7 Code 成为了当前表现最强的 Agent 编程模型之一。</p>
-<p>更令人惊讶的是：</p>
-<p>排行榜前三名中，有两个属于开放权重模型。</p>
-<p>这意味着开源生态已完成开始具备与顶级闭源模型正面竞争的实力。</p>
-<p>对于开发者和本地部署玩家来说，这是一个十分积极的信号。</p>
-<p>4、更强大的编程能力<br>GLM 5.2 在代码生成方面进行了大量优化。</p>
-<p>官方表示：</p>
-<p>模型支持不同等级的推理模式，能够根据任务复杂度自由调整思考深度，从而在性能与响应速度之间取得平衡。</p>
-<p>简单来说：</p>
-<p>简单任务快速响应<br>复杂任务深度思考<br>更适合长期开发工作流</p>
-<p>对于编程场景而言，这种设计十分实用。</p>
-<p>GLM 5.2 背后的技术升级<br>除了性能提升之外，GLM 5.2 还带来了多项底层架构创新。</p>
-<p>其中最值得关注的是：</p>
-<p>IndexShare 架构<br>官方提出了一种全新的 IndexShare 技术。</p>
-<p>通过让每四层稀疏注意力层共享同一个索引器：</p>
-<p>1M 上下文环境下 FLOPs 降低约 2.9 倍<br>大幅提升长上下文效率<br>降低推理成本</p>
-<p>改进的 MTP 推测解码<br>GLM 5.2 同时优化了 MTP（Multi-Token Prediction）层。</p>
-<p>官方数据显示：</p>
-<p>推测性解码接受长度提升最高可达 20%。</p>
-<p>简单理解就是：</p>
-<p>生成速度更快，延迟更低。</p>
-<p>普通用户能在本地部署吗？<br>答案是：理论上能够。</p>
-<p>现实中很难。</p>
-<p>GLM 5.2 采用 MoE（混合专家）架构。</p>
-<p>总参数规模达到约 753B。</p>
-<p>下面是社区整理的硬件需求参考：</p>
-<p>量化版本<br>预计内存需求</p>
-<p>FP8<br>744GB – 890GB</p>
-<p>Q4_K_M<br>476GB – 500GB</p>
-<p>Q2_K_XL<br>241GB – 280GB</p>
-<p>1 Bit 动态量化<br>176GB – 180GB</p>
-<p>即使是最低量化版本，也远远超出普通消费级电脑的承载能力。</p>
-<p>量化水平<br>所需内存<br>最低硬件配置</p>
-<p>FP8 重量<br>744 GB 至 890 GB<br>8 个 H200 (141GB) 或 8 个 H100 (80GB) 服务器节点</p>
-<p>4 位 (Q4_K_M)<br>476 GB 至 500 GB<br>Mac Studio 集群或 6 块 80GB 企业级 GPU</p>
-<p>2 位 (Q2_K_XL)<br>241 GB 至 280 GB<br>单台 256GB Mac Studio（Ultra 版）或 RTX 4090 + 256GB 系统内存</p>
-<p>1 位动态<br>176 GB 至 180 GB<br>192GB Mac Studio 或 24GB GPU + 192GB 系统内存</p>
-<p>对于绝大多数用户来说：</p>
-<p>目前更适合通过在线平台体验 GLM 5.2。</p>
-<p>支持哪些部署框架？<br>对于企业和研究机构而言，GLM 5.2 已完成支持多个主流推理框架：</p>
-<p>SGLang<br>vLLM<br>Transformers<br>KTransformers</p>
-<p>同时还支持 Ascend NPU 生态。</p>
-<p>整体兼容性表现相当不错。</p>
-<p>免费体验 GLM 5.2<br>如果你没有企业级 GPU 集群，也能够直接在线体验。</p>
-<p>目前可用的平台包括：</p>
-<p>1、官方体验地址<br>【点击前往】</p>
-<p>2、Hugging Face 在线体验<br>【链接直达】</p>
-<p>GLM 5.2 模型下载<br>1、官方满血版 【点击下载】</p>
-<p>2、GLM 5.2 量化版 【点击前往】</p>
-<p>我们测试了什么？<br>为了验证 GLM 5.2 的真实能力，我们进行了多组高难度代码生成测试，包括：</p>
-<p>Minecraft 高还原游戏生成<br>专业射箭网站首页开发<br>清明上河图 3D 场景构建<br>花莲机场 3D 场景模拟<br>南京博物院 3D 展示页面<br>GTA 风格开放城市<br>浏览器 WebGL 操作系统<br>FPS 地铁射击游戏<br>C++ 拉力赛车项目<br>奢侈手表 3D 官网</p>
-<p>从实际测试结果来看，GLM 5.2 在复杂前端项目和 Agent 编程场景中表现出了极强的竞争力。</p>
-<p>GLM 5.2 最大的意义是什么？<br>很多人看到 753B 参数规模后，第一反应是：</p>
-<p>“反正我也跑不起来。”</p>
-<p>但事实上，GLM 5.2 的真正价值并不在于让每个人部署它。</p>
-<p>而在于它将成为未来开源模型的重要知识来源。</p>
-<p>每一次顶级开源模型发布之后：</p>
-<p>社区都会进行蒸馏、微调和优化。</p>
-<p>未来几个月，我们很或许会看到：</p>
-<p>GLM 5.2 70B<br>GLM 5.2 32B<br>GLM 5.2 8B</p>
-<p>等更加适合本地部署的版本出现。</p>
-<p>而这些模型，最终将惠及所有普通用户。</p>
-<p>总结<br>GLM 5.2 不仅仅是一次常规的模型升级。</p>
-<p>它代表着开源 AI 在 Agent 与编程领域的一次重要突破。</p>
-<p>百万 Token 长上下文、Terminal-Bench 首个突破 80%、顶级 Agent 编程能力以及 MIT 开源协议，让它成为目前最值得关注的开源模型之一。</p>
-<p>对于整个开源 AI 社区而言，这或许只是一个开始。</p>
+class="entry-content">
+					<div class="entry themeform">	
+
+						<p class="isSelectedEnd">最近， AI 圈迎来了一颗重磅炸弹。智谱 AI 正式发布并开源了全新的旗舰模型——GLM 5.2。如果你最近关注开源大模型领域，相信已经看到不少关于 GLM 5.2 的讨论。与以往单纯提升聊天能力不同，这次 GLM 5.2 的重点放在了一个更加重要的方向——Agent（智能体）与长周期任务处理能力。</p>
+<p><img fetchpriority="high" decoding="async" class="wp-image-24516 aligncenter" src="../images/article-24513-img-6.png" alt="20260618113345 985332 scaled" width="803" height="452" title="GLM 5.2 正式开源！百万上下文、Agent 编程能力登顶，模型下载及本地部署！ 1" srcset="../images/article-24513-img-6.png 2560w, https://www.freedidi.com/wp-content/uploads/2026/06/20260618113345_985332-748x421.webp 748w, https://www.freedidi.com/wp-content/uploads/2026/06/20260618113345_985332-768x432.webp 768w, https://www.freedidi.com/wp-content/uploads/2026/06/20260618113345_985332-1536x864.webp 1536w, https://www.freedidi.com/wp-content/uploads/2026/06/20260618113345_985332-2048x1152.webp 2048w, https://www.freedidi.com/wp-content/uploads/2026/06/20260618113345_985332-520x293.webp 520w, https://www.freedidi.com/wp-content/uploads/2026/06/20260618113345_985332-940x529.webp 940w" sizes="(max-width: 803px) 100vw, 803px" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p class="isSelectedEnd">更重要的是，GLM 5.2 采用 MIT 开源许可证，允许个人和企业自由使用、修改和商业部署，没有地域限制。那么，GLM 5.2 到底有哪些亮点？它是否真的有机会挑战目前最强的闭源模型？本文带你快速了解。</p><div class='code-block code-block-center code-block-1 ai-track' data-ai='WzEsMCwiQmxvY2sgMSIsIiIsMV0='>
+<div class='no-visibility-check ai-check-1-64323841' data-insertion-position='after' data-selector='.ai-check-1-64323841' data-code='PGRpdiBjbGFzcz0iYWktYXR0cmlidXRlcyI+CjxzcGFuIGNsYXNzPSdhaS1jaGVjay1ibG9jayBhaS1jZnAnIGRhdGEtYWktYmxvY2s9JzEnIGRhdGEtYWktbGltaXQtY2xpY2tzLXBlci10aW1lPSczJyBkYXRhLWFpLWxpbWl0LWNsaWNrcy10aW1lPScxJyBkYXRhLWFpLWdsb2JhbC1saW1pdC1jbGlja3MtcGVyLXRpbWU9JzMnIGRhdGEtYWktZ2xvYmFsLWxpbWl0LWNsaWNrcy10aW1lPScxJyBkYXRhLWFpLWNmcC10aW1lPSczMCc+PC9zcGFuPgo8L2Rpdj4KPHN0eWxlPgogIC8qIOS4k+S4uuato+aWh+aOkueJiOS8mOWMlueahOi9u+mHj+e6p+malOemu+WuueWZqCAqLwogIC5hZC1pbi1hcnRpY2xlLXNhZmUgewogICAgYm9yZGVyLXRvcDogMXB4IHNvbGlkICNlYWVhZWE7CiAgICBib3JkZXItYm90dG9tOiAxcHggc29saWQgI2VhZWFlYTsKICAgIHBhZGRpbmc6IDE1cHggMDsKICAgIG1hcmdpbjogMzVweCAwOyAvKiDkv53or4Hlub/lkYrkuI7kuIrkuIvmrrXokL3mnInotrPlpJ/nmoTlronlhajmu5Hliqjot53nprsgKi8KICAgIHRleHQtYWxpZ246IGNlbnRlcjsKICB9CiAgLmFkLWxhYmVsLWNlbnRlciB7CiAgICBmb250LXNpemU6IDEycHg7CiAgICBjb2xvcjogIzk5OTsKICAgIG1hcmdpbi1ib3R0b206IDEycHg7CiAgICBsZXR0ZXItc3BhY2luZzogMXB4OwogIH0KICAvKiDoh6rliqjpgILphY3mt7HoibIv5aSc6Ze05qih5byPICovCiAgQG1lZGlhIChwcmVmZXJzLWNvbG9yLXNjaGVtZTogZGFyaykgewogICAgLmFkLWluLWFydGljbGUtc2FmZSB7CiAgICAgIGJvcmRlci1jb2xvcjogIzMzMzMzMzsKICAgIH0KICAgIC5hZC1sYWJlbC1jZW50ZXIgewogICAgICBjb2xvcjogIzY2NjY2NjsKICAgIH0KICB9Cjwvc3R5bGU+Cgo8ZGl2IGNsYXNzPSJhZC1pbi1hcnRpY2xlLXNhZmUiPgogICAgCiAgICA8ZGl2IGNsYXNzPSJhZC1sYWJlbC1jZW50ZXIiPgogICAgICAgIC0g6LWe5Yqp5ZWG5YaF5a65IC0KICAgIDwvZGl2PgoKICAgIDxzY3JpcHQgYXN5bmMgc3JjPSJodHRwczovL3BhZ2VhZDIuZ29vZ2xlc3luZGljYXRpb24uY29tL3BhZ2VhZC9qcy9hZHNieWdvb2dsZS5qcz9jbGllbnQ9Y2EtcHViLTM5MDcyNjA2MjgxNTI4MTgiIGNyb3Nzb3JpZ2luPSJhbm9ueW1vdXMiPjwvc2NyaXB0PgogICAgPGlucyBjbGFzcz0iYWRzYnlnb29nbGUiCiAgICAgICAgIHN0eWxlPSJkaXNwbGF5OmJsb2NrOyB0ZXh0LWFsaWduOmNlbnRlcjsiCiAgICAgICAgIGRhdGEtYWQtbGF5b3V0PSJpbi1hcnRpY2xlIgogICAgICAgICBkYXRhLWFkLWZvcm1hdD0iZmx1aWQiCiAgICAgICAgIGRhdGEtYWQtY2xpZW50PSJjYS1wdWItMzkwNzI2MDYyODE1MjgxOCIKICAgICAgICAgZGF0YS1hZC1zbG90PSI1NzY3MTEwODAzIj48L2lucz4KICAgIDxzY3JpcHQ+CiAgICAgICAgIChhZHNieWdvb2dsZSA9IHdpbmRvdy5hZHNieWdvb2dsZSB8fCBbXSkucHVzaCh7fSk7CiAgICA8L3NjcmlwdD4KCjwvZGl2Pg==' data-fallback-code='PGRpdiBjbGFzcz0nYWktYWRiLXNob3cnIHN0eWxlPSd2aXNpYmlsaXR5OiBoaWRkZW47IGRpc3BsYXk6IG5vbmU7JyBkYXRhLWFpLXRyYWNraW5nPSdXekUyTERBc0lrSnNiMk5ySURFMklpd2lJaXd3WFE9PScgZGF0YS1haS1kZWJ1Zz0nMTYnPgo8YSBocmVmPSJodHRwczovL3d3dy5hbGl5dW4uY29tL3Byb2R1Y3QvZWNzP3VzZXJDb2RlPWp1Zm9jb2k2IiB0YXJnZXQ9Il9ibGFuayIgcmVsPSJub29wZW5lciI+PGltZyBjbGFzcz0iYWxpZ25ub25lIHNpemUtZnVsbCB3cC1pbWFnZS0yNDU2OCIgc3JjPSJodHRwczovL3d3dy5mcmVlZGlkaS5jb20vd3AtY29udGVudC91cGxvYWRzLzIwMjYvMDYvMjAyNjA2MjExNTA4MDRfOTYxODc0LndlYnAiIGFsdD0iIiB3aWR0aD0iMTUzNiIgaGVpZ2h0PSIxMDI0IiAvPjwvYT48L2Rpdj4K' limits-fallback='16' fallback_level='1' fallback-tracking='WzAsMCwiQmxvY2sgMTYiLCIiXQ==' data-block='1'><span class='ai-check-block ai-cfp' data-ai-block='1' data-ai-limit-clicks-per-time='3' data-ai-limit-clicks-time='1' data-ai-global-limit-clicks-per-time='3' data-ai-global-limit-clicks-time='1' data-ai-cfp-time='30'></span></div>
+
+</div>
+
+<p>&nbsp;</p>
+<p><img decoding="async" class="wp-image-24515 aligncenter" src="../images/article-24513-img-5.png" alt="20260618113316 005213 scaled" width="764" height="430" title="GLM 5.2 正式开源！百万上下文、Agent 编程能力登顶，模型下载及本地部署！ 2" srcset="../images/article-24513-img-5.png 2560w, https://www.freedidi.com/wp-content/uploads/2026/06/20260618113316_005213-748x421.webp 748w, https://www.freedidi.com/wp-content/uploads/2026/06/20260618113316_005213-768x432.webp 768w, https://www.freedidi.com/wp-content/uploads/2026/06/20260618113316_005213-1536x864.webp 1536w, https://www.freedidi.com/wp-content/uploads/2026/06/20260618113316_005213-2048x1152.webp 2048w, https://www.freedidi.com/wp-content/uploads/2026/06/20260618113316_005213-520x293.webp 520w, https://www.freedidi.com/wp-content/uploads/2026/06/20260618113316_005213-940x529.webp 940w" sizes="(max-width: 764px) 100vw, 764px" /></p>
+<h2></h2>
+<h2>GLM 5.2 有哪些重大升级？</h2>
+<h3>1、首次实现稳定的百万 Token 上下文</h3>
+<p class="isSelectedEnd">目前不少大模型都宣传支持超长上下文。但真正能够在超长文本环境下保持稳定性能的模型并不多。GLM 5.2 最大的升级之一，就是实现了稳定的 100 万 Token 上下文窗口。</p>
+<p class="isSelectedEnd">这意味着：</p>
+<ul data-spread="false">
+<li>可以同时分析超大型代码库</li>
+<li>可以处理多个文档知识库</li>
+<li>可以连续执行复杂任务</li>
+<li>能够更好地支持 Agent 长时间工作</li>
+</ul>
+<p class="isSelectedEnd">对于未来的 AI Agent 来说，这项能力至关重要。因为真正的 Agent 并不是简单回答一个问题，而是能够持续工作数小时甚至数天。</p>
+<div class="video-container"><iframe title="GLM 5.2 正式开源！Agent 编程能力登顶，真正百万上下文，效果实测+模型本地部署！| " width="740" height="416" src="https://www.youtube.com/embed/jP_NTND4EKs?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+<h3>2、Agent 能力迎来重大突破</h3>
+<p class="isSelectedEnd">如果说过去 AI 的竞争核心是聊天能力，那么未来 AI 的竞争核心一定是执行能力。</p>
+<p class="isSelectedEnd">根据社区公布的数据：</p>
+<p class="isSelectedEnd">GLM 5.2 成为了首个在 Terminal-Bench 测试中突破 80% 成绩的开放权重模型。</p>
+<p class="isSelectedEnd">这是一个非常重要的里程碑。</p>
+<p class="isSelectedEnd">Terminal-Bench 主要考察模型在真实终端环境下完成复杂任务的能力，包括：</p><div class='code-block code-block-center code-block-1 ai-track' data-ai='WzEsMCwiQmxvY2sgMSIsIiIsMl0='>
+<div class='no-visibility-check ai-check-1-30475341' data-insertion-position='after' data-selector='.ai-check-1-30475341' data-code='PGRpdiBjbGFzcz0iYWktYXR0cmlidXRlcyI+CjxzcGFuIGNsYXNzPSdhaS1jaGVjay1ibG9jayBhaS1jZnAnIGRhdGEtYWktYmxvY2s9JzEnIGRhdGEtYWktbGltaXQtY2xpY2tzLXBlci10aW1lPSczJyBkYXRhLWFpLWxpbWl0LWNsaWNrcy10aW1lPScxJyBkYXRhLWFpLWdsb2JhbC1saW1pdC1jbGlja3MtcGVyLXRpbWU9JzMnIGRhdGEtYWktZ2xvYmFsLWxpbWl0LWNsaWNrcy10aW1lPScxJyBkYXRhLWFpLWNmcC10aW1lPSczMCc+PC9zcGFuPgo8L2Rpdj4KPHN0eWxlPgogIC8qIOS4k+S4uuato+aWh+aOkueJiOS8mOWMlueahOi9u+mHj+e6p+malOemu+WuueWZqCAqLwogIC5hZC1pbi1hcnRpY2xlLXNhZmUgewogICAgYm9yZGVyLXRvcDogMXB4IHNvbGlkICNlYWVhZWE7CiAgICBib3JkZXItYm90dG9tOiAxcHggc29saWQgI2VhZWFlYTsKICAgIHBhZGRpbmc6IDE1cHggMDsKICAgIG1hcmdpbjogMzVweCAwOyAvKiDkv53or4Hlub/lkYrkuI7kuIrkuIvmrrXokL3mnInotrPlpJ/nmoTlronlhajmu5Hliqjot53nprsgKi8KICAgIHRleHQtYWxpZ246IGNlbnRlcjsKICB9CiAgLmFkLWxhYmVsLWNlbnRlciB7CiAgICBmb250LXNpemU6IDEycHg7CiAgICBjb2xvcjogIzk5OTsKICAgIG1hcmdpbi1ib3R0b206IDEycHg7CiAgICBsZXR0ZXItc3BhY2luZzogMXB4OwogIH0KICAvKiDoh6rliqjpgILphY3mt7HoibIv5aSc6Ze05qih5byPICovCiAgQG1lZGlhIChwcmVmZXJzLWNvbG9yLXNjaGVtZTogZGFyaykgewogICAgLmFkLWluLWFydGljbGUtc2FmZSB7CiAgICAgIGJvcmRlci1jb2xvcjogIzMzMzMzMzsKICAgIH0KICAgIC5hZC1sYWJlbC1jZW50ZXIgewogICAgICBjb2xvcjogIzY2NjY2NjsKICAgIH0KICB9Cjwvc3R5bGU+Cgo8ZGl2IGNsYXNzPSJhZC1pbi1hcnRpY2xlLXNhZmUiPgogICAgCiAgICA8ZGl2IGNsYXNzPSJhZC1sYWJlbC1jZW50ZXIiPgogICAgICAgIC0g6LWe5Yqp5ZWG5YaF5a65IC0KICAgIDwvZGl2PgoKICAgIDxzY3JpcHQgYXN5bmMgc3JjPSJodHRwczovL3BhZ2VhZDIuZ29vZ2xlc3luZGljYXRpb24uY29tL3BhZ2VhZC9qcy9hZHNieWdvb2dsZS5qcz9jbGllbnQ9Y2EtcHViLTM5MDcyNjA2MjgxNTI4MTgiIGNyb3Nzb3JpZ2luPSJhbm9ueW1vdXMiPjwvc2NyaXB0PgogICAgPGlucyBjbGFzcz0iYWRzYnlnb29nbGUiCiAgICAgICAgIHN0eWxlPSJkaXNwbGF5OmJsb2NrOyB0ZXh0LWFsaWduOmNlbnRlcjsiCiAgICAgICAgIGRhdGEtYWQtbGF5b3V0PSJpbi1hcnRpY2xlIgogICAgICAgICBkYXRhLWFkLWZvcm1hdD0iZmx1aWQiCiAgICAgICAgIGRhdGEtYWQtY2xpZW50PSJjYS1wdWItMzkwNzI2MDYyODE1MjgxOCIKICAgICAgICAgZGF0YS1hZC1zbG90PSI1NzY3MTEwODAzIj48L2lucz4KICAgIDxzY3JpcHQ+CiAgICAgICAgIChhZHNieWdvb2dsZSA9IHdpbmRvdy5hZHNieWdvb2dsZSB8fCBbXSkucHVzaCh7fSk7CiAgICA8L3NjcmlwdD4KCjwvZGl2Pg==' data-fallback-code='PGRpdiBjbGFzcz0nYWktYWRiLXNob3cnIHN0eWxlPSd2aXNpYmlsaXR5OiBoaWRkZW47IGRpc3BsYXk6IG5vbmU7JyBkYXRhLWFpLXRyYWNraW5nPSdXekUyTERBc0lrSnNiMk5ySURFMklpd2lJaXd3WFE9PScgZGF0YS1haS1kZWJ1Zz0nMTYnPgo8YSBocmVmPSJodHRwczovL3d3dy5hbGl5dW4uY29tL3Byb2R1Y3QvZWNzP3VzZXJDb2RlPWp1Zm9jb2k2IiB0YXJnZXQ9Il9ibGFuayIgcmVsPSJub29wZW5lciI+PGltZyBjbGFzcz0iYWxpZ25ub25lIHNpemUtZnVsbCB3cC1pbWFnZS0yNDU2OCIgc3JjPSJodHRwczovL3d3dy5mcmVlZGlkaS5jb20vd3AtY29udGVudC91cGxvYWRzLzIwMjYvMDYvMjAyNjA2MjExNTA4MDRfOTYxODc0LndlYnAiIGFsdD0iIiB3aWR0aD0iMTUzNiIgaGVpZ2h0PSIxMDI0IiAvPjwvYT48L2Rpdj4K' limits-fallback='16' fallback_level='1' fallback-tracking='WzAsMCwiQmxvY2sgMTYiLCIiXQ==' data-block='1'><span class='ai-check-block ai-cfp' data-ai-block='1' data-ai-limit-clicks-per-time='3' data-ai-limit-clicks-time='1' data-ai-global-limit-clicks-per-time='3' data-ai-global-limit-clicks-time='1' data-ai-cfp-time='30'></span></div>
+
+</div>
+
+<ul data-spread="false">
+<li>编程</li>
+<li>调试</li>
+<li>文件处理</li>
+<li>命令执行</li>
+<li>多步骤任务规划</li>
+</ul>
+<p class="isSelectedEnd">此前这一领域长期被闭源模型占据优势。</p>
+<p class="isSelectedEnd">而如今，开源模型终于开始追上来了。</p>
+<p><img loading="lazy" decoding="async" class="alignnone size-full wp-image-24517" src="../images/article-24513-img-3.png" alt="20260618113444 861670 scaled" width="2560" height="1440" title="GLM 5.2 正式开源！百万上下文、Agent 编程能力登顶，模型下载及本地部署！ 3" srcset="../images/article-24513-img-3.png 2560w, https://www.freedidi.com/wp-content/uploads/2026/06/20260618113444_861670-748x421.webp 748w, https://www.freedidi.com/wp-content/uploads/2026/06/20260618113444_861670-768x432.webp 768w, https://www.freedidi.com/wp-content/uploads/2026/06/20260618113444_861670-1536x864.webp 1536w, https://www.freedidi.com/wp-content/uploads/2026/06/20260618113444_861670-2048x1152.webp 2048w, https://www.freedidi.com/wp-content/uploads/2026/06/20260618113444_861670-520x293.webp 520w, https://www.freedidi.com/wp-content/uploads/2026/06/20260618113444_861670-940x529.webp 940w" sizes="auto, (max-width: 2560px) 100vw, 2560px" /></p>
+<p>&nbsp;</p>
+<h3>3、LiveBench 排名进入全球第一梯队</h3>
+<p class="isSelectedEnd">在 LiveBench 最新 Agent Coding 排行榜中：</p>
+<p class="isSelectedEnd">GLM 5.2 与 Kimi K2.7 Code 成为了当前表现最强的 Agent 编程模型之一。</p>
+<p class="isSelectedEnd">更令人惊讶的是：</p>
+<p class="isSelectedEnd">排行榜前三名中，有两个属于开放权重模型。</p>
+<p class="isSelectedEnd">这意味着开源生态已经开始具备与顶级闭源模型正面竞争的实力。</p>
+<p class="isSelectedEnd">对于开发者和本地部署玩家来说，这是一个非常积极的信号。</p>
+<p><img loading="lazy" decoding="async" class="alignnone size-full wp-image-24518" src="../images/article-24513-img-8.png" alt="20260618113551 942929 scaled" width="2560" height="1440" title="GLM 5.2 正式开源！百万上下文、Agent 编程能力登顶，模型下载及本地部署！ 4" srcset="../images/article-24513-img-8.png 2560w, https://www.freedidi.com/wp-content/uploads/2026/06/20260618113551_942929-748x421.webp 748w, https://www.freedidi.com/wp-content/uploads/2026/06/20260618113551_942929-768x432.webp 768w, https://www.freedidi.com/wp-content/uploads/2026/06/20260618113551_942929-1536x864.webp 1536w, https://www.freedidi.com/wp-content/uploads/2026/06/20260618113551_942929-2048x1152.webp 2048w, https://www.freedidi.com/wp-content/uploads/2026/06/20260618113551_942929-520x293.webp 520w, https://www.freedidi.com/wp-content/uploads/2026/06/20260618113551_942929-940x529.webp 940w" sizes="auto, (max-width: 2560px) 100vw, 2560px" /></p>
+<h3></h3>
+<h3>4、更强大的编程能力</h3>
+<p class="isSelectedEnd">GLM 5.2 在代码生成方面进行了大量优化。</p>
+<p class="isSelectedEnd">官方表示：</p><div class='code-block code-block-center code-block-1 ai-track' data-ai='WzEsMCwiQmxvY2sgMSIsIiIsM10='>
+<div class='no-visibility-check ai-check-1-53938005' data-insertion-position='after' data-selector='.ai-check-1-53938005' data-code='PGRpdiBjbGFzcz0iYWktYXR0cmlidXRlcyI+CjxzcGFuIGNsYXNzPSdhaS1jaGVjay1ibG9jayBhaS1jZnAnIGRhdGEtYWktYmxvY2s9JzEnIGRhdGEtYWktbGltaXQtY2xpY2tzLXBlci10aW1lPSczJyBkYXRhLWFpLWxpbWl0LWNsaWNrcy10aW1lPScxJyBkYXRhLWFpLWdsb2JhbC1saW1pdC1jbGlja3MtcGVyLXRpbWU9JzMnIGRhdGEtYWktZ2xvYmFsLWxpbWl0LWNsaWNrcy10aW1lPScxJyBkYXRhLWFpLWNmcC10aW1lPSczMCc+PC9zcGFuPgo8L2Rpdj4KPHN0eWxlPgogIC8qIOS4k+S4uuato+aWh+aOkueJiOS8mOWMlueahOi9u+mHj+e6p+malOemu+WuueWZqCAqLwogIC5hZC1pbi1hcnRpY2xlLXNhZmUgewogICAgYm9yZGVyLXRvcDogMXB4IHNvbGlkICNlYWVhZWE7CiAgICBib3JkZXItYm90dG9tOiAxcHggc29saWQgI2VhZWFlYTsKICAgIHBhZGRpbmc6IDE1cHggMDsKICAgIG1hcmdpbjogMzVweCAwOyAvKiDkv53or4Hlub/lkYrkuI7kuIrkuIvmrrXokL3mnInotrPlpJ/nmoTlronlhajmu5Hliqjot53nprsgKi8KICAgIHRleHQtYWxpZ246IGNlbnRlcjsKICB9CiAgLmFkLWxhYmVsLWNlbnRlciB7CiAgICBmb250LXNpemU6IDEycHg7CiAgICBjb2xvcjogIzk5OTsKICAgIG1hcmdpbi1ib3R0b206IDEycHg7CiAgICBsZXR0ZXItc3BhY2luZzogMXB4OwogIH0KICAvKiDoh6rliqjpgILphY3mt7HoibIv5aSc6Ze05qih5byPICovCiAgQG1lZGlhIChwcmVmZXJzLWNvbG9yLXNjaGVtZTogZGFyaykgewogICAgLmFkLWluLWFydGljbGUtc2FmZSB7CiAgICAgIGJvcmRlci1jb2xvcjogIzMzMzMzMzsKICAgIH0KICAgIC5hZC1sYWJlbC1jZW50ZXIgewogICAgICBjb2xvcjogIzY2NjY2NjsKICAgIH0KICB9Cjwvc3R5bGU+Cgo8ZGl2IGNsYXNzPSJhZC1pbi1hcnRpY2xlLXNhZmUiPgogICAgCiAgICA8ZGl2IGNsYXNzPSJhZC1sYWJlbC1jZW50ZXIiPgogICAgICAgIC0g6LWe5Yqp5ZWG5YaF5a65IC0KICAgIDwvZGl2PgoKICAgIDxzY3JpcHQgYXN5bmMgc3JjPSJodHRwczovL3BhZ2VhZDIuZ29vZ2xlc3luZGljYXRpb24uY29tL3BhZ2VhZC9qcy9hZHNieWdvb2dsZS5qcz9jbGllbnQ9Y2EtcHViLTM5MDcyNjA2MjgxNTI4MTgiIGNyb3Nzb3JpZ2luPSJhbm9ueW1vdXMiPjwvc2NyaXB0PgogICAgPGlucyBjbGFzcz0iYWRzYnlnb29nbGUiCiAgICAgICAgIHN0eWxlPSJkaXNwbGF5OmJsb2NrOyB0ZXh0LWFsaWduOmNlbnRlcjsiCiAgICAgICAgIGRhdGEtYWQtbGF5b3V0PSJpbi1hcnRpY2xlIgogICAgICAgICBkYXRhLWFkLWZvcm1hdD0iZmx1aWQiCiAgICAgICAgIGRhdGEtYWQtY2xpZW50PSJjYS1wdWItMzkwNzI2MDYyODE1MjgxOCIKICAgICAgICAgZGF0YS1hZC1zbG90PSI1NzY3MTEwODAzIj48L2lucz4KICAgIDxzY3JpcHQ+CiAgICAgICAgIChhZHNieWdvb2dsZSA9IHdpbmRvdy5hZHNieWdvb2dsZSB8fCBbXSkucHVzaCh7fSk7CiAgICA8L3NjcmlwdD4KCjwvZGl2Pg==' data-fallback-code='PGRpdiBjbGFzcz0nYWktYWRiLXNob3cnIHN0eWxlPSd2aXNpYmlsaXR5OiBoaWRkZW47IGRpc3BsYXk6IG5vbmU7JyBkYXRhLWFpLXRyYWNraW5nPSdXekUyTERBc0lrSnNiMk5ySURFMklpd2lJaXd3WFE9PScgZGF0YS1haS1kZWJ1Zz0nMTYnPgo8YSBocmVmPSJodHRwczovL3d3dy5hbGl5dW4uY29tL3Byb2R1Y3QvZWNzP3VzZXJDb2RlPWp1Zm9jb2k2IiB0YXJnZXQ9Il9ibGFuayIgcmVsPSJub29wZW5lciI+PGltZyBjbGFzcz0iYWxpZ25ub25lIHNpemUtZnVsbCB3cC1pbWFnZS0yNDU2OCIgc3JjPSJodHRwczovL3d3dy5mcmVlZGlkaS5jb20vd3AtY29udGVudC91cGxvYWRzLzIwMjYvMDYvMjAyNjA2MjExNTA4MDRfOTYxODc0LndlYnAiIGFsdD0iIiB3aWR0aD0iMTUzNiIgaGVpZ2h0PSIxMDI0IiAvPjwvYT48L2Rpdj4K' limits-fallback='16' fallback_level='1' fallback-tracking='WzAsMCwiQmxvY2sgMTYiLCIiXQ==' data-block='1'><span class='ai-check-block ai-cfp' data-ai-block='1' data-ai-limit-clicks-per-time='3' data-ai-limit-clicks-time='1' data-ai-global-limit-clicks-per-time='3' data-ai-global-limit-clicks-time='1' data-ai-cfp-time='30'></span></div>
+
+</div>
+
+<p class="isSelectedEnd">模型支持不同等级的推理模式，可以根据任务复杂度自由调整思考深度，从而在性能与响应速度之间取得平衡。</p>
+<p class="isSelectedEnd">简单来说：</p>
+<ul data-spread="false">
+<li>简单任务快速响应</li>
+<li>复杂任务深度思考</li>
+<li>更适合长期开发工作流</li>
+</ul>
+<p class="isSelectedEnd">对于编程场景而言，这种设计非常实用。</p>
+<p>&nbsp;</p>
+<p><img loading="lazy" decoding="async" class="wp-image-24519 aligncenter" src="../images/article-24513-img-7.png" alt="20260618113620 859146 scaled" width="828" height="466" title="GLM 5.2 正式开源！百万上下文、Agent 编程能力登顶，模型下载及本地部署！ 5" srcset="../images/article-24513-img-7.png 2560w, https://www.freedidi.com/wp-content/uploads/2026/06/20260618113620_859146-748x421.webp 748w, https://www.freedidi.com/wp-content/uploads/2026/06/20260618113620_859146-768x432.webp 768w, https://www.freedidi.com/wp-content/uploads/2026/06/20260618113620_859146-1536x864.webp 1536w, https://www.freedidi.com/wp-content/uploads/2026/06/20260618113620_859146-2048x1152.webp 2048w, https://www.freedidi.com/wp-content/uploads/2026/06/20260618113620_859146-520x293.webp 520w, https://www.freedidi.com/wp-content/uploads/2026/06/20260618113620_859146-940x529.webp 940w" sizes="auto, (max-width: 828px) 100vw, 828px" /></p>
+<h2></h2>
+<h2>GLM 5.2 背后的技术升级</h2>
+<p class="isSelectedEnd">除了性能提升之外，GLM 5.2 还带来了多项底层架构创新。</p>
+<p class="isSelectedEnd">其中最值得关注的是：</p>
+<h3>IndexShare 架构</h3>
+<p class="isSelectedEnd">官方提出了一种全新的 IndexShare 技术。</p>
+<p class="isSelectedEnd">通过让每四层稀疏注意力层共享同一个索引器：</p>
+<ul data-spread="false">
+<li>1M 上下文环境下 FLOPs 降低约 2.9 倍</li>
+<li>大幅提升长上下文效率</li>
+<li>降低推理成本</li>
+</ul>
+<h3>改进的 MTP 推测解码</h3>
+<p class="isSelectedEnd">GLM 5.2 同时优化了 MTP（Multi-Token Prediction）层。</p>
+<p class="isSelectedEnd">官方数据显示：</p>
+<p class="isSelectedEnd">推测性解码接受长度提升最高可达 20%。</p>
+<p class="isSelectedEnd">简单理解就是：</p>
+<p class="isSelectedEnd">生成速度更快，延迟更低。</p><div class='code-block code-block-center code-block-1 ai-track' data-ai='WzEsMCwiQmxvY2sgMSIsIiIsNF0='>
+<div class='no-visibility-check ai-check-1-38647987' data-insertion-position='after' data-selector='.ai-check-1-38647987' data-code='PGRpdiBjbGFzcz0iYWktYXR0cmlidXRlcyI+CjxzcGFuIGNsYXNzPSdhaS1jaGVjay1ibG9jayBhaS1jZnAnIGRhdGEtYWktYmxvY2s9JzEnIGRhdGEtYWktbGltaXQtY2xpY2tzLXBlci10aW1lPSczJyBkYXRhLWFpLWxpbWl0LWNsaWNrcy10aW1lPScxJyBkYXRhLWFpLWdsb2JhbC1saW1pdC1jbGlja3MtcGVyLXRpbWU9JzMnIGRhdGEtYWktZ2xvYmFsLWxpbWl0LWNsaWNrcy10aW1lPScxJyBkYXRhLWFpLWNmcC10aW1lPSczMCc+PC9zcGFuPgo8L2Rpdj4KPHN0eWxlPgogIC8qIOS4k+S4uuato+aWh+aOkueJiOS8mOWMlueahOi9u+mHj+e6p+malOemu+WuueWZqCAqLwogIC5hZC1pbi1hcnRpY2xlLXNhZmUgewogICAgYm9yZGVyLXRvcDogMXB4IHNvbGlkICNlYWVhZWE7CiAgICBib3JkZXItYm90dG9tOiAxcHggc29saWQgI2VhZWFlYTsKICAgIHBhZGRpbmc6IDE1cHggMDsKICAgIG1hcmdpbjogMzVweCAwOyAvKiDkv53or4Hlub/lkYrkuI7kuIrkuIvmrrXokL3mnInotrPlpJ/nmoTlronlhajmu5Hliqjot53nprsgKi8KICAgIHRleHQtYWxpZ246IGNlbnRlcjsKICB9CiAgLmFkLWxhYmVsLWNlbnRlciB7CiAgICBmb250LXNpemU6IDEycHg7CiAgICBjb2xvcjogIzk5OTsKICAgIG1hcmdpbi1ib3R0b206IDEycHg7CiAgICBsZXR0ZXItc3BhY2luZzogMXB4OwogIH0KICAvKiDoh6rliqjpgILphY3mt7HoibIv5aSc6Ze05qih5byPICovCiAgQG1lZGlhIChwcmVmZXJzLWNvbG9yLXNjaGVtZTogZGFyaykgewogICAgLmFkLWluLWFydGljbGUtc2FmZSB7CiAgICAgIGJvcmRlci1jb2xvcjogIzMzMzMzMzsKICAgIH0KICAgIC5hZC1sYWJlbC1jZW50ZXIgewogICAgICBjb2xvcjogIzY2NjY2NjsKICAgIH0KICB9Cjwvc3R5bGU+Cgo8ZGl2IGNsYXNzPSJhZC1pbi1hcnRpY2xlLXNhZmUiPgogICAgCiAgICA8ZGl2IGNsYXNzPSJhZC1sYWJlbC1jZW50ZXIiPgogICAgICAgIC0g6LWe5Yqp5ZWG5YaF5a65IC0KICAgIDwvZGl2PgoKICAgIDxzY3JpcHQgYXN5bmMgc3JjPSJodHRwczovL3BhZ2VhZDIuZ29vZ2xlc3luZGljYXRpb24uY29tL3BhZ2VhZC9qcy9hZHNieWdvb2dsZS5qcz9jbGllbnQ9Y2EtcHViLTM5MDcyNjA2MjgxNTI4MTgiIGNyb3Nzb3JpZ2luPSJhbm9ueW1vdXMiPjwvc2NyaXB0PgogICAgPGlucyBjbGFzcz0iYWRzYnlnb29nbGUiCiAgICAgICAgIHN0eWxlPSJkaXNwbGF5OmJsb2NrOyB0ZXh0LWFsaWduOmNlbnRlcjsiCiAgICAgICAgIGRhdGEtYWQtbGF5b3V0PSJpbi1hcnRpY2xlIgogICAgICAgICBkYXRhLWFkLWZvcm1hdD0iZmx1aWQiCiAgICAgICAgIGRhdGEtYWQtY2xpZW50PSJjYS1wdWItMzkwNzI2MDYyODE1MjgxOCIKICAgICAgICAgZGF0YS1hZC1zbG90PSI1NzY3MTEwODAzIj48L2lucz4KICAgIDxzY3JpcHQ+CiAgICAgICAgIChhZHNieWdvb2dsZSA9IHdpbmRvdy5hZHNieWdvb2dsZSB8fCBbXSkucHVzaCh7fSk7CiAgICA8L3NjcmlwdD4KCjwvZGl2Pg==' data-fallback-code='PGRpdiBjbGFzcz0nYWktYWRiLXNob3cnIHN0eWxlPSd2aXNpYmlsaXR5OiBoaWRkZW47IGRpc3BsYXk6IG5vbmU7JyBkYXRhLWFpLXRyYWNraW5nPSdXekUyTERBc0lrSnNiMk5ySURFMklpd2lJaXd3WFE9PScgZGF0YS1haS1kZWJ1Zz0nMTYnPgo8YSBocmVmPSJodHRwczovL3d3dy5hbGl5dW4uY29tL3Byb2R1Y3QvZWNzP3VzZXJDb2RlPWp1Zm9jb2k2IiB0YXJnZXQ9Il9ibGFuayIgcmVsPSJub29wZW5lciI+PGltZyBjbGFzcz0iYWxpZ25ub25lIHNpemUtZnVsbCB3cC1pbWFnZS0yNDU2OCIgc3JjPSJodHRwczovL3d3dy5mcmVlZGlkaS5jb20vd3AtY29udGVudC91cGxvYWRzLzIwMjYvMDYvMjAyNjA2MjExNTA4MDRfOTYxODc0LndlYnAiIGFsdD0iIiB3aWR0aD0iMTUzNiIgaGVpZ2h0PSIxMDI0IiAvPjwvYT48L2Rpdj4K' limits-fallback='16' fallback_level='1' fallback-tracking='WzAsMCwiQmxvY2sgMTYiLCIiXQ==' data-block='1'><span class='ai-check-block ai-cfp' data-ai-block='1' data-ai-limit-clicks-per-time='3' data-ai-limit-clicks-time='1' data-ai-global-limit-clicks-per-time='3' data-ai-global-limit-clicks-time='1' data-ai-cfp-time='30'></span></div>
+
+</div>
+
+<p>&nbsp;</p>
+<h2>普通用户能在本地部署吗？</h2>
+<p class="isSelectedEnd">答案是：理论上可以。</p>
+<p class="isSelectedEnd">现实中很难。</p>
+<p class="isSelectedEnd">GLM 5.2 采用 MoE（混合专家）架构。</p>
+<p class="isSelectedEnd">总参数规模达到约 753B。</p>
+<p class="isSelectedEnd">下面是社区整理的硬件需求参考：</p>
+<table>
+<tbody>
+<tr>
+<th>量化版本</th>
+<th>预计内存需求</th>
+</tr>
+<tr>
+<td>FP8</td>
+<td>744GB &#8211; 890GB</td>
+</tr>
+<tr>
+<td>Q4_K_M</td>
+<td>476GB &#8211; 500GB</td>
+</tr>
+<tr>
+<td>Q2_K_XL</td>
+<td>241GB &#8211; 280GB</td>
+</tr>
+<tr>
+<td>1 Bit 动态量化</td>
+<td>176GB &#8211; 180GB</td>
+</tr>
+</tbody>
+</table>
+<p class="isSelectedEnd">即使是最低量化版本，也远远超出普通消费级电脑的承载能力。</p>
+<p>&nbsp;</p>
+<table class="overflow-x-auto">
+<thead>
+<tr>
+<th class="align-left"><strong><span dir="auto">量化水平</span></strong></th>
+<th class="align-left"><strong><span dir="auto">所需内存</span></strong></th>
+<th class="align-left"><strong><span dir="auto">最低硬件配置</span></strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="align-left"><strong><span dir="auto">FP8 重量</span></strong></td>
+<td class="align-left"><span dir="auto">744 GB 至 890 GB</span></td>
+<td class="align-left"><span dir="auto">8 个 H200 (141GB) 或 8 个 H100 (80GB) 服务器节点</span></td>
+</tr>
+<tr>
+<td class="align-left"><strong><span dir="auto">4 位 (Q4_K_M)</span></strong></td>
+<td class="align-left"><span dir="auto">476 GB 至 500 GB</span></td>
+<td class="align-left"><span dir="auto">Mac Studio 集群或 6 块 80GB 企业级 GPU</span></td>
+</tr>
+<tr>
+<td class="align-left"><strong><span dir="auto">2 位 (Q2_K_XL)</span></strong></td>
+<td class="align-left"><span dir="auto">241 GB 至 280 GB</span></td>
+<td class="align-left"><span dir="auto">单台 256GB Mac Studio（Ultra 版）或 RTX 4090 + 256GB 系统内存</span></td>
+</tr>
+<tr>
+<td class="align-left"><strong><span dir="auto">1 位动态</span></strong></td>
+<td class="align-left"><span dir="auto">176 GB 至 180 GB</span></td>
+<td class="align-left"><span dir="auto">192GB Mac Studio 或 24GB GPU + 192GB 系统内存</span></td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<p class="isSelectedEnd">对于绝大多数用户来说：</p>
+<p class="isSelectedEnd">目前更适合通过在线平台体验 GLM 5.2。</p>
+<p><img loading="lazy" decoding="async" class="alignnone size-full wp-image-24520" src="../images/article-24513-img-4.png" alt="20260618113735 061764 scaled" width="2560" height="1440" title="GLM 5.2 正式开源！百万上下文、Agent 编程能力登顶，模型下载及本地部署！ 6" srcset="../images/article-24513-img-4.png 2560w, https://www.freedidi.com/wp-content/uploads/2026/06/20260618113735_061764-748x421.webp 748w, https://www.freedidi.com/wp-content/uploads/2026/06/20260618113735_061764-768x432.webp 768w, https://www.freedidi.com/wp-content/uploads/2026/06/20260618113735_061764-1536x864.webp 1536w, https://www.freedidi.com/wp-content/uploads/2026/06/20260618113735_061764-2048x1152.webp 2048w, https://www.freedidi.com/wp-content/uploads/2026/06/20260618113735_061764-520x293.webp 520w, https://www.freedidi.com/wp-content/uploads/2026/06/20260618113735_061764-940x529.webp 940w" sizes="auto, (max-width: 2560px) 100vw, 2560px" /></p>
+<h2></h2>
+<h2>支持哪些部署框架？</h2>
+<p class="isSelectedEnd">对于企业和研究机构而言，GLM 5.2 已经支持多个主流推理框架：</p>
+<ul data-spread="false">
+<li>SGLang</li>
+<li>vLLM</li>
+<li>Transformers</li>
+<li>KTransformers</li>
+</ul>
+<p class="isSelectedEnd">同时还支持 Ascend NPU 生态。</p>
+<p class="isSelectedEnd">整体兼容性表现相当不错。</p>
+<p>&nbsp;</p>
+<h2>免费体验 GLM 5.2</h2>
+<p class="isSelectedEnd">如果你没有企业级 GPU 集群，也可以直接在线体验。</p>
+<p class="isSelectedEnd">目前可用的平台包括：</p>
+<h3>1、官方体验地址</h3>
+<p>【<span style="color: #0000ff;"><strong><a style="color: #0000ff;" href="https://chat.z.ai/" target="_blank" rel="noopener">点击前往</a></strong></span>】</p>
+<h3>2、Hugging Face 在线体验</h3>
+<p>【<strong><span style="color: #0000ff;"><a style="color: #0000ff;" href="https://huggingface.co/chat/models/zai-org/GLM-5.2" target="_blank" rel="noopener">链接直达</a></span></strong>】</p>
+<p>&nbsp;</p>
+<h1>GLM 5.2 模型下载</h1>
+<p><strong>1、官方满血版 【<span style="color: #0000ff;"><a style="color: #0000ff;" href="https://huggingface.co/zai-org/GLM-5.2/tree/main" target="_blank" rel="noopener">点击下载</a></span>】</strong></p>
+<p>&nbsp;</p>
+<p><strong>2、GLM 5.2 量化版 【<span style="color: #0000ff;"><a style="color: #0000ff;" href="https://huggingface.co/unsloth/GLM-5.2-GGUF/tree/main" target="_blank" rel="noopener">点击前往</a></span>】</strong></p>
+<p>&nbsp;</p>
+<p><img loading="lazy" decoding="async" class="alignnone size-full wp-image-24525" src="../images/article-24513-img-1.png" alt="20260618114313 252235 scaled" width="2560" height="1431" title="GLM 5.2 正式开源！百万上下文、Agent 编程能力登顶，模型下载及本地部署！ 7" srcset="../images/article-24513-img-1.png 2560w, https://www.freedidi.com/wp-content/uploads/2026/06/20260618114313_252235-750x419.webp 750w, https://www.freedidi.com/wp-content/uploads/2026/06/20260618114313_252235-768x429.webp 768w, https://www.freedidi.com/wp-content/uploads/2026/06/20260618114313_252235-1536x858.webp 1536w, https://www.freedidi.com/wp-content/uploads/2026/06/20260618114313_252235-2048x1145.webp 2048w, https://www.freedidi.com/wp-content/uploads/2026/06/20260618114313_252235-520x291.webp 520w, https://www.freedidi.com/wp-content/uploads/2026/06/20260618114313_252235-940x525.webp 940w" sizes="auto, (max-width: 2560px) 100vw, 2560px" /></p>
+<h2>我们测试了什么？</h2>
+<p class="isSelectedEnd">为了验证 GLM 5.2 的真实能力，我们进行了多组高难度代码生成测试，包括：</p>
+<ul data-spread="false">
+<li>Minecraft 高还原游戏生成</li>
+<li>专业射箭网站首页开发</li>
+<li>清明上河图 3D 场景构建</li>
+<li>花莲机场 3D 场景模拟</li>
+<li>南京博物院 3D 展示页面</li>
+<li>GTA 风格开放城市</li>
+<li>浏览器 WebGL 操作系统</li>
+<li>FPS 地铁射击游戏</li>
+<li>C++ 拉力赛车项目</li>
+<li>奢侈手表 3D 官网</li>
+</ul>
+<p class="isSelectedEnd">从实际测试结果来看，GLM 5.2 在复杂前端项目和 Agent 编程场景中表现出了极强的竞争力。</p>
+<p><img loading="lazy" decoding="async" class="alignnone size-full wp-image-24521" src="../images/article-24513-img-2.png" alt="20260618113919 325292 scaled" width="2560" height="1440" title="GLM 5.2 正式开源！百万上下文、Agent 编程能力登顶，模型下载及本地部署！ 8" srcset="../images/article-24513-img-2.png 2560w, https://www.freedidi.com/wp-content/uploads/2026/06/20260618113919_325292-748x421.webp 748w, https://www.freedidi.com/wp-content/uploads/2026/06/20260618113919_325292-768x432.webp 768w, https://www.freedidi.com/wp-content/uploads/2026/06/20260618113919_325292-1536x864.webp 1536w, https://www.freedidi.com/wp-content/uploads/2026/06/20260618113919_325292-2048x1152.webp 2048w, https://www.freedidi.com/wp-content/uploads/2026/06/20260618113919_325292-520x293.webp 520w, https://www.freedidi.com/wp-content/uploads/2026/06/20260618113919_325292-940x529.webp 940w" sizes="auto, (max-width: 2560px) 100vw, 2560px" /></p>
+<h2>GLM 5.2 最大的意义是什么？</h2>
+<p class="isSelectedEnd">很多人看到 753B 参数规模后，第一反应是：</p>
+<p class="isSelectedEnd">“反正我也跑不起来。”</p>
+<p class="isSelectedEnd">但事实上，GLM 5.2 的真正价值并不在于让每个人部署它。</p>
+<p class="isSelectedEnd">而在于它将成为未来开源模型的重要知识来源。</p>
+<p class="isSelectedEnd">每一次顶级开源模型发布之后：</p>
+<p class="isSelectedEnd">社区都会进行蒸馏、微调和优化。</p>
+<p class="isSelectedEnd">未来几个月，我们很可能会看到：</p>
+<ul data-spread="false">
+<li>GLM 5.2 70B</li>
+<li>GLM 5.2 32B</li>
+<li>GLM 5.2 8B</li>
+</ul>
+<p class="isSelectedEnd">等更加适合本地部署的版本出现。</p>
+<p class="isSelectedEnd">而这些模型，最终将惠及所有普通用户。</p>
+<p>&nbsp;</p>
+<h2>总结</h2>
+<p class="isSelectedEnd">GLM 5.2 不仅仅是一次常规的模型升级。</p>
+<p class="isSelectedEnd">它代表着开源 AI 在 Agent 与编程领域的一次重要突破。</p>
+<p class="isSelectedEnd">百万 Token 长上下文、Terminal-Bench 首个突破 80%、顶级 Agent 编程能力以及 MIT 开源协议，让它成为目前最值得关注的开源模型之一。</p>
+<p class="isSelectedEnd">对于整个开源 AI 社区而言，这或许只是一个开始。</p>
 <p>未来开源模型与闭源模型之间的差距，正在以惊人的速度缩小。</p>
+    <div class="donation-container">
+        <button class="donation-main-btn" id="donationMainBtn">
+            <span class="dashicons dashicons-heart"></span> 
+
+                <div class="qrcode-display" id="qrcodeDisplay">
+                    <div class="qr-container">
+                        <img decoding="async" id="qrcodeImage" src="" alt="QR Code" title="GLM 5.2 正式开源！百万上下文、Agent 编程能力登顶，模型下载及本地部署！ 13">
+                    </div>
+                    <p id="qrcodeText"></p>
+                    
+                    <div id="donationAddressArea" style="display:none;">
+                        <div class="address-box">
+                            <input type="text" id="walletAddress" readonly>
+                            <button type="button" id="copyBtn">复制</button>
+                        </div>
+                        <span id="copyMsg" style="font-size:12px; color:#26A17B; display:none;">已复制!</span>
+                    </div>
+                    
+                    <button class="back-btn" id="backBtn">返回选择</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class='code-block code-block-default code-block-bc-rgb-238-238-238 code-block-2 ai-track' data-ai='WzIsMCwiQmxvY2sgMiIsIiIsMV0='>
+<div class='no-visibility-check ai-check-2-46411160' data-insertion-position='after' data-selector='.ai-check-2-46411160' data-code='PGRpdiBjbGFzcz0iYWktYXR0cmlidXRlcyI+CjxzcGFuIGNsYXNzPSdhaS1jaGVjay1ibG9jayBhaS1jZnAnIGRhdGEtYWktYmxvY2s9JzInIGRhdGEtYWktbGltaXQtY2xpY2tzLXBlci10aW1lPSczJyBkYXRhLWFpLWxpbWl0LWNsaWNrcy10aW1lPScxJyBkYXRhLWFpLWdsb2JhbC1saW1pdC1jbGlja3MtcGVyLXRpbWU9JzMnIGRhdGEtYWktZ2xvYmFsLWxpbWl0LWNsaWNrcy10aW1lPScxJyBkYXRhLWFpLWNmcC10aW1lPSczMCc+PC9zcGFuPgo8L2Rpdj4KPHN0eWxlPgogIC5hZC13cmFwcGVyLXNhZmUgewogICAgYm9yZGVyOiAxcHggc29saWQgI2UwZTBlMDsKICAgIGJvcmRlci1yYWRpdXM6IDZweDsKICAgIHBhZGRpbmc6IDE1cHg7CiAgICBtYXJnaW4tdG9wOiAzMHB4OwogICAgbWFyZ2luLWJvdHRvbTogMjBweDsKICAgIGJhY2tncm91bmQ6IHRyYW5zcGFyZW50OwogIH0KICAuYWQtbGFiZWwtc2FmZSB7CiAgICBmb250LXNpemU6IDEycHg7CiAgICBjb2xvcjogIzk5OTsKICAgIHRleHQtYWxpZ246IGxlZnQ7CiAgICBtYXJnaW4tYm90dG9tOiAxMHB4OwogICAgbGV0dGVyLXNwYWNpbmc6IDFweDsKICB9CiAgLyog6Ieq5Yqo6YCC6YWN5rex6ImyL+WknOmXtOaooeW8j++8jOS/neaMgeenkeaKgOaEn+S4juaegeeugOinhuiniSAqLwogIEBtZWRpYSAocHJlZmVycy1jb2xvci1zY2hlbWU6IGRhcmspIHsKICAgIC5hZC13cmFwcGVyLXNhZmUgewogICAgICBib3JkZXItY29sb3I6ICMzMzMzMzM7CiAgICB9CiAgICAuYWQtbGFiZWwtc2FmZSB7CiAgICAgIGNvbG9yOiAjNjY2NjY2OwogICAgfQogIH0KPC9zdHlsZT4KCjxkaXYgY2xhc3M9ImFkLXdyYXBwZXItc2FmZSI+CiAgICAKICAgIDxkaXYgY2xhc3M9ImFkLWxhYmVsLXNhZmUiPgogICAgICAgIC0g6LWe5Yqp5ZWG5YaF5a65IC0KICAgIDwvZGl2PgoKICAgIDxzY3JpcHQgYXN5bmMgc3JjPSJodHRwczovL3BhZ2VhZDIuZ29vZ2xlc3luZGljYXRpb24uY29tL3BhZ2VhZC9qcy9hZHNieWdvb2dsZS5qcz9jbGllbnQ9Y2EtcHViLTM5MDcyNjA2MjgxNTI4MTgiIGNyb3Nzb3JpZ2luPSJhbm9ueW1vdXMiPjwvc2NyaXB0PgogICAgPGlucyBjbGFzcz0iYWRzYnlnb29nbGUiCiAgICAgICAgIHN0eWxlPSJkaXNwbGF5OmJsb2NrIgogICAgICAgICBkYXRhLWFkLWZvcm1hdD0iYXV0b3JlbGF4ZWQiCiAgICAgICAgIGRhdGEtYWQtY2xpZW50PSJjYS1wdWItMzkwNzI2MDYyODE1MjgxOCIKICAgICAgICAgZGF0YS1hZC1zbG90PSI4Njk0NzAyNjQxIj48L2lucz4KICAgIDxzY3JpcHQ+CiAgICAgICAgIChhZHNieWdvb2dsZSA9IHdpbmRvdy5hZHNieWdvb2dsZSB8fCBbXSkucHVzaCh7fSk7CiAgICA8L3NjcmlwdD4KCjwvZGl2Pg==' data-fallback-code='PGRpdiBjbGFzcz0nYWktYWRiLXNob3cnIHN0eWxlPSd2aXNpYmlsaXR5OiBoaWRkZW47IGRpc3BsYXk6IG5vbmU7JyBkYXRhLWFpLXRyYWNraW5nPSdXekUyTERBc0lrSnNiMk5ySURFMklpd2lJaXd3WFE9PScgZGF0YS1haS1kZWJ1Zz0nMTYnPgo8YSBocmVmPSJodHRwczovL3d3dy5hbGl5dW4uY29tL3Byb2R1Y3QvZWNzP3VzZXJDb2RlPWp1Zm9jb2k2IiB0YXJnZXQ9Il9ibGFuayIgcmVsPSJub29wZW5lciI+PGltZyBjbGFzcz0iYWxpZ25ub25lIHNpemUtZnVsbCB3cC1pbWFnZS0yNDU2OCIgc3JjPSJodHRwczovL3d3dy5mcmVlZGlkaS5jb20vd3AtY29udGVudC91cGxvYWRzLzIwMjYvMDYvMjAyNjA2MjExNTA4MDRfOTYxODc0LndlYnAiIGFsdD0iIiB3aWR0aD0iMTUzNiIgaGVpZ2h0PSIxMDI0IiAvPjwvYT48L2Rpdj4K' limits-fallback='16' fallback_level='1' fallback-tracking='WzAsMCwiQmxvY2sgMTYiLCIiXQ==' data-block='2'><span class='ai-check-block ai-cfp' data-ai-block='2' data-ai-limit-clicks-per-time='3' data-ai-limit-clicks-time='1' data-ai-global-limit-clicks-per-time='3' data-ai-global-limit-clicks-time='1' data-ai-cfp-time='30'></span></div>
+
+</div>
+<!-- AI CONTENT END 1 -->
+
+				
+
+
+												<div class="clear"></div>				
+					</div><!--/.entry-->
+				</div>
+				<div class="entry-footer group">
+					
+					<p class="post-tags"><span>Tags:</span> <a href="https://www.freedidi.com/tag/glm-5-2" rel="tag">GLM 5.2</a></p>					
+					<div class="clear"></div>
+					
+										
+					
+	<div class="sharrre-container sharrre-header group">
+		<span>Share</span>
+		<div id="twitter" class="sharrre">
+			<a class="box group" href="https://twitter.com/intent/tweet?url=https://www.freedidi.com/24513.html&text=GLM 5.2 正式开源！百万上下文、Agent 编程能力登顶，模型下载及本地部署！" title="Share on X">
+				<div class="count"><i class="fas fa-plus"></i></div><div class="share"><i class="fab fa-x-twitter"></i></div>
+			</a>
+		</div>
+		<div id="facebook" class="sharrre">
+			<a class="box group" href="https://www.facebook.com/sharer/sharer.php?u=https://www.freedidi.com/24513.html" title="Share on Facebook">
+				<div class="count"><i class="fas fa-plus"></i></div><div class="share"><i class="fab fa-facebook-square"></i></div>
+			</a>
+		</div>
+		<div id="pinterest" class="sharrre">
+			<a class="box group" href="https://pinterest.com/pin/create/button/?url=https://www.freedidi.com/24513.html&media=&description=GLM 5.2 正式开源！百万上下文、Agent 编程能力登顶，模型下载及本地部署！" title="Share on Pinterest">
+				<div class="count"><i class="fas fa-plus"></i></div><div class="share"><i class="fab fa-pinterest"></i></div>
+			</a>
+		</div>
+		<div id="linkedin" class="sharrre">
+			<a class="box group" href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.freedidi.com/24513.html" title="Share on LinkedIn">
+				<div class="count"><i class="fas fa-plus"></i></div><div class="share"><i class="fab fa-linkedin"></i></div>
+			</a>
+		</div>
+	</div><!--/.sharrre-container-->
+	
+						
+						<ul class="post-nav group">
+		<li class="next"><a href="https://www.freedidi.com/24570.html" rel="next"><i class="fas fa-chevron-right"></i><strong>Next</strong> <span>Windows Copilot 被逆向！无需 API Key 免费白嫖 GPT-5，对接本地AI Agent，部署教程来了！</span></a></li>
+		<li class="previous"><a href="https://www.freedidi.com/24498.html" rel="prev"><i class="fas fa-chevron-left"></i><strong>Previous</strong> <span>最强AI模型被禁！这3款开源越狱模型才是安全首选，附下载及本地部署！</span></a></li>
+	</ul>
+
+										
+				</div>
+			</div>
+
+		
 </div>
 <div class="article-footer">
 <a href="./articles.html" class="back-btn">← 返回文章列表</a>
