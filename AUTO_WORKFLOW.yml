@@ -1,0 +1,103 @@
+﻿name: Auto Blog Pipeline
+
+on:
+  schedule:
+    - cron: "30 1 * * *"  # 每天 UTC 01:30 = 北京时间 09:30
+  workflow_dispatch:  # 允许手动触发
+  repository_dispatch:
+    types: [deploy]
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  auto-blog:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          repository: zenghuafeng008-cmd/Fenggeblog
+          token: ${{ secrets.GH_TOKEN }}
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install yt-dlp requests
+
+      - name: Create src directories
+        run: mkdir -p src/core src/video src/content src/github src/html src/templates
+
+      - name: Download core modules
+        run: |
+          # 下载核心模块到 src/
+          curl -fsSL https://raw.githubusercontent.com/zenghuafeng008-cmd/Fenggeblog/main/src/core/config.py -o src/core/config.py
+          curl -fsSL https://raw.githubusercontent.com/zenghuafeng008-cmd/Fenggeblog/main/src/video/collector.py -o src/video/collector.py
+          curl -fsSL https://raw.githubusercontent.com/zenghuafeng008-cmd/Fenggeblog/main/src/content/generator.py -o src/content/generator.py
+          curl -fsSL https://raw.githubusercontent.com/zenghuafeng008-cmd/Fenggeblog/main/src/github/api.py -o src/github/api.py
+          curl -fsSL https://raw.githubusercontent.com/zenghuafeng008-cmd/Fenggeblog/main/src/html/converter.py -o src/html/converter.py
+          curl -fsSL https://raw.githubusercontent.com/zenghuafeng008-cmd/Fenggeblog/main/src/templates/article.html -o src/templates/article.html
+
+      - name: Download article generator
+        run: |
+          curl -fsSL https://raw.githubusercontent.com/zenghuafeng008-cmd/Fenggeblog/main/src/generator.py -o src/generator.py
+
+      - name: Download main run script
+        run: |
+          curl -fsSL https://raw.githubusercontent.com/zenghuafeng008-cmd/Fenggeblog/main/run_final.py -o run_final.py
+
+      - name: Run video collection and article generation
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          MINIMAX_KEY: ${{ secrets.MINIMAX_API_KEY }}
+          MINIMAX_ENDPOINT: https://api.minimaxi.com/v1
+        run: |
+          # 运行视频采集和文章生成
+          python run_final.py
+
+      - name: Generate static HTML pages
+        run: |
+          # 运行HTML生成器
+          python src/generator.py
+
+      - name: Upload to GitHub
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: |
+          git config user.name "FenggeBot"
+          git config user.email "bot@fengge.blog"
+          
+          # 添加所有变更
+          git add articles/ articles.html index.html style.css
+          
+          # 检查是否有变更
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Auto: daily update $(date +%Y-%m-%d)"
+            git push
+          fi
+
+      - name: Trigger Pages rebuild
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: 'zenghuafeng008-cmd',
+              repo: 'Fenggeblog',
+              workflow_id: 'pages-build.yml',
+              ref: 'main'
+            })
+
+      - name: Verify deployment
+        run: |
+          echo "=== Deployment Summary ==="
+          echo "Articles generated:"
+          ls -la articles/*.html 2>/dev/null | wc -l
+          echo "Site: https://0746.qzz.io"
