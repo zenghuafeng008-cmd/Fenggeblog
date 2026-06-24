@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>凤鸽博客 - AI科技资讯 | 免费工具教程</title>
     <meta name="description" content="凤鸽博客专注分享AI科技资讯、免费工具与教程"/>
-    <meta property="og:title" content="凤鸽博客"/>
-    <meta property="og:description" content="AI科技资讯与工具教程"/>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -20,7 +18,6 @@
             </nav>
         </div>
     </header>
-    
     <section class="hero">
         <h1>🐦 凤鸽博客</h1>
         <p>专注分享AI科技资讯、免费工具与实用教程</p>
@@ -29,7 +26,6 @@
             <div class="stat-item"><div class="stat-value" id="lastUpdate">--</div><div class="stat-label">最后更新</div></div>
         </div>
     </section>
-    
     <main class="home-container">
         <nav class="category-nav">
             <a href="/articles.html" class="category-btn active">全部</a>
@@ -39,7 +35,6 @@
             <a href="/articles.html?category=本地部署" class="category-btn">本地部署</a>
             <a href="/articles.html?category=工具教程" class="category-btn">工具教程</a>
         </nav>
-        
         <section class="all-articles">
             <h2 class="section-title">📚 最新文章</h2>
             <div class="article-grid" id="latest-articles">
@@ -47,7 +42,6 @@
             </div>
         </section>
     </main>
-    
     <footer class="site-footer">
         <div class="footer-inner">
             <div class="footer-brand"><span class="logo">🐦 凤鸽博客</span><p>专注AI科技资讯与实用工具教程</p></div>
@@ -58,7 +52,6 @@
         </div>
         <div class="footer-bottom"><p>© 2026 凤鸽博客</p></div>
     </footer>
-    
     <script>
     fetch("/articles/stats.json").then(r=>r.json()).then(function(data) {
         document.getElementById("count").textContent = data.count || 0;
