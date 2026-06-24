@@ -1,48 +1,99 @@
 ﻿<!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" prefix="og: https://ogp.me/ns#">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="凤鸽博客 - AI科技资讯与工具教程，每日更新">
-    <meta name="keywords" content="AI, 科技, 教程, 工具, 博客">
+    <meta name="robots" content="follow, index"/>
+    <link rel="canonical" href="https://0746.qzz.cn"/>
+    
+    <!-- SEO Meta -->
+    <title>凤鸽博客 - AI科技资讯 | 免费工具教程 | 系统优化</title>
+    <meta name="description" content="凤鸽博客专注分享AI科技资讯、免费工具与教程，涵盖本地模型部署、自动化工具与系统优化，提供详细图文讲解，帮助你高效提升效率。"/>
     
     <!-- Open Graph -->
-    <meta property="og:title" content="凤鸽博客 - AI科技资讯">
-    <meta property="og:description" content="每日更新AI科技资讯、工具评测与教程">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://0746.qzz.cn">
+    <meta property="og:locale" content="zh_CN"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="凤鸽博客 - AI科技资讯 | 免费工具教程 | 系统优化"/>
+    <meta property="og:description" content="凤鸽博客专注分享AI科技资讯、免费工具与教程，涵盖本地模型部署、自动化工具与系统优化，提供详细图文讲解，帮助你高效提升效率。"/>
+    <meta property="og:url" content="https://0746.qzz.cn"/>
+    <meta property="og:site_name" content="凤鸽博客"/>
+    <meta property="og:image" content="https://0746.qzz.cn/og-image.png"/>
+    <meta property="og:image:width" content="1200"/>
+    <meta property="og:image:height" content="630"/>
     
     <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="凤鸽博客 - AI科技资讯">
-    
-    <title>凤鸽博客 - AI科技资讯</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:title" content="凤鸽博客 - AI科技资讯 | 免费工具教程 | 系统优化"/>
+    <meta name="twitter:description" content="凤鸽博客专注分享AI科技资讯、免费工具与教程"/>
+    <meta name="twitter:image" content="https://0746.qzz.cn/og-image.png"/>
     
     <!-- JSON-LD -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "凤鸽博客",
-        "url": "https://0746.qzz.cn",
-        "description": "AI科技资讯与工具教程",
-        "publisher": {
-            "@type": "Organization",
-            "name": "凤鸽博客"
-        }
+        "@graph": [
+            {
+                "@type": "Person",
+                "@id": "https://0746.qzz.cn/#person",
+                "name": "凤鸽",
+                "url": "https://0746.qzz.cn"
+            },
+            {
+                "@type": "WebSite",
+                "@id": "https://0746.qzz.cn/#website",
+                "url": "https://0746.qzz.cn",
+                "name": "凤鸽博客",
+                "alternateName": "凤鸽",
+                "publisher": {"@id": "https://0746.qzz.cn/#person"},
+                "inLanguage": "zh-Hans",
+                "potentialAction": {
+                    "@type": "SearchAction",
+                    "target": "https://0746.qzz.cn/search?q={search_term_string}",
+                    "query-input": "required name=search_term_string"
+                }
+            },
+            {
+                "@type": "CollectionPage",
+                "@id": "https://0746.qzz.cn#webpage",
+                "url": "https://0746.qzz.cn",
+                "name": "凤鸽博客 - AI科技资讯 | 免费工具教程 | 系统优化",
+                "isPartOf": {"@id": "https://0746.qzz.cn/#website"},
+                "inLanguage": "zh-Hans"
+            }
+        ]
     }
     </script>
+    
+    <!-- RSS -->
+    <link rel="alternate" type="application/rss+xml" title="凤鸽博客 Feed" href="https://0746.qzz.cn/feed.xml"/>
+    
+    <title>凤鸽博客 - AI科技资讯 | 免费工具教程</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Header -->
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="/" class="logo">🐦 凤鸽博客</a>
+            <nav class="main-nav">
+                <a href="/">首页</a>
+                <a href="/category/AI资讯">AI资讯</a>
+                <a href="/category/AI工具">AI工具</a>
+                <a href="/category/AI评测">AI评测</a>
+                <a href="/category/本地部署">本地部署</a>
+                <a href="/category/工具教程">工具教程</a>
+            </nav>
+        </div>
+    </header>
+    
     <!-- Hero Section -->
     <section class="hero">
-        <h1>凤鸽博客</h1>
-        <p>聚焦AI科技资讯 | 工具评测与教程 | 每日更新</p>
+        <h1>🐦 凤鸽博客</h1>
+        <p>专注分享AI科技资讯、免费工具与实用教程</p>
         <div class="stats-bar">
             <div class="stat-item">
                 <div class="stat-value" id="article-count">--</div>
-                <div class="stat-label">文章总数</div>
+                <div class="stat-label">篇文章</div>
             </div>
             <div class="stat-item">
                 <div class="stat-value" id="update-date">--</div>
@@ -54,18 +105,29 @@
     <main class="home-container">
         <!-- Category Navigation -->
         <nav class="category-nav">
-            <button class="category-btn active" data-category="all">全部</button>
-            <button class="category-btn" data-category="AI资讯">AI资讯</button>
-            <button class="category-btn" data-category="AI工具">AI工具</button>
-            <button class="category-btn" data-category="AI评测">AI评测</button>
-            <button class="category-btn" data-category="本地部署">本地部署</button>
-            <button class="category-btn" data-category="工具教程">工具教程</button>
+            <a href="/" class="category-btn active">全部</a>
+            <a href="/category/AI资讯" class="category-btn">AI资讯</a>
+            <a href="/category/AI工具" class="category-btn">AI工具</a>
+            <a href="/category/AI评测" class="category-btn">AI评测</a>
+            <a href="/category/本地部署" class="category-btn">本地部署</a>
+            <a href="/category/工具教程" class="category-btn">工具教程</a>
         </nav>
         
-        <!-- Article Grid -->
-        <div class="article-grid" id="article-grid">
-            {{articles}}
-        </div>
+        <!-- Featured Section -->
+        <section class="featured-section">
+            <h2 class="section-title">🔥 热门文章</h2>
+            <div class="article-grid featured-grid">
+                {{featured_articles}}
+            </div>
+        </section>
+        
+        <!-- All Articles -->
+        <section class="all-articles">
+            <h2 class="section-title">📚 最新文章</h2>
+            <div class="article-grid" id="article-grid">
+                {{articles}}
+            </div>
+        </section>
         
         <!-- Load More -->
         <div class="load-more">
@@ -73,18 +135,34 @@
         </div>
     </main>
     
-    <script>
-    // Category filter
-    document.querySelectorAll('.category-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            document.querySelector('.category-btn.active').classList.remove('active');
-            btn.classList.add('active');
-            const category = btn.dataset.category;
-            // Filter articles (implementation depends on data source)
-        });
-    });
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <span class="logo">🐦 凤鸽博客</span>
+                <p>专注AI科技资讯与实用工具教程</p>
+            </div>
+            <div class="footer-links">
+                <div class="link-group">
+                    <h4>分类</h4>
+                    <a href="/category/AI资讯">AI资讯</a>
+                    <a href="/category/AI工具">AI工具</a>
+                    <a href="/category/AI评测">AI评测</a>
+                </div>
+                <div class="link-group">
+                    <h4>资源</h4>
+                    <a href="/feed.xml">RSS订阅</a>
+                    <a href="/sitemap.xml">网站地图</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 凤鸽博客 · 基于GitHub Pages构建</p>
+        </div>
+    </footer>
     
-    // Stats
+    <script>
+    // Load stats
     fetch('/stats.json')
         .then(r => r.json())
         .then(data => {
