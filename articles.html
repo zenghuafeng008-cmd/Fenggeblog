@@ -25,10 +25,8 @@
             </nav>
         </div>
     </header>
-    
     <main class="home-container">
         <h1 class="page-title">📚 全部文章</h1>
-        
         <div class="filter-bar">
             <button class="filter-btn active" data-category="all">全部</button>
             <button class="filter-btn" data-category="AI资讯">AI资讯</button>
@@ -37,23 +35,18 @@
             <button class="filter-btn" data-category="本地部署">本地部署</button>
             <button class="filter-btn" data-category="工具教程">工具教程</button>
         </div>
-        
         <div style="margin-bottom:20px;color:var(--text-muted);font-size:14px;">共 <span id="total-count">0</span> 篇文章</div>
-        
         <div class="article-grid" id="article-grid"></div>
         <div id="loading" style="text-align:center;padding:40px;color:var(--text-muted);">加载中...</div>
     </main>
-    
     <footer class="site-footer">
         <div class="footer-inner">
             <div class="footer-brand"><span class="logo">🐦 凤鸽博客</span><p>专注AI科技资讯与实用工具教程</p></div>
         </div>
         <div class="footer-bottom"><p>© 2026 凤鸽博客</p></div>
     </footer>
-    
     <script>
-    var ARTICLES = [{"title": "Windows Copilot 被逆向破解 免费白嫖 GPT 5 模型 无需 API Key 对接本", "date": "2026-06-24", "category": "AI工具", "url": "/articles/20260624_Windows Copilot 被逆向破解 免费白嫖 GPT 5 模型 无需 A.html"}, {"title": "WindowsCopilot被逆向破解免费白嫖GPT 5模型无需APIKey对接本地AIAgent又", "date": "2026-06-24", "category": "AI工具", "url": "/articles/20260624_WindowsCopilot被逆向破解免费白嫖GPT 5模型无需APIKey对接.html"}, {"title": "不用代充 不买虚拟卡 用自己的国内银行卡订上 ChatGPT Plus 解锁 codex claud", "date": "2026-06-24", "category": "AI工具", "url": "/articles/20260624_不用代充 不买虚拟卡 用自己的国内银行卡订上 ChatGPT Plus 解锁 c.html"}, {"title": "不用代充不买虚拟卡用自己的国内银行卡订上ChatGPTPlus解锁codexclaude保姆级教程", "date": "2026-06-24", "category": "AI工具", "url": "/articles/20260624_不用代充不买虚拟卡用自己的国内银行卡订上ChatGPTPlus解锁codexcl.html"}, {"title": "Windows Copilot 被逆向破解免费白嫖 GPT 5 模型无需 API Key 对接本", "date": "2026-06-23", "category": "AI工具", "url": "/articles/20260623_Windows Copilot 被逆向破解免费白嫖 GPT 5 模型无需 API.html"}, {"title": "WindowsCopilot被逆向破解免费白嫖GPT 5模型无需APIKey对接本地AIAgent又", "date": "2026-06-23", "category": "AI工具", "url": "/articles/20260623_WindowsCopilot被逆向破解免费白嫖GPT 5模型无需APIKey对接.html"}, {"title": "不用代充不买虚拟卡用自己的国内银行卡订上 ChatGPT Plus解锁 codex claud", "date": "2026-06-23", "category": "AI工具", "url": "/articles/20260623_不用代充不买虚拟卡用自己的国内银行卡订上 ChatGPT Plus解锁 code.html"}, {"title": "不用代充不买虚拟卡用自己的国内银行卡订上ChatGPTPlus解锁codexclaude保姆级教程", "date": "2026-06-23", "category": "AI工具", "url": "/articles/20260623_不用代充不买虚拟卡用自己的国内银行卡订上ChatGPTPlus解锁codexcl.html"}];
-    
+    var ARTICLES = [{"title": "Windows Copilot 被逆向破解 免费白嫖 GPT 5 模型 无需 API Key 对接本", "date": "2026-06-24", "category": "AI工具", "url": "/articles/20260624_Windows-Copilot-被逆向破解-免费白嫖-GPT-5-模型-无需-API-Key-对接本.html"}, {"title": "WindowsCopilot被逆向破解免费白嫖GPT 5模型无需APIKey对接本地AIAgent又", "date": "2026-06-24", "category": "AI工具", "url": "/articles/20260624_WindowsCopilot被逆向破解免费白嫖GPT-5模型无需APIKey对接本地AIAgent又.html"}, {"title": "不用代充 不买虚拟卡 用自己的国内银行卡订上 ChatGPT Plus 解锁 codex claud", "date": "2026-06-24", "category": "AI工具", "url": "/articles/20260624_不用代充-不买虚拟卡-用自己的国内银行卡订上-ChatGPT-Plus-解锁-codex-claud.html"}, {"title": "不用代充不买虚拟卡用自己的国内银行卡订上ChatGPTPlus解锁codexclaude保姆级教程", "date": "2026-06-24", "category": "AI工具", "url": "/articles/20260624_不用代充不买虚拟卡用自己的国内银行卡订上ChatGPTPlus解锁codexclaude保姆级教程.html"}, {"title": "Windows Copilot 被逆向破解免费白嫖 GPT 5 模型无需 API Key 对接本", "date": "2026-06-23", "category": "AI工具", "url": "/articles/20260623_Windows-Copilot-被逆向破解免费白嫖-GPT-5-模型无需-API-Key-对接本.html"}, {"title": "WindowsCopilot被逆向破解免费白嫖GPT 5模型无需APIKey对接本地AIAgent又", "date": "2026-06-23", "category": "AI工具", "url": "/articles/20260623_WindowsCopilot被逆向破解免费白嫖GPT-5模型无需APIKey对接本地AIAgent又.html"}, {"title": "不用代充不买虚拟卡用自己的国内银行卡订上 ChatGPT Plus解锁 codex claud", "date": "2026-06-23", "category": "AI工具", "url": "/articles/20260623_不用代充不买虚拟卡用自己的国内银行卡订上-ChatGPT-Plus解锁-codex-claud.html"}, {"title": "不用代充不买虚拟卡用自己的国内银行卡订上ChatGPTPlus解锁codexclaude保姆级教程", "date": "2026-06-23", "category": "AI工具", "url": "/articles/20260623_不用代充不买虚拟卡用自己的国内银行卡订上ChatGPTPlus解锁codexclaude保姆级教程.html"}];
     function renderArticles(articles) {
         var grid = document.getElementById("article-grid");
         var loading = document.getElementById("loading");
@@ -73,7 +66,6 @@
                 "</div></article>";
         }).join("");
     }
-    
     function filterCategory(category) {
         document.querySelectorAll(".filter-btn").forEach(function(btn) {
             btn.classList.remove("active");
@@ -82,14 +74,11 @@
         var filtered = category === "all" ? ARTICLES : ARTICLES.filter(function(a) { return a.category === category; });
         renderArticles(filtered);
     }
-    
     document.querySelectorAll(".filter-btn").forEach(function(btn) {
         btn.addEventListener("click", function() { filterCategory(this.dataset.category); });
     });
-    
     var urlParams = new URLSearchParams(window.location.search);
     var category = urlParams.get("category") || "all";
-    
     renderArticles(ARTICLES);
     if (category !== "all") filterCategory(category);
     </script>
