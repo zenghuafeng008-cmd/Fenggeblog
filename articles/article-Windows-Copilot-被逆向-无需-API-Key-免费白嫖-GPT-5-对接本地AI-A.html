@@ -5,6 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Windows Copilot 被逆向！无需 API Key 免费白嫖 GPT-5，对接本地AI Agent，部署教程来了！ | Fengge Blog</title>
 <link rel="stylesheet" href="../style.css">
+<style>
+.article-content { line-height: 1.8; font-size: 16px; color: #333; }
+.article-content p { margin: 1.2em 0; }
+.article-content img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 12px rgba(0,0,0,0.15); margin: 2em auto; display: block; }
+.article-content ul, .article-content ol { margin: 1em 0; padding-left: 2em; }
+.article-content li { margin: 0.6em 0; }
+.article-header { margin-bottom: 2em; padding-bottom: 1em; border-bottom: 1px solid #eee; }
+.article-category { background: #007bff; color: white; padding: 4px 12px; border-radius: 4px; font-size: 0.85em; }
+.article-date { color: #888; margin-left: 1em; }
+.article-title { font-size: 2em; color: #333; margin: 0.5em 0; }
+.back-btn { display: inline-block; margin-top: 2em; padding: 12px 24px; background: #007bff; color: white; text-decoration: none; border-radius: 6px; }
+.back-btn:hover { background: #0056b3; }
+</style>
 </head>
 <body>
 <header>
@@ -27,88 +40,276 @@
 </div>
 <h1 class="article-title">Windows Copilot 被逆向！无需 API Key 免费白嫖 GPT-5，对接本地AI Agent，部署教程来了！</h1>
 <div class="article-content">
-<p>微软的 Copilot 一直被认为是 Windows 未来最重要的 AI 产品之一。然而就在最近，GitHub 上出现了一个十分有意思的开源项目，它成功将 Windows Copilot 封装成了一个 OpenAI 兼容 API。能够直接免费使用GPT-4o、GPT-5.5 等模型！甚至能够直接对接本地的AI Agent 来执行自动化任务。用起来十分便捷~~~</p>
+class="entry-content">
+					<div class="entry themeform">	
+
+						<p>微软的 Copilot 一直被认为是 Windows 未来最重要的 AI 产品之一。然而就在最近，GitHub 上出现了一个非常有意思的开源项目，它成功将 Windows Copilot 封装成了一个 OpenAI 兼容 API。可以直接白嫖GPT-4o、GPT-5.5 等模型！甚至可以直接对接本地的AI Agent 来执行自动化任务。用起来爽歪歪~~~</p>
+<p><img fetchpriority="high" decoding="async" class="alignnone size-full wp-image-24571" src="../images/article-24570-img-3.png" alt="20260622100049 638909 scaled" width="2560" height="1440" title="Windows Copilot 被逆向！无需 API Key 免费白嫖 GPT-5，对接本地AI Agent，部署教程来了！ 1" srcset="../images/article-24570-img-3.png 2560w, https://www.freedidi.com/wp-content/uploads/2026/06/20260622100049_638909-748x421.webp 748w, https://www.freedidi.com/wp-content/uploads/2026/06/20260622100049_638909-768x432.webp 768w, https://www.freedidi.com/wp-content/uploads/2026/06/20260622100049_638909-1536x864.webp 1536w, https://www.freedidi.com/wp-content/uploads/2026/06/20260622100049_638909-2048x1152.webp 2048w, https://www.freedidi.com/wp-content/uploads/2026/06/20260622100049_638909-520x293.webp 520w, https://www.freedidi.com/wp-content/uploads/2026/06/20260622100049_638909-940x529.webp 940w" sizes="(max-width: 2560px) 100vw, 2560px" /></p>
+<p>&nbsp;</p>
 <p>而且代码能力相当不错！下方是我让它一次性给我生成的3D场景，可分两层</p>
+<p><img decoding="async" class="alignnone size-full wp-image-24572" src="../images/article-24570-img-7.png" alt="20260622100134 353180" width="1820" height="670" title="Windows Copilot 被逆向！无需 API Key 免费白嫖 GPT-5，对接本地AI Agent，部署教程来了！ 2" srcset="../images/article-24570-img-7.png 1820w, https://www.freedidi.com/wp-content/uploads/2026/06/20260622100134_353180-750x276.webp 750w, https://www.freedidi.com/wp-content/uploads/2026/06/20260622100134_353180-768x283.webp 768w, https://www.freedidi.com/wp-content/uploads/2026/06/20260622100134_353180-1536x565.webp 1536w, https://www.freedidi.com/wp-content/uploads/2026/06/20260622100134_353180-520x191.webp 520w, https://www.freedidi.com/wp-content/uploads/2026/06/20260622100134_353180-940x346.webp 940w" sizes="(max-width: 1820px) 100vw, 1820px" /></p><div class='code-block code-block-center code-block-1 ai-track' data-ai='WzEsMCwiQmxvY2sgMSIsIiIsMV0='>
+<div class='no-visibility-check ai-check-1-58044702' data-insertion-position='after' data-selector='.ai-check-1-58044702' data-code='PGRpdiBjbGFzcz0iYWktYXR0cmlidXRlcyI+CjxzcGFuIGNsYXNzPSdhaS1jaGVjay1ibG9jayBhaS1jZnAnIGRhdGEtYWktYmxvY2s9JzEnIGRhdGEtYWktbGltaXQtY2xpY2tzLXBlci10aW1lPSczJyBkYXRhLWFpLWxpbWl0LWNsaWNrcy10aW1lPScxJyBkYXRhLWFpLWdsb2JhbC1saW1pdC1jbGlja3MtcGVyLXRpbWU9JzMnIGRhdGEtYWktZ2xvYmFsLWxpbWl0LWNsaWNrcy10aW1lPScxJyBkYXRhLWFpLWNmcC10aW1lPSczMCc+PC9zcGFuPgo8L2Rpdj4KPHN0eWxlPgogIC8qIOS4k+S4uuato+aWh+aOkueJiOS8mOWMlueahOi9u+mHj+e6p+malOemu+WuueWZqCAqLwogIC5hZC1pbi1hcnRpY2xlLXNhZmUgewogICAgYm9yZGVyLXRvcDogMXB4IHNvbGlkICNlYWVhZWE7CiAgICBib3JkZXItYm90dG9tOiAxcHggc29saWQgI2VhZWFlYTsKICAgIHBhZGRpbmc6IDE1cHggMDsKICAgIG1hcmdpbjogMzVweCAwOyAvKiDkv53or4Hlub/lkYrkuI7kuIrkuIvmrrXokL3mnInotrPlpJ/nmoTlronlhajmu5Hliqjot53nprsgKi8KICAgIHRleHQtYWxpZ246IGNlbnRlcjsKICB9CiAgLmFkLWxhYmVsLWNlbnRlciB7CiAgICBmb250LXNpemU6IDEycHg7CiAgICBjb2xvcjogIzk5OTsKICAgIG1hcmdpbi1ib3R0b206IDEycHg7CiAgICBsZXR0ZXItc3BhY2luZzogMXB4OwogIH0KICAvKiDoh6rliqjpgILphY3mt7HoibIv5aSc6Ze05qih5byPICovCiAgQG1lZGlhIChwcmVmZXJzLWNvbG9yLXNjaGVtZTogZGFyaykgewogICAgLmFkLWluLWFydGljbGUtc2FmZSB7CiAgICAgIGJvcmRlci1jb2xvcjogIzMzMzMzMzsKICAgIH0KICAgIC5hZC1sYWJlbC1jZW50ZXIgewogICAgICBjb2xvcjogIzY2NjY2NjsKICAgIH0KICB9Cjwvc3R5bGU+Cgo8ZGl2IGNsYXNzPSJhZC1pbi1hcnRpY2xlLXNhZmUiPgogICAgCiAgICA8ZGl2IGNsYXNzPSJhZC1sYWJlbC1jZW50ZXIiPgogICAgICAgIC0g6LWe5Yqp5ZWG5YaF5a65IC0KICAgIDwvZGl2PgoKICAgIDxzY3JpcHQgYXN5bmMgc3JjPSJodHRwczovL3BhZ2VhZDIuZ29vZ2xlc3luZGljYXRpb24uY29tL3BhZ2VhZC9qcy9hZHNieWdvb2dsZS5qcz9jbGllbnQ9Y2EtcHViLTM5MDcyNjA2MjgxNTI4MTgiIGNyb3Nzb3JpZ2luPSJhbm9ueW1vdXMiPjwvc2NyaXB0PgogICAgPGlucyBjbGFzcz0iYWRzYnlnb29nbGUiCiAgICAgICAgIHN0eWxlPSJkaXNwbGF5OmJsb2NrOyB0ZXh0LWFsaWduOmNlbnRlcjsiCiAgICAgICAgIGRhdGEtYWQtbGF5b3V0PSJpbi1hcnRpY2xlIgogICAgICAgICBkYXRhLWFkLWZvcm1hdD0iZmx1aWQiCiAgICAgICAgIGRhdGEtYWQtY2xpZW50PSJjYS1wdWItMzkwNzI2MDYyODE1MjgxOCIKICAgICAgICAgZGF0YS1hZC1zbG90PSI1NzY3MTEwODAzIj48L2lucz4KICAgIDxzY3JpcHQ+CiAgICAgICAgIChhZHNieWdvb2dsZSA9IHdpbmRvdy5hZHNieWdvb2dsZSB8fCBbXSkucHVzaCh7fSk7CiAgICA8L3NjcmlwdD4KCjwvZGl2Pg==' data-fallback-code='PGRpdiBjbGFzcz0nYWktYWRiLXNob3cnIHN0eWxlPSd2aXNpYmlsaXR5OiBoaWRkZW47IGRpc3BsYXk6IG5vbmU7JyBkYXRhLWFpLXRyYWNraW5nPSdXekUyTERBc0lrSnNiMk5ySURFMklpd2lJaXd3WFE9PScgZGF0YS1haS1kZWJ1Zz0nMTYnPgo8YSBocmVmPSJodHRwczovL3d3dy5hbGl5dW4uY29tL3Byb2R1Y3QvZWNzP3VzZXJDb2RlPWp1Zm9jb2k2IiB0YXJnZXQ9Il9ibGFuayIgcmVsPSJub29wZW5lciI+PGltZyBjbGFzcz0iYWxpZ25ub25lIHNpemUtZnVsbCB3cC1pbWFnZS0yNDU2OCIgc3JjPSJodHRwczovL3d3dy5mcmVlZGlkaS5jb20vd3AtY29udGVudC91cGxvYWRzLzIwMjYvMDYvMjAyNjA2MjExNTA4MDRfOTYxODc0LndlYnAiIGFsdD0iIiB3aWR0aD0iMTUzNiIgaGVpZ2h0PSIxMDI0IiAvPjwvYT48L2Rpdj4K' limits-fallback='16' fallback_level='1' fallback-tracking='WzAsMCwiQmxvY2sgMTYiLCIiXQ==' data-block='1'><span class='ai-check-block ai-cfp' data-ai-block='1' data-ai-limit-clicks-per-time='3' data-ai-limit-clicks-time='1' data-ai-global-limit-clicks-per-time='3' data-ai-global-limit-clicks-time='1' data-ai-cfp-time='30'></span></div>
+
+</div>
+
+<p>&nbsp;</p>
 <p>这一切更令人意外的是：</p>
-<p>无需 OpenAI API Key<br>无需购买 ChatGPT Plus<br>支持 OpenAI 标准接口<br>可直接接入 Cherry Studio、Open WebUI 等客户端</p>
-<p>这个项目名为 Windows-Copilot-API，目前已完成引起了大量 AI 开发者关注。那么它到底是什么？又是否真的能够免费调用 GPT 模型？今天我们来详细体验一下。</p>
-<p>部署教程</p>
-<p>环境要求</p>
-<p>Python 3.9+ <br>一个微软账户（你用来注册 Copilot 的免费账户就能够）。<br>可在 Windows、macOS 和 Linux 系统上运行</p>
-<p>部署开始<br>1、安装 Python<br>建议安装 Python 3.11 或以上版本。【点击前往】或 【备用下载】</p>
+<ul>
+<li>无需 OpenAI API Key</li>
+<li>无需购买 ChatGPT Plus</li>
+<li>支持 OpenAI 标准接口</li>
+<li>可直接接入 Cherry Studio、Open WebUI 等客户端</li>
+</ul>
+<p>这个项目名为 Windows-Copilot-API，目前已经引起了大量 AI 开发者关注。那么它到底是什么？又是否真的能够免费调用 GPT 模型？今天我们来详细体验一下。</p>
+<h1>部署教程</h1>
+<div class="video-container"><iframe title="微软 Copilot 遭“破解”！GPT-5 竟能免费白嫖，无需 API Key 对接本地 AI Agent！又可以薅羊毛了？| " width="740" height="416" src="https://www.youtube.com/embed/7OmzmRlJdv8?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+<h2><strong>环境要求</strong></h2>
+<ul dir="auto">
+<li><strong><span dir="auto">Python 3.9+ </span></strong></li>
+<li><span dir="auto">一个</span><strong><span dir="auto">微软账户</span></strong><span dir="auto">（你用来注册 Copilot 的免费账户就可以）。</span></li>
+<li><span dir="auto">可在 Windows、macOS 和 Linux 系统上运行</span></li>
+</ul>
+<p>&nbsp;</p>
+<h1>部署开始</h1>
+<h3>1、安装 Python</h3>
+<p>建议安装 Python 3.11 或以上版本。【<strong><span style="color: #0000ff;"><a style="color: #0000ff;" href="https://www.python.org/downloads/release/python-31011/" target="_blank" rel="noopener">点击前往</a></span></strong>】或 【<span style="color: #0000ff;"><strong><a style="color: #0000ff;" href="https://pan.quark.cn/s/b791b33ce1f5" target="_blank" rel="noopener">备用下载</a></strong></span>】</p>
 <p>安装完成后验证：</p>
-<p>python -V</p>
-<p>2、下载开源项目 Windows-Copilot-API</p>
-<p>获取方式：【 Github 】或 【打包下载】、【备用下载】</p>
-<p>什么是Windows-Copilot-API？简单来说，这个项目通过逆向分析 Windows Copilot 的工作方式，将 Copilot 封装成了一个兼容 OpenAI API 的本地服务。</p>
-<p>3、部署命令</p>
-<p>1、开放PowerShell相应的权限</p>
-<p>Set-ExecutionPolicy -Scope CurrentUser RemoteSigned</p>
-<p>2、创建并激活虚拟环境</p>
-<p>Windows 系统（PowerShell）上：</p>
-<p>python -m venv venv<br>venv\Scripts\Activate.ps1</p>
-<p>macOS / Linux 系统上：</p>
-<p>python3 -m venv venv<br>source venv/bin/activate</p>
+<blockquote><p>python -V</p></blockquote>
+<h2><strong>2、下载开源项目 Windows-Copilot-API</strong></h2>
+<p>&nbsp;</p>
+<p><strong>获取方式：【<span style="color: #0000ff;"><a style="color: #0000ff;" href="https://github.com/sums001/Windows-Copilot-API" target="_blank" rel="noopener"> Github</a> </span>】或 【<span style="color: #0000ff;"><a style="color: #0000ff;" href="https://pan.quark.cn/s/62697fbbc665" target="_blank" rel="noopener">打包下载</a></span>】、【<span style="color: #0000ff;"><a style="color: #0000ff;" href="https://pan.cloudeop.com/s/45DAD5CC4065A6B8" target="_blank" rel="noopener">备用下载</a></span>】</strong></p>
+<p>&nbsp;</p>
+<p>什么是Windows-Copilot-API？简单来说，这个项目通过逆向分析 Windows Copilot 的工作方式，将 Copilot 封装成了一个兼容 OpenAI API 的本地服务。</p><div class='code-block code-block-center code-block-1 ai-track' data-ai='WzEsMCwiQmxvY2sgMSIsIiIsMl0='>
+<div class='no-visibility-check ai-check-1-10632412' data-insertion-position='after' data-selector='.ai-check-1-10632412' data-code='PGRpdiBjbGFzcz0iYWktYXR0cmlidXRlcyI+CjxzcGFuIGNsYXNzPSdhaS1jaGVjay1ibG9jayBhaS1jZnAnIGRhdGEtYWktYmxvY2s9JzEnIGRhdGEtYWktbGltaXQtY2xpY2tzLXBlci10aW1lPSczJyBkYXRhLWFpLWxpbWl0LWNsaWNrcy10aW1lPScxJyBkYXRhLWFpLWdsb2JhbC1saW1pdC1jbGlja3MtcGVyLXRpbWU9JzMnIGRhdGEtYWktZ2xvYmFsLWxpbWl0LWNsaWNrcy10aW1lPScxJyBkYXRhLWFpLWNmcC10aW1lPSczMCc+PC9zcGFuPgo8L2Rpdj4KPHN0eWxlPgogIC8qIOS4k+S4uuato+aWh+aOkueJiOS8mOWMlueahOi9u+mHj+e6p+malOemu+WuueWZqCAqLwogIC5hZC1pbi1hcnRpY2xlLXNhZmUgewogICAgYm9yZGVyLXRvcDogMXB4IHNvbGlkICNlYWVhZWE7CiAgICBib3JkZXItYm90dG9tOiAxcHggc29saWQgI2VhZWFlYTsKICAgIHBhZGRpbmc6IDE1cHggMDsKICAgIG1hcmdpbjogMzVweCAwOyAvKiDkv53or4Hlub/lkYrkuI7kuIrkuIvmrrXokL3mnInotrPlpJ/nmoTlronlhajmu5Hliqjot53nprsgKi8KICAgIHRleHQtYWxpZ246IGNlbnRlcjsKICB9CiAgLmFkLWxhYmVsLWNlbnRlciB7CiAgICBmb250LXNpemU6IDEycHg7CiAgICBjb2xvcjogIzk5OTsKICAgIG1hcmdpbi1ib3R0b206IDEycHg7CiAgICBsZXR0ZXItc3BhY2luZzogMXB4OwogIH0KICAvKiDoh6rliqjpgILphY3mt7HoibIv5aSc6Ze05qih5byPICovCiAgQG1lZGlhIChwcmVmZXJzLWNvbG9yLXNjaGVtZTogZGFyaykgewogICAgLmFkLWluLWFydGljbGUtc2FmZSB7CiAgICAgIGJvcmRlci1jb2xvcjogIzMzMzMzMzsKICAgIH0KICAgIC5hZC1sYWJlbC1jZW50ZXIgewogICAgICBjb2xvcjogIzY2NjY2NjsKICAgIH0KICB9Cjwvc3R5bGU+Cgo8ZGl2IGNsYXNzPSJhZC1pbi1hcnRpY2xlLXNhZmUiPgogICAgCiAgICA8ZGl2IGNsYXNzPSJhZC1sYWJlbC1jZW50ZXIiPgogICAgICAgIC0g6LWe5Yqp5ZWG5YaF5a65IC0KICAgIDwvZGl2PgoKICAgIDxzY3JpcHQgYXN5bmMgc3JjPSJodHRwczovL3BhZ2VhZDIuZ29vZ2xlc3luZGljYXRpb24uY29tL3BhZ2VhZC9qcy9hZHNieWdvb2dsZS5qcz9jbGllbnQ9Y2EtcHViLTM5MDcyNjA2MjgxNTI4MTgiIGNyb3Nzb3JpZ2luPSJhbm9ueW1vdXMiPjwvc2NyaXB0PgogICAgPGlucyBjbGFzcz0iYWRzYnlnb29nbGUiCiAgICAgICAgIHN0eWxlPSJkaXNwbGF5OmJsb2NrOyB0ZXh0LWFsaWduOmNlbnRlcjsiCiAgICAgICAgIGRhdGEtYWQtbGF5b3V0PSJpbi1hcnRpY2xlIgogICAgICAgICBkYXRhLWFkLWZvcm1hdD0iZmx1aWQiCiAgICAgICAgIGRhdGEtYWQtY2xpZW50PSJjYS1wdWItMzkwNzI2MDYyODE1MjgxOCIKICAgICAgICAgZGF0YS1hZC1zbG90PSI1NzY3MTEwODAzIj48L2lucz4KICAgIDxzY3JpcHQ+CiAgICAgICAgIChhZHNieWdvb2dsZSA9IHdpbmRvdy5hZHNieWdvb2dsZSB8fCBbXSkucHVzaCh7fSk7CiAgICA8L3NjcmlwdD4KCjwvZGl2Pg==' data-fallback-code='PGRpdiBjbGFzcz0nYWktYWRiLXNob3cnIHN0eWxlPSd2aXNpYmlsaXR5OiBoaWRkZW47IGRpc3BsYXk6IG5vbmU7JyBkYXRhLWFpLXRyYWNraW5nPSdXekUyTERBc0lrSnNiMk5ySURFMklpd2lJaXd3WFE9PScgZGF0YS1haS1kZWJ1Zz0nMTYnPgo8YSBocmVmPSJodHRwczovL3d3dy5hbGl5dW4uY29tL3Byb2R1Y3QvZWNzP3VzZXJDb2RlPWp1Zm9jb2k2IiB0YXJnZXQ9Il9ibGFuayIgcmVsPSJub29wZW5lciI+PGltZyBjbGFzcz0iYWxpZ25ub25lIHNpemUtZnVsbCB3cC1pbWFnZS0yNDU2OCIgc3JjPSJodHRwczovL3d3dy5mcmVlZGlkaS5jb20vd3AtY29udGVudC91cGxvYWRzLzIwMjYvMDYvMjAyNjA2MjExNTA4MDRfOTYxODc0LndlYnAiIGFsdD0iIiB3aWR0aD0iMTUzNiIgaGVpZ2h0PSIxMDI0IiAvPjwvYT48L2Rpdj4K' limits-fallback='16' fallback_level='1' fallback-tracking='WzAsMCwiQmxvY2sgMTYiLCIiXQ==' data-block='1'><span class='ai-check-block ai-cfp' data-ai-block='1' data-ai-limit-clicks-per-time='3' data-ai-limit-clicks-time='1' data-ai-global-limit-clicks-per-time='3' data-ai-global-limit-clicks-time='1' data-ai-cfp-time='30'></span></div>
+
+</div>
+
+<h2></h2>
+<h2>3、部署命令</h2>
+<p>&nbsp;</p>
+<p><strong>1、开放PowerShell相应的权限</strong></p>
+<pre class="EnlighterJSRAW" data-enlighter-language="generic">Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
+</pre>
+<p>&nbsp;</p>
+<p><strong>2、<span dir="auto">创建并激活虚拟环境</span></strong></p>
+<p>&nbsp;</p>
+<p><span dir="auto">Windows 系统</span><span dir="auto">（PowerShell）上：</span></p>
+<pre class="EnlighterJSRAW" data-enlighter-language="generic">python -m venv venv
+venv\Scripts\Activate.ps1</pre>
+<p>&nbsp;</p>
+<p><span dir="auto">macOS / Linux 系统</span><span dir="auto">上：</span></p>
+<pre class="EnlighterJSRAW" data-enlighter-language="generic">python3 -m venv venv
+source venv/bin/activate</pre>
+<p>&nbsp;</p>
 <p>3、安装依赖环境</p>
-<p>pip install -r requirements.txt</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="generic">pip install -r requirements.txt</pre>
+<p>&nbsp;</p>
 <p>4、安装浏览器自动化框架</p>
-<p>playwright install chromium</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="generic">playwright install chromium</pre>
+<p>&nbsp;</p><div class='code-block code-block-center code-block-1 ai-track' data-ai='WzEsMCwiQmxvY2sgMSIsIiIsM10='>
+<div class='no-visibility-check ai-check-1-45564340' data-insertion-position='after' data-selector='.ai-check-1-45564340' data-code='PGRpdiBjbGFzcz0iYWktYXR0cmlidXRlcyI+CjxzcGFuIGNsYXNzPSdhaS1jaGVjay1ibG9jayBhaS1jZnAnIGRhdGEtYWktYmxvY2s9JzEnIGRhdGEtYWktbGltaXQtY2xpY2tzLXBlci10aW1lPSczJyBkYXRhLWFpLWxpbWl0LWNsaWNrcy10aW1lPScxJyBkYXRhLWFpLWdsb2JhbC1saW1pdC1jbGlja3MtcGVyLXRpbWU9JzMnIGRhdGEtYWktZ2xvYmFsLWxpbWl0LWNsaWNrcy10aW1lPScxJyBkYXRhLWFpLWNmcC10aW1lPSczMCc+PC9zcGFuPgo8L2Rpdj4KPHN0eWxlPgogIC8qIOS4k+S4uuato+aWh+aOkueJiOS8mOWMlueahOi9u+mHj+e6p+malOemu+WuueWZqCAqLwogIC5hZC1pbi1hcnRpY2xlLXNhZmUgewogICAgYm9yZGVyLXRvcDogMXB4IHNvbGlkICNlYWVhZWE7CiAgICBib3JkZXItYm90dG9tOiAxcHggc29saWQgI2VhZWFlYTsKICAgIHBhZGRpbmc6IDE1cHggMDsKICAgIG1hcmdpbjogMzVweCAwOyAvKiDkv53or4Hlub/lkYrkuI7kuIrkuIvmrrXokL3mnInotrPlpJ/nmoTlronlhajmu5Hliqjot53nprsgKi8KICAgIHRleHQtYWxpZ246IGNlbnRlcjsKICB9CiAgLmFkLWxhYmVsLWNlbnRlciB7CiAgICBmb250LXNpemU6IDEycHg7CiAgICBjb2xvcjogIzk5OTsKICAgIG1hcmdpbi1ib3R0b206IDEycHg7CiAgICBsZXR0ZXItc3BhY2luZzogMXB4OwogIH0KICAvKiDoh6rliqjpgILphY3mt7HoibIv5aSc6Ze05qih5byPICovCiAgQG1lZGlhIChwcmVmZXJzLWNvbG9yLXNjaGVtZTogZGFyaykgewogICAgLmFkLWluLWFydGljbGUtc2FmZSB7CiAgICAgIGJvcmRlci1jb2xvcjogIzMzMzMzMzsKICAgIH0KICAgIC5hZC1sYWJlbC1jZW50ZXIgewogICAgICBjb2xvcjogIzY2NjY2NjsKICAgIH0KICB9Cjwvc3R5bGU+Cgo8ZGl2IGNsYXNzPSJhZC1pbi1hcnRpY2xlLXNhZmUiPgogICAgCiAgICA8ZGl2IGNsYXNzPSJhZC1sYWJlbC1jZW50ZXIiPgogICAgICAgIC0g6LWe5Yqp5ZWG5YaF5a65IC0KICAgIDwvZGl2PgoKICAgIDxzY3JpcHQgYXN5bmMgc3JjPSJodHRwczovL3BhZ2VhZDIuZ29vZ2xlc3luZGljYXRpb24uY29tL3BhZ2VhZC9qcy9hZHNieWdvb2dsZS5qcz9jbGllbnQ9Y2EtcHViLTM5MDcyNjA2MjgxNTI4MTgiIGNyb3Nzb3JpZ2luPSJhbm9ueW1vdXMiPjwvc2NyaXB0PgogICAgPGlucyBjbGFzcz0iYWRzYnlnb29nbGUiCiAgICAgICAgIHN0eWxlPSJkaXNwbGF5OmJsb2NrOyB0ZXh0LWFsaWduOmNlbnRlcjsiCiAgICAgICAgIGRhdGEtYWQtbGF5b3V0PSJpbi1hcnRpY2xlIgogICAgICAgICBkYXRhLWFkLWZvcm1hdD0iZmx1aWQiCiAgICAgICAgIGRhdGEtYWQtY2xpZW50PSJjYS1wdWItMzkwNzI2MDYyODE1MjgxOCIKICAgICAgICAgZGF0YS1hZC1zbG90PSI1NzY3MTEwODAzIj48L2lucz4KICAgIDxzY3JpcHQ+CiAgICAgICAgIChhZHNieWdvb2dsZSA9IHdpbmRvdy5hZHNieWdvb2dsZSB8fCBbXSkucHVzaCh7fSk7CiAgICA8L3NjcmlwdD4KCjwvZGl2Pg==' data-fallback-code='PGRpdiBjbGFzcz0nYWktYWRiLXNob3cnIHN0eWxlPSd2aXNpYmlsaXR5OiBoaWRkZW47IGRpc3BsYXk6IG5vbmU7JyBkYXRhLWFpLXRyYWNraW5nPSdXekUyTERBc0lrSnNiMk5ySURFMklpd2lJaXd3WFE9PScgZGF0YS1haS1kZWJ1Zz0nMTYnPgo8YSBocmVmPSJodHRwczovL3d3dy5hbGl5dW4uY29tL3Byb2R1Y3QvZWNzP3VzZXJDb2RlPWp1Zm9jb2k2IiB0YXJnZXQ9Il9ibGFuayIgcmVsPSJub29wZW5lciI+PGltZyBjbGFzcz0iYWxpZ25ub25lIHNpemUtZnVsbCB3cC1pbWFnZS0yNDU2OCIgc3JjPSJodHRwczovL3d3dy5mcmVlZGlkaS5jb20vd3AtY29udGVudC91cGxvYWRzLzIwMjYvMDYvMjAyNjA2MjExNTA4MDRfOTYxODc0LndlYnAiIGFsdD0iIiB3aWR0aD0iMTUzNiIgaGVpZ2h0PSIxMDI0IiAvPjwvYT48L2Rpdj4K' limits-fallback='16' fallback_level='1' fallback-tracking='WzAsMCwiQmxvY2sgMTYiLCIiXQ==' data-block='1'><span class='ai-check-block ai-cfp' data-ai-block='1' data-ai-limit-clicks-per-time='3' data-ai-limit-clicks-time='1' data-ai-global-limit-clicks-per-time='3' data-ai-global-limit-clicks-time='1' data-ai-cfp-time='30'></span></div>
+
+</div>
+
 <p>5、登入Copilot</p>
-<p>python -m copilot login</p>
-<p>执行命令以后，它会自动弹出Copilot登入页面，你能够自行注册一个小号或直接登入都能够，需注意的是：登入以后不要关闭当前的弹窗页面，否则后面终端下无法自动授权。</p>
-<p>登入Copilot以后，只需在终端下回车确认即可完成全部的登入授权，成功授权以后就能够免费调用GPT-4o/5模型了</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="generic">python -m copilot login</pre>
+<p>&nbsp;</p>
+<p>执行命令以后，它会自动弹出Copilot登入页面，你可以自行注册一个小号或直接登入都可以，需要注意的是：登入以后不要关闭当前的弹窗页面，否则后面终端下无法自动授权。</p>
+<p><img loading="lazy" decoding="async" class="wp-image-24574 aligncenter" src="../images/article-24570-img-6.png" alt="20260622101535 479427 scaled" width="780" height="439" title="Windows Copilot 被逆向！无需 API Key 免费白嫖 GPT-5，对接本地AI Agent，部署教程来了！ 3" srcset="../images/article-24570-img-6.png 2560w, https://www.freedidi.com/wp-content/uploads/2026/06/20260622101535_479427-748x421.webp 748w, https://www.freedidi.com/wp-content/uploads/2026/06/20260622101535_479427-768x432.webp 768w, https://www.freedidi.com/wp-content/uploads/2026/06/20260622101535_479427-1536x864.webp 1536w, https://www.freedidi.com/wp-content/uploads/2026/06/20260622101535_479427-2048x1152.webp 2048w, https://www.freedidi.com/wp-content/uploads/2026/06/20260622101535_479427-520x293.webp 520w, https://www.freedidi.com/wp-content/uploads/2026/06/20260622101535_479427-940x529.webp 940w" sizes="auto, (max-width: 780px) 100vw, 780px" /></p>
+<p>&nbsp;</p>
+<p>登入Copilot以后，只需在终端下回车确认即可完成全部的登入授权，成功授权以后就可以免费调用GPT-4o/5模型了</p>
+<p><img loading="lazy" decoding="async" class="wp-image-24575 aligncenter" src="../images/article-24570-img-1.png" alt="20260622101811 156424" width="706" height="381" title="Windows Copilot 被逆向！无需 API Key 免费白嫖 GPT-5，对接本地AI Agent，部署教程来了！ 4" srcset="../images/article-24570-img-1.png 1469w, https://www.freedidi.com/wp-content/uploads/2026/06/20260622101811_156424-750x405.webp 750w, https://www.freedidi.com/wp-content/uploads/2026/06/20260622101811_156424-768x415.webp 768w, https://www.freedidi.com/wp-content/uploads/2026/06/20260622101811_156424-520x281.webp 520w, https://www.freedidi.com/wp-content/uploads/2026/06/20260622101811_156424-940x507.webp 940w" sizes="auto, (max-width: 706px) 100vw, 706px" /></p>
 <p>6、正式启动：</p>
-<p>python app.py</p>
-<p>启动后就能够通过 http://127.0.0.1:8000/v1 来对接本地的AI Agent</p>
-<p>3、对接本地AI Agent<br>传统情况下，如果你想调用 GPT 模型，通常需：</p>
-<p>OpenAI API<br>Azure OpenAI<br>第三方中转 API</p>
-<p>而 Windows-Copilot-API 直接利用你已完成登录的微软 Copilot 账户，将其转换成标准 OpenAI API。这意味着：任何支持 OpenAI API 的软件，都能够直接连接到 Copilot。</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="generic">python app.py</pre>
+<p>&nbsp;</p>
+<p>启动后就可以通过 http://127.0.0.1:8000/v1 来对接本地的AI Agent</p>
+<p>&nbsp;</p>
+<p><img loading="lazy" decoding="async" class="alignnone size-full wp-image-24573" src="../images/article-24570-img-4.png" alt="20260622101419 205734 scaled" width="2560" height="1369" title="Windows Copilot 被逆向！无需 API Key 免费白嫖 GPT-5，对接本地AI Agent，部署教程来了！ 5" srcset="../images/article-24570-img-4.png 2560w, https://www.freedidi.com/wp-content/uploads/2026/06/20260622101419_205734-750x401.webp 750w, https://www.freedidi.com/wp-content/uploads/2026/06/20260622101419_205734-768x411.webp 768w, https://www.freedidi.com/wp-content/uploads/2026/06/20260622101419_205734-1536x822.webp 1536w, https://www.freedidi.com/wp-content/uploads/2026/06/20260622101419_205734-2048x1096.webp 2048w, https://www.freedidi.com/wp-content/uploads/2026/06/20260622101419_205734-520x278.webp 520w, https://www.freedidi.com/wp-content/uploads/2026/06/20260622101419_205734-940x503.webp 940w" sizes="auto, (max-width: 2560px) 100vw, 2560px" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p><div class='code-block code-block-center code-block-1 ai-track' data-ai='WzEsMCwiQmxvY2sgMSIsIiIsNF0='>
+<div class='no-visibility-check ai-check-1-16212571' data-insertion-position='after' data-selector='.ai-check-1-16212571' data-code='PGRpdiBjbGFzcz0iYWktYXR0cmlidXRlcyI+CjxzcGFuIGNsYXNzPSdhaS1jaGVjay1ibG9jayBhaS1jZnAnIGRhdGEtYWktYmxvY2s9JzEnIGRhdGEtYWktbGltaXQtY2xpY2tzLXBlci10aW1lPSczJyBkYXRhLWFpLWxpbWl0LWNsaWNrcy10aW1lPScxJyBkYXRhLWFpLWdsb2JhbC1saW1pdC1jbGlja3MtcGVyLXRpbWU9JzMnIGRhdGEtYWktZ2xvYmFsLWxpbWl0LWNsaWNrcy10aW1lPScxJyBkYXRhLWFpLWNmcC10aW1lPSczMCc+PC9zcGFuPgo8L2Rpdj4KPHN0eWxlPgogIC8qIOS4k+S4uuato+aWh+aOkueJiOS8mOWMlueahOi9u+mHj+e6p+malOemu+WuueWZqCAqLwogIC5hZC1pbi1hcnRpY2xlLXNhZmUgewogICAgYm9yZGVyLXRvcDogMXB4IHNvbGlkICNlYWVhZWE7CiAgICBib3JkZXItYm90dG9tOiAxcHggc29saWQgI2VhZWFlYTsKICAgIHBhZGRpbmc6IDE1cHggMDsKICAgIG1hcmdpbjogMzVweCAwOyAvKiDkv53or4Hlub/lkYrkuI7kuIrkuIvmrrXokL3mnInotrPlpJ/nmoTlronlhajmu5Hliqjot53nprsgKi8KICAgIHRleHQtYWxpZ246IGNlbnRlcjsKICB9CiAgLmFkLWxhYmVsLWNlbnRlciB7CiAgICBmb250LXNpemU6IDEycHg7CiAgICBjb2xvcjogIzk5OTsKICAgIG1hcmdpbi1ib3R0b206IDEycHg7CiAgICBsZXR0ZXItc3BhY2luZzogMXB4OwogIH0KICAvKiDoh6rliqjpgILphY3mt7HoibIv5aSc6Ze05qih5byPICovCiAgQG1lZGlhIChwcmVmZXJzLWNvbG9yLXNjaGVtZTogZGFyaykgewogICAgLmFkLWluLWFydGljbGUtc2FmZSB7CiAgICAgIGJvcmRlci1jb2xvcjogIzMzMzMzMzsKICAgIH0KICAgIC5hZC1sYWJlbC1jZW50ZXIgewogICAgICBjb2xvcjogIzY2NjY2NjsKICAgIH0KICB9Cjwvc3R5bGU+Cgo8ZGl2IGNsYXNzPSJhZC1pbi1hcnRpY2xlLXNhZmUiPgogICAgCiAgICA8ZGl2IGNsYXNzPSJhZC1sYWJlbC1jZW50ZXIiPgogICAgICAgIC0g6LWe5Yqp5ZWG5YaF5a65IC0KICAgIDwvZGl2PgoKICAgIDxzY3JpcHQgYXN5bmMgc3JjPSJodHRwczovL3BhZ2VhZDIuZ29vZ2xlc3luZGljYXRpb24uY29tL3BhZ2VhZC9qcy9hZHNieWdvb2dsZS5qcz9jbGllbnQ9Y2EtcHViLTM5MDcyNjA2MjgxNTI4MTgiIGNyb3Nzb3JpZ2luPSJhbm9ueW1vdXMiPjwvc2NyaXB0PgogICAgPGlucyBjbGFzcz0iYWRzYnlnb29nbGUiCiAgICAgICAgIHN0eWxlPSJkaXNwbGF5OmJsb2NrOyB0ZXh0LWFsaWduOmNlbnRlcjsiCiAgICAgICAgIGRhdGEtYWQtbGF5b3V0PSJpbi1hcnRpY2xlIgogICAgICAgICBkYXRhLWFkLWZvcm1hdD0iZmx1aWQiCiAgICAgICAgIGRhdGEtYWQtY2xpZW50PSJjYS1wdWItMzkwNzI2MDYyODE1MjgxOCIKICAgICAgICAgZGF0YS1hZC1zbG90PSI1NzY3MTEwODAzIj48L2lucz4KICAgIDxzY3JpcHQ+CiAgICAgICAgIChhZHNieWdvb2dsZSA9IHdpbmRvdy5hZHNieWdvb2dsZSB8fCBbXSkucHVzaCh7fSk7CiAgICA8L3NjcmlwdD4KCjwvZGl2Pg==' data-fallback-code='PGRpdiBjbGFzcz0nYWktYWRiLXNob3cnIHN0eWxlPSd2aXNpYmlsaXR5OiBoaWRkZW47IGRpc3BsYXk6IG5vbmU7JyBkYXRhLWFpLXRyYWNraW5nPSdXekUyTERBc0lrSnNiMk5ySURFMklpd2lJaXd3WFE9PScgZGF0YS1haS1kZWJ1Zz0nMTYnPgo8YSBocmVmPSJodHRwczovL3d3dy5hbGl5dW4uY29tL3Byb2R1Y3QvZWNzP3VzZXJDb2RlPWp1Zm9jb2k2IiB0YXJnZXQ9Il9ibGFuayIgcmVsPSJub29wZW5lciI+PGltZyBjbGFzcz0iYWxpZ25ub25lIHNpemUtZnVsbCB3cC1pbWFnZS0yNDU2OCIgc3JjPSJodHRwczovL3d3dy5mcmVlZGlkaS5jb20vd3AtY29udGVudC91cGxvYWRzLzIwMjYvMDYvMjAyNjA2MjExNTA4MDRfOTYxODc0LndlYnAiIGFsdD0iIiB3aWR0aD0iMTUzNiIgaGVpZ2h0PSIxMDI0IiAvPjwvYT48L2Rpdj4K' limits-fallback='16' fallback_level='1' fallback-tracking='WzAsMCwiQmxvY2sgMTYiLCIiXQ==' data-block='1'><span class='ai-check-block ai-cfp' data-ai-block='1' data-ai-limit-clicks-per-time='3' data-ai-limit-clicks-time='1' data-ai-global-limit-clicks-per-time='3' data-ai-global-limit-clicks-time='1' data-ai-cfp-time='30'></span></div>
+
+</div>
+
+<h2>3、对接本地AI Agent</h2>
+<p>传统情况下，如果你想调用 GPT 模型，通常需要：</p>
+<ul>
+<li>OpenAI API</li>
+<li>Azure OpenAI</li>
+<li>第三方中转 API</li>
+</ul>
+<p>而 Windows-Copilot-API 直接利用你已经登录的微软 Copilot 账户，将其转换成标准 OpenAI API。这意味着：任何支持 OpenAI API 的软件，都可以直接连接到 Copilot。</p>
 <p>例如：</p>
-<p>Cherry Studio<br>Open WebUI<br>OpenClaw<br>Hermes<br>Python OpenAI SDK<br>各类 Agent 框架</p>
-<p>几乎无需修改代码。这次我们就拿Cherry Studio来做测试，对新手来说十分友好，完全无代码部署，点点鼠标就能完成！</p>
-<p>Cherry Studio 下载： 【点击前往】或 【备用下载】</p>
-<p>对接的时候选择自定义其它服务提供商，对接的Base URL 地址填写：http://127.0.0.1:8000/v1， 模型名称能够自定义例如GPT5.5 , 密钥API 随便填写一个即可，例如：12345678 ，但不能留空，否则无法连接。</p>
-<p>对接成功以后就能够正常使用了，例如制定自动化任务，定时任务，编写代码，制作文案等扽，都能够，目前这个方式对接没有限额，不过大家务必正常使用，切勿滥用！</p>
-<p>工作原理<br>需说明的是：这个项目并不是破解 GPT-5。也不是破解 OpenAI。它本质上仍然是在调用微软官方 Copilot 服务。</p>
-<p>工作流程如下：</p>
-<p>用户程序</p>
-<p>↓</p>
-<p>Windows-Copilot-API</p>
-<p>↓</p>
-<p>Playwright</p>
-<p>↓</p>
-<p>Copilot Web</p>
-<p>↓</p>
-<p>微软服务器</p>
-<p>开发者利用 Playwright 自动控制浏览器，与 Copilot 网页端进行通信，接着将结果转换为 OpenAI API 格式返回。</p>
+<ul>
+<li>Cherry Studio</li>
+<li>Open WebUI</li>
+<li>OpenClaw</li>
+<li>Hermes</li>
+<li>Python OpenAI SDK</li>
+<li>各类 Agent 框架</li>
+</ul>
+<p>几乎无需修改代码。这次我们就拿Cherry Studio来做测试，对新手来说非常友好，完全无代码部署，点点鼠标就能完成！</p>
+<p>&nbsp;</p>
+<p><strong>Cherry Studio 下载： 【<span style="color: #0000ff;"><a style="color: #0000ff;" href="https://cherry-ai.com/" target="_blank" rel="noopener">点击前往</a></span>】或 【<a href="https://pan.quark.cn/s/8bd9490afe1a" target="_blank" rel="noopener"><span style="color: #0000ff;">备用下载</span></a>】</strong></p>
+<p>&nbsp;</p>
+<p><img loading="lazy" decoding="async" class="alignnone size-full wp-image-24576" src="../images/article-24570-img-8.png" alt="20260622102444 136878 scaled" width="2560" height="1343" title="Windows Copilot 被逆向！无需 API Key 免费白嫖 GPT-5，对接本地AI Agent，部署教程来了！ 6" srcset="../images/article-24570-img-8.png 2560w, https://www.freedidi.com/wp-content/uploads/2026/06/20260622102444_136878-750x393.webp 750w, https://www.freedidi.com/wp-content/uploads/2026/06/20260622102444_136878-768x403.webp 768w, https://www.freedidi.com/wp-content/uploads/2026/06/20260622102444_136878-1536x806.webp 1536w, https://www.freedidi.com/wp-content/uploads/2026/06/20260622102444_136878-2048x1074.webp 2048w, https://www.freedidi.com/wp-content/uploads/2026/06/20260622102444_136878-520x273.webp 520w, https://www.freedidi.com/wp-content/uploads/2026/06/20260622102444_136878-940x493.webp 940w" sizes="auto, (max-width: 2560px) 100vw, 2560px" /></p>
+<p>&nbsp;</p>
+<p>对接的时候选择自定义其它服务提供商，对接的Base URL 地址填写：http://127.0.0.1:8000/v1， 模型名称可以自定义比如GPT5.5 , 密钥API 随便填写一个即可，比如：12345678 ，但不能留空，否则无法连接。</p>
+<p>&nbsp;</p>
+<p><img loading="lazy" decoding="async" class="wp-image-24578 aligncenter" src="../images/article-24570-img-5.png" alt="20260622102835 600471 scaled" width="855" height="481" title="Windows Copilot 被逆向！无需 API Key 免费白嫖 GPT-5，对接本地AI Agent，部署教程来了！ 7" srcset="../images/article-24570-img-5.png 2560w, https://www.freedidi.com/wp-content/uploads/2026/06/20260622102835_600471-748x421.webp 748w, https://www.freedidi.com/wp-content/uploads/2026/06/20260622102835_600471-768x432.webp 768w, https://www.freedidi.com/wp-content/uploads/2026/06/20260622102835_600471-1536x864.webp 1536w, https://www.freedidi.com/wp-content/uploads/2026/06/20260622102835_600471-2048x1152.webp 2048w, https://www.freedidi.com/wp-content/uploads/2026/06/20260622102835_600471-520x293.webp 520w, https://www.freedidi.com/wp-content/uploads/2026/06/20260622102835_600471-940x529.webp 940w" sizes="auto, (max-width: 855px) 100vw, 855px" /></p>
+<h2></h2>
+<p>对接成功以后就可以正常使用了，比如制定自动化任务，定时任务，编写代码，制作文案等扽，都可以，目前这个方式对接没有限额，但是大家务必正常使用，切勿滥用！</p>
+<p>&nbsp;</p>
+<p><img loading="lazy" decoding="async" class="wp-image-24579 aligncenter" src="../images/article-24570-img-2.png" alt="20260622103010 416101 scaled" width="823" height="463" title="Windows Copilot 被逆向！无需 API Key 免费白嫖 GPT-5，对接本地AI Agent，部署教程来了！ 8" srcset="../images/article-24570-img-2.png 2560w, https://www.freedidi.com/wp-content/uploads/2026/06/20260622103010_416101-748x421.webp 748w, https://www.freedidi.com/wp-content/uploads/2026/06/20260622103010_416101-768x432.webp 768w, https://www.freedidi.com/wp-content/uploads/2026/06/20260622103010_416101-1536x864.webp 1536w, https://www.freedidi.com/wp-content/uploads/2026/06/20260622103010_416101-2048x1152.webp 2048w, https://www.freedidi.com/wp-content/uploads/2026/06/20260622103010_416101-520x293.webp 520w, https://www.freedidi.com/wp-content/uploads/2026/06/20260622103010_416101-940x529.webp 940w" sizes="auto, (max-width: 823px) 100vw, 823px" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2>工作原理</h2>
+<p>需要说明的是：这个项目并不是破解 GPT-5。也不是破解 OpenAI。它本质上仍然是在调用微软官方 Copilot 服务。</p>
+<p><strong>工作流程如下：</strong></p>
+<p>用户程序<br />
+↓<br />
+Windows-Copilot-API<br />
+↓<br />
+Playwright<br />
+↓<br />
+Copilot Web<br />
+↓<br />
+微软服务器</p>
+<p>开发者利用 Playwright 自动控制浏览器，与 Copilot 网页端进行通信，然后将结果转换为 OpenAI API 格式返回。</p>
 <p>因此它本质上属于一种 API 封装方案。</p>
-<p>测试 Copilot 是否正常工作<br>执行：</p>
-<p>python -m copilot ask "你好"</p>
+<h2></h2>
+<p>&nbsp;</p>
+<h2>测试 Copilot 是否正常工作</h2>
+<p>执行：</p>
+<pre><code class="language-bash">python -m copilot ask "你好"
+</code></pre>
 <p>如果返回类似：</p>
-<p>你好，LING 🌟<br>看到你又来了，我挺开心的。</p>
-<p>说明已完成成功连接 Copilot。</p>
-<p>经过实测，Cherry Studio 能够正常使用。但不支持高并发</p>
+<pre><code class="language-text">你好，LING 🌟
+看到你又来了，我挺开心的。
+</code></pre>
+<p>说明已经成功连接 Copilot。</p>
+<p>&nbsp;</p>
+<p>经过实测，Cherry Studio 可以正常使用。但不支持高并发</p>
 <p>作者也明确说明：</p>
 <p>Copilot 聊天连接无法同时处理多个会话。</p>
 <p>所有请求都会排队执行。</p>
 <p>因此：</p>
 <p>它更适合作为个人使用方案，而不是生产级 API 服务。</p>
-<p>微软正在把 Windows 变成 AI 操作系统？<br>就在这个项目受到广泛关注的同时，微软还确认：</p>
-<p>Edge Drop 文件分享功能即将下线<br>Collections 收藏功能被移除<br>Sidebar 侧边栏功能逐步淘汰</p>
+<h2>微软正在把 Windows 变成 AI 操作系统？</h2>
+<p>就在这个项目爆火的同时，微软还确认：</p>
+<ul>
+<li>Edge Drop 文件分享功能即将下线</li>
+<li>Collections 收藏功能被移除</li>
+<li>Sidebar 侧边栏功能逐步淘汰</li>
+</ul>
 <p>而 Copilot 则被保留并持续强化。</p>
-<p>这释放出一个十分明显的信号：</p>
+<p>这释放出一个非常明显的信号：</p>
 <p>微软正在把 Copilot 作为未来 Windows 的核心入口。</p>
 <p>从 Windows 11 开始：</p>
-<p>Copilot 进入系统<br>记事本加入 AI<br>Paint 加入 AI<br>Office 加入 AI<br>Edge 全面整合 AI</p>
-<p>未来用户或许不再需寻找菜单和按钮。</p>
+<ul>
+<li>Copilot 进入系统</li>
+<li>记事本加入 AI</li>
+<li>Paint 加入 AI</li>
+<li>Office 加入 AI</li>
+<li>Edge 全面整合 AI</li>
+</ul>
+<p>未来用户或许不再需要寻找菜单和按钮。</p>
 <p>而是直接通过自然语言控制整个系统。</p>
-<p>微软真正想打造的，或许不是一个聊天机器人，而是一个 AI 操作系统。</p>
-<p>总之<br>Windows-Copilot-API 是一个十分有意思的开源项目。它成功将 Windows Copilot 封装成 OpenAI API，为开发者提供了一种免费接入 Copilot 的方式。</p>
+<p>微软真正想打造的，可能不是一个聊天机器人，而是一个 AI 操作系统。</p>
+<h2>总之</h2>
+<p>Windows-Copilot-API 是一个非常有意思的开源项目。它成功将 Windows Copilot 封装成 OpenAI API，为开发者提供了一种免费接入 Copilot 的方式。</p>
 <p>优点：</p>
-<p>免费使用<br>无需 OpenAI API Key<br>支持 OpenAI 生态<br>可接入 Cherry Studio</p>
+<ul>
+<li>免费使用</li>
+<li>无需 OpenAI API Key</li>
+<li>支持 OpenAI 生态</li>
+<li>可接入 Cherry Studio</li>
+</ul>
 <p>缺点：</p>
-<p>依赖 Copilot 网页端<br>不适合 Agent<br>不支持高并发<br>未来存在失效风险</p>
-<p>对于个人用户来说，它是一个十分值得尝试的项目。</p>
+<ul>
+<li>依赖 Copilot 网页端</li>
+<li>不适合 Agent</li>
+<li>不支持高并发</li>
+<li>未来存在失效风险</li>
+</ul>
+<p>对于个人用户来说，它是一个非常值得尝试的项目。</p>
+    <div class="donation-container">
+        <button class="donation-main-btn" id="donationMainBtn">
+            <span class="dashicons dashicons-heart"></span> 
+
+                <div class="qrcode-display" id="qrcodeDisplay">
+                    <div class="qr-container">
+                        <img decoding="async" id="qrcodeImage" src="" alt="QR Code" title="Windows Copilot 被逆向！无需 API Key 免费白嫖 GPT-5，对接本地AI Agent，部署教程来了！ 13">
+                    </div>
+                    <p id="qrcodeText"></p>
+                    
+                    <div id="donationAddressArea" style="display:none;">
+                        <div class="address-box">
+                            <input type="text" id="walletAddress" readonly>
+                            <button type="button" id="copyBtn">复制</button>
+                        </div>
+                        <span id="copyMsg" style="font-size:12px; color:#26A17B; display:none;">已复制!</span>
+                    </div>
+                    
+                    <button class="back-btn" id="backBtn">返回选择</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class='code-block code-block-default code-block-bc-rgb-238-238-238 code-block-2 ai-track' data-ai='WzIsMCwiQmxvY2sgMiIsIiIsMV0='>
+<div class='no-visibility-check ai-check-2-17929811' data-insertion-position='after' data-selector='.ai-check-2-17929811' data-code='PGRpdiBjbGFzcz0iYWktYXR0cmlidXRlcyI+CjxzcGFuIGNsYXNzPSdhaS1jaGVjay1ibG9jayBhaS1jZnAnIGRhdGEtYWktYmxvY2s9JzInIGRhdGEtYWktbGltaXQtY2xpY2tzLXBlci10aW1lPSczJyBkYXRhLWFpLWxpbWl0LWNsaWNrcy10aW1lPScxJyBkYXRhLWFpLWdsb2JhbC1saW1pdC1jbGlja3MtcGVyLXRpbWU9JzMnIGRhdGEtYWktZ2xvYmFsLWxpbWl0LWNsaWNrcy10aW1lPScxJyBkYXRhLWFpLWNmcC10aW1lPSczMCc+PC9zcGFuPgo8L2Rpdj4KPHN0eWxlPgogIC5hZC13cmFwcGVyLXNhZmUgewogICAgYm9yZGVyOiAxcHggc29saWQgI2UwZTBlMDsKICAgIGJvcmRlci1yYWRpdXM6IDZweDsKICAgIHBhZGRpbmc6IDE1cHg7CiAgICBtYXJnaW4tdG9wOiAzMHB4OwogICAgbWFyZ2luLWJvdHRvbTogMjBweDsKICAgIGJhY2tncm91bmQ6IHRyYW5zcGFyZW50OwogIH0KICAuYWQtbGFiZWwtc2FmZSB7CiAgICBmb250LXNpemU6IDEycHg7CiAgICBjb2xvcjogIzk5OTsKICAgIHRleHQtYWxpZ246IGxlZnQ7CiAgICBtYXJnaW4tYm90dG9tOiAxMHB4OwogICAgbGV0dGVyLXNwYWNpbmc6IDFweDsKICB9CiAgLyog6Ieq5Yqo6YCC6YWN5rex6ImyL+WknOmXtOaooeW8j++8jOS/neaMgeenkeaKgOaEn+S4juaegeeugOinhuiniSAqLwogIEBtZWRpYSAocHJlZmVycy1jb2xvci1zY2hlbWU6IGRhcmspIHsKICAgIC5hZC13cmFwcGVyLXNhZmUgewogICAgICBib3JkZXItY29sb3I6ICMzMzMzMzM7CiAgICB9CiAgICAuYWQtbGFiZWwtc2FmZSB7CiAgICAgIGNvbG9yOiAjNjY2NjY2OwogICAgfQogIH0KPC9zdHlsZT4KCjxkaXYgY2xhc3M9ImFkLXdyYXBwZXItc2FmZSI+CiAgICAKICAgIDxkaXYgY2xhc3M9ImFkLWxhYmVsLXNhZmUiPgogICAgICAgIC0g6LWe5Yqp5ZWG5YaF5a65IC0KICAgIDwvZGl2PgoKICAgIDxzY3JpcHQgYXN5bmMgc3JjPSJodHRwczovL3BhZ2VhZDIuZ29vZ2xlc3luZGljYXRpb24uY29tL3BhZ2VhZC9qcy9hZHNieWdvb2dsZS5qcz9jbGllbnQ9Y2EtcHViLTM5MDcyNjA2MjgxNTI4MTgiIGNyb3Nzb3JpZ2luPSJhbm9ueW1vdXMiPjwvc2NyaXB0PgogICAgPGlucyBjbGFzcz0iYWRzYnlnb29nbGUiCiAgICAgICAgIHN0eWxlPSJkaXNwbGF5OmJsb2NrIgogICAgICAgICBkYXRhLWFkLWZvcm1hdD0iYXV0b3JlbGF4ZWQiCiAgICAgICAgIGRhdGEtYWQtY2xpZW50PSJjYS1wdWItMzkwNzI2MDYyODE1MjgxOCIKICAgICAgICAgZGF0YS1hZC1zbG90PSI4Njk0NzAyNjQxIj48L2lucz4KICAgIDxzY3JpcHQ+CiAgICAgICAgIChhZHNieWdvb2dsZSA9IHdpbmRvdy5hZHNieWdvb2dsZSB8fCBbXSkucHVzaCh7fSk7CiAgICA8L3NjcmlwdD4KCjwvZGl2Pg==' data-fallback-code='PGRpdiBjbGFzcz0nYWktYWRiLXNob3cnIHN0eWxlPSd2aXNpYmlsaXR5OiBoaWRkZW47IGRpc3BsYXk6IG5vbmU7JyBkYXRhLWFpLXRyYWNraW5nPSdXekUyTERBc0lrSnNiMk5ySURFMklpd2lJaXd3WFE9PScgZGF0YS1haS1kZWJ1Zz0nMTYnPgo8YSBocmVmPSJodHRwczovL3d3dy5hbGl5dW4uY29tL3Byb2R1Y3QvZWNzP3VzZXJDb2RlPWp1Zm9jb2k2IiB0YXJnZXQ9Il9ibGFuayIgcmVsPSJub29wZW5lciI+PGltZyBjbGFzcz0iYWxpZ25ub25lIHNpemUtZnVsbCB3cC1pbWFnZS0yNDU2OCIgc3JjPSJodHRwczovL3d3dy5mcmVlZGlkaS5jb20vd3AtY29udGVudC91cGxvYWRzLzIwMjYvMDYvMjAyNjA2MjExNTA4MDRfOTYxODc0LndlYnAiIGFsdD0iIiB3aWR0aD0iMTUzNiIgaGVpZ2h0PSIxMDI0IiAvPjwvYT48L2Rpdj4K' limits-fallback='16' fallback_level='1' fallback-tracking='WzAsMCwiQmxvY2sgMTYiLCIiXQ==' data-block='2'><span class='ai-check-block ai-cfp' data-ai-block='2' data-ai-limit-clicks-per-time='3' data-ai-limit-clicks-time='1' data-ai-global-limit-clicks-per-time='3' data-ai-global-limit-clicks-time='1' data-ai-cfp-time='30'></span></div>
+
+</div>
+<!-- AI CONTENT END 1 -->
+
+				
+
+
+												<div class="clear"></div>				
+					</div><!--/.entry-->
+				</div>
+				<div class="entry-footer group">
+					
+										
+					<div class="clear"></div>
+					
+										
+					
+	<div class="sharrre-container sharrre-header group">
+		<span>Share</span>
+		<div id="twitter" class="sharrre">
+			<a class="box group" href="https://twitter.com/intent/tweet?url=https://www.freedidi.com/24570.html&text=Windows Copilot 被逆向！无需 API Key 免费白嫖 GPT-5，对接本地AI Agent，部署教程来了！" title="Share on X">
+				<div class="count"><i class="fas fa-plus"></i></div><div class="share"><i class="fab fa-x-twitter"></i></div>
+			</a>
+		</div>
+		<div id="facebook" class="sharrre">
+			<a class="box group" href="https://www.facebook.com/sharer/sharer.php?u=https://www.freedidi.com/24570.html" title="Share on Facebook">
+				<div class="count"><i class="fas fa-plus"></i></div><div class="share"><i class="fab fa-facebook-square"></i></div>
+			</a>
+		</div>
+		<div id="pinterest" class="sharrre">
+			<a class="box group" href="https://pinterest.com/pin/create/button/?url=https://www.freedidi.com/24570.html&media=&description=Windows Copilot 被逆向！无需 API Key 免费白嫖 GPT-5，对接本地AI Agent，部署教程来了！" title="Share on Pinterest">
+				<div class="count"><i class="fas fa-plus"></i></div><div class="share"><i class="fab fa-pinterest"></i></div>
+			</a>
+		</div>
+		<div id="linkedin" class="sharrre">
+			<a class="box group" href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.freedidi.com/24570.html" title="Share on LinkedIn">
+				<div class="count"><i class="fas fa-plus"></i></div><div class="share"><i class="fab fa-linkedin"></i></div>
+			</a>
+		</div>
+	</div><!--/.sharrre-container-->
+	
+						
+						<ul class="post-nav group">
+		<li class="next"></li>
+		<li class="previous"><a href="https://www.freedidi.com/24513.html" rel="prev"><i class="fas fa-chevron-left"></i><strong>Previous</strong> <span>GLM 5.2 正式开源！百万上下文、Agent 编程能力登顶，模型下载及本地部署！</span></a></li>
+	</ul>
+
+										
+				</div>
+			</div>
+
+		
 </div>
 <div class="article-footer">
 <a href="./articles.html" class="back-btn">← 返回文章列表</a>
